@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdghkrg6afedo"]
+
+[ext_resource type="Script" uid="uid://duvhc0ubpsiy8" path="res://Level System/space_shooter_level.gd" id="1_bae15"]
+[ext_resource type="Script" uid="uid://c3qxnriirmdv1" path="res://Level System/formation_system.gd" id="2_vhhun"]
+[ext_resource type="Script" uid="uid://bs4vkcl4ks5y8" path="res://Level System/path_system.gd" id="3_c8byl"]
+[ext_resource type="Script" uid="uid://dnlb1rfvpiws3" path="res://Level System/spawner.gd" id="4_c8byl"]
+
+[sub_resource type="Curve2D" id="Curve2D_7abyt"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 320, -192, -192.678, -203.053, 192.678, 203.053, 512, 448, 0, 0, 0, 0, 960, 640)
+}
+point_count = 3
+
+[node name="SpaceShooterLevel" type="Node2D"]
+script = ExtResource("1_bae15")
+
+[node name="FormationSystem" type="Node2D" parent="."]
+script = ExtResource("2_vhhun")
+
+[node name="LineFormation" type="Line2D" parent="FormationSystem"]
+position = Vector2(12.3846, 128)
+scale = Vector2(0.992308, 1)
+points = PackedVector2Array(310, 64, 1600, 64)
+
+[node name="PathSystem" type="Node2D" parent="."]
+script = ExtResource("3_c8byl")
+
+[node name="Path2D" type="Path2D" parent="PathSystem"]
+position = Vector2(0, 64)
+curve = SubResource("Curve2D_7abyt")
+
+[node name="Path2D2" type="Path2D" parent="PathSystem"]
+position = Vector2(1920, 64)
+rotation = 3.14159
+scale = Vector2(1, -1)
+curve = SubResource("Curve2D_7abyt")
+
+[node name="Spawner" type="Node2D" parent="."]
+script = ExtResource("4_c8byl")
+
+[node name="Timer" type="Timer" parent="Spawner"]
+autostart = true
+
+[connection signal="timeout" from="Spawner/Timer" to="." method="_on_timer_timeout"]

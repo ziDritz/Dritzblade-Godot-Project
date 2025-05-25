@@ -1,0 +1,21 @@
+extends AudioStreamPlayer
+
+var playback
+var sound
+var audio_stream
+
+func _ready() -> void:
+	stream = AudioStreamPolyphonic.new()
+	stream.polyphony = 32
+
+	audio_stream = preload("res://_SFX/SFXPack/Explosions/Explosion2.mp3")
+	
+
+func _on_wave_enemy_spawned(unit: Unit):
+	unit.find_child("Health").died.connect(_on_unit_died)
+
+func _on_unit_died():
+	if !playing:
+		play()
+	playback = get_stream_playback()
+	playback.play_stream(audio_stream)

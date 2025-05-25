@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://btiwi4gqapndm"]
+
+[ext_resource type="Script" uid="uid://bipm3ak1njvsh" path="res://Unit Manager/Scripts/unit.gd" id="1_s8ipb"]
+[ext_resource type="Script" uid="uid://b2cnacw0lfp3t" path="res://Unit Manager/Scripts/health.gd" id="2_gi3d5"]
+[ext_resource type="Script" uid="uid://c17hhwtmirhsy" path="res://Unit Manager/Scripts/movement.gd" id="3_hxicb"]
+[ext_resource type="PackedScene" uid="uid://3qci2mm701cn" path="res://Bullet System/Scene/Shooter.tscn" id="4_hd88y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hd88y"]
+size = Vector2(22, 22)
+
+[node name="Unit" type="Node2D"]
+script = ExtResource("1_s8ipb")
+metadata/_custom_type_script = "uid://bipm3ak1njvsh"
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2_gi3d5")
+
+[node name="Movement" type="CharacterBody2D" parent="."]
+script = ExtResource("3_hxicb")
+
+[node name="Sprite2D" type="Sprite2D" parent="Movement"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Movement"]
+shape = SubResource("RectangleShape2D_hd88y")
+
+[node name="Shooter" parent="Movement" instance=ExtResource("4_hd88y")]

@@ -1,0 +1,94 @@
+[gd_scene load_steps=12 format=3 uid="uid://cdghkrg6afedo"]
+
+[ext_resource type="PackedScene" uid="uid://c6hcg7jwuon3w" path="res://Level System/Wave.tscn" id="1_ef6nb"]
+[ext_resource type="Script" uid="uid://bkfsr1r06jaq1" path="res://Level System/space_shooter_level.gd" id="1_vnsei"]
+[ext_resource type="Script" uid="uid://co6g1v3ikj31g" path="res://Text/highlight_text_effect.gd" id="2_qwjrg"]
+[ext_resource type="Script" uid="uid://buyfh6jeyc3c7" path="res://Level System/ui_level.gd" id="3_cnv2j"]
+[ext_resource type="Theme" uid="uid://cr64eprmpxfuy" path="res://theme.tres" id="4_cnv2j"]
+[ext_resource type="Script" uid="uid://btp7tr7j06bg2" path="res://Level System/audio_stream_player_level.gd" id="5_g5hxm"]
+
+[sub_resource type="Curve2D" id="Curve2D_qwjrg"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 320, -128, -195.005, -193.301, 195.005, 193.301, 512, 448, 0, 0, 0, 0, 768, 448)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_ef6nb"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1596.95, -138.786, 187.387, -193.301, -187.387, 193.301, 1404.95, 437.214, 0, 0, 0, 0, 1148.95, 437.214)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_vnsei"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 960, -128, 0, 0, 0, 0, 960, 640)
+}
+point_count = 2
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_qwjrg"]
+script = ExtResource("2_qwjrg")
+metadata/_custom_type_script = "uid://co6g1v3ikj31g"
+
+[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_cnv2j"]
+
+[node name="SpaceShooterLevel 1" type="Node2D"]
+script = ExtResource("1_vnsei")
+
+[node name="Wave" parent="." instance=ExtResource("1_ef6nb")]
+
+[node name="Path2D" parent="Wave" index="0"]
+curve = SubResource("Curve2D_qwjrg")
+
+[node name="LineFormation" parent="Wave" index="1"]
+points = PackedVector2Array(320, 128, 1600, 128)
+
+[node name="Wave2" parent="." instance=ExtResource("1_ef6nb")]
+position = Vector2(3.05234, 10.7856)
+
+[node name="Path2D" parent="Wave2" index="0"]
+curve = SubResource("Curve2D_ef6nb")
+
+[node name="LineFormation" parent="Wave2" index="1"]
+points = PackedVector2Array(1596.95, 501.214, 316.948, 501.214)
+
+[node name="Wave3" parent="." instance=ExtResource("1_ef6nb")]
+
+[node name="Path2D" parent="Wave3" index="0"]
+curve = SubResource("Curve2D_vnsei")
+
+[node name="LineFormation" parent="Wave3" index="1"]
+points = PackedVector2Array(192, 320, 1728, 320)
+
+[node name="UI_level" type="CanvasLayer" parent="."]
+script = ExtResource("3_cnv2j")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI_level"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_cnv2j")
+bbcode_enabled = true
+text = "[font size=54][highlight]LEVEL 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+custom_effects = [SubResource("RichTextEffect_qwjrg")]
+
+[node name="TimerLevel" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamPolyphonic_cnv2j")
+volume_db = -9.0
+script = ExtResource("5_g5hxm")
+
+[connection signal="enemy_spawned" from="Wave" to="AudioStreamPlayer" method="_on_wave_enemy_spawned"]
+[connection signal="enemy_spawned" from="Wave2" to="AudioStreamPlayer" method="_on_wave_enemy_spawned"]
+[connection signal="enemy_spawned" from="Wave3" to="AudioStreamPlayer" method="_on_wave_enemy_spawned"]
+[connection signal="timeout" from="TimerLevel" to="UI_level" method="_on_timer_level_timeout"]
+
+[editable path="Wave"]
+[editable path="Wave2"]
+[editable path="Wave3"]

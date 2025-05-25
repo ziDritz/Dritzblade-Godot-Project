@@ -1,0 +1,74 @@
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://dsp3x8r5ckqi5"]
+
+[ext_resource type="Texture2D" uid="uid://bfv12o60na4us" path="res://Unit Manager/Assets/Kla'ed/Destruction/PNGs/Kla'ed - Scout - Destruction.png" id="1_ytcip"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7k30"]
+atlas = ExtResource("1_ytcip")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i46ym"]
+atlas = ExtResource("1_ytcip")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2kd78"]
+atlas = ExtResource("1_ytcip")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45lo2"]
+atlas = ExtResource("1_ytcip")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dqia"]
+atlas = ExtResource("1_ytcip")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbe42"]
+atlas = ExtResource("1_ytcip")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jk7ql"]
+atlas = ExtResource("1_ytcip")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3p8qb"]
+atlas = ExtResource("1_ytcip")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3xpn"]
+atlas = ExtResource("1_ytcip")
+region = Rect2(576, 0, 64, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7k30")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i46ym")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2kd78")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45lo2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8dqia")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbe42")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jk7ql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3p8qb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3xpn")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
