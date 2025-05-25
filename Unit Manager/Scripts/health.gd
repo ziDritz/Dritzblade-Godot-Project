@@ -5,7 +5,7 @@ extends Node
 signal max_health_changed(diff: int)
 signal health_changed(diff: int)
 signal health_depleted
-signal died
+signal died(unit: Unit)
 
 @onready var parent: Unit = get_parent()
 
@@ -76,4 +76,5 @@ func get_health():
 
 
 func die():
-	died.emit()
+	died.emit($"..")
+	queue_free()

@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://f4lqkm1uwvda"]
+[gd_scene load_steps=10 format=3 uid="uid://f4lqkm1uwvda"]
 
 [ext_resource type="Script" uid="uid://b07iun3256eve" path="res://Unit Manager/Scripts/enemy.gd" id="2_0kb2t"]
 [ext_resource type="Script" uid="uid://b2cnacw0lfp3t" path="res://Unit Manager/Scripts/health.gd" id="2_3p7k1"]
 [ext_resource type="Texture2D" uid="uid://16gv35d5kn0u" path="res://Unit Manager/Assets/Kla'ed/Base/PNGs/Kla'ed - Scout - Base.png" id="2_pgctm"]
 [ext_resource type="Script" uid="uid://c17hhwtmirhsy" path="res://Unit Manager/Scripts/movement.gd" id="3_3y4tg"]
-[ext_resource type="Script" uid="uid://cuanqxj60nbp2" path="res://Unit Manager/Scripts/idle_movement.gd" id="3_lnio7"]
 [ext_resource type="PackedScene" uid="uid://3qci2mm701cn" path="res://Projectile System/Scene/Shooter.tscn" id="4_ff4rs"]
 [ext_resource type="Script" uid="uid://78hrs141avsx" path="res://Unit Manager/Assets/unit_animated_sprite_2d.gd" id="6_b8y3f"]
 [ext_resource type="Script" uid="uid://dw21y6on5ygm8" path="res://Unit Manager/Scripts/audio_stream_player_2d.gd" id="8_udbfq"]
@@ -47,10 +46,6 @@ shape = SubResource("CircleShape2D_pgctm")
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_lnio7")
 script = ExtResource("6_b8y3f")
-
-[node name="IdleMovement" type="Node" parent="Movement"]
-process_mode = 4
-script = ExtResource("3_lnio7")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 script = ExtResource("8_udbfq")

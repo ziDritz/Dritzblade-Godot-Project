@@ -40,5 +40,5 @@ func _on_body_entered(body: Node2D) -> void:
 	var target_class = body.get_parent().get_script().get_global_name()
 	
 	if body.get_parent().has_node("Health") && target_class != shooter_class:
-		var comp = body.get_parent().get_node("Health").die()
+		body.get_parent().get_node("Health").die()
 		queue_free()

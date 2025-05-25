@@ -1,7 +1,55 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhfial3swgy08"]
+[gd_scene load_steps=8 format=3 uid="uid://dhfial3swgy08"]
 
 [ext_resource type="Script" uid="uid://btrv24l6ptjc4" path="res://Main Menu/main_menu.gd" id="1_5ms5j"]
 [ext_resource type="Theme" uid="uid://cr64eprmpxfuy" path="res://theme.tres" id="1_ku1ks"]
+[ext_resource type="PackedScene" uid="uid://2p8t5pmie1mf" path="res://camera.tscn" id="3_wlfof"]
+[ext_resource type="PackedScene" uid="uid://cra5svle4din1" path="res://Unit Manager/Scenes/Player.tscn" id="4_bgqmh"]
+[ext_resource type="Animation" uid="uid://c62o3hy2w43lp" path="res://level_transition_out.res" id="5_bgqmh"]
+
+[sub_resource type="Animation" id="Animation_xm72b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player/Movement:force")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [500.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player/Movement:direction")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_62v7d"]
+_data = {
+&"RESET": SubResource("Animation_xm72b"),
+&"level_transition_out": ExtResource("5_bgqmh")
+}
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -11,6 +59,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5ms5j")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Camera2D" parent="." instance=ExtResource("3_wlfof")]
+
+[node name="Player" parent="." instance=ExtResource("4_bgqmh")]
+position = Vector2(960, 1000)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -49,5 +104,13 @@ theme = ExtResource("1_ku1ks")
 theme_override_font_sizes/font_size = 50
 text = "Exit"
 
+[node name="LevelTransition" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_62v7d")
+}
+
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_button_exit_pressed"]
+[connection signal="animation_finished" from="LevelTransition" to="." method="_on_level_transition_animation_finished"]
+
+[editable path="Player"]

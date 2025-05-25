@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 
 const MAIN_MENU_SCENE: PackedScene = preload("res://Main Menu/Main Menu.tscn")
@@ -9,20 +9,11 @@ const SPACE_SHOOTER_LEVEL_3_SCENE: PackedScene = preload("res://Level System/Spa
 
 var current_level
 
-func _on_button_start_pressed() -> void:
-	pass
-	
-	#await get_tree().create_timer(3.0).timeout
-	#
-	#var tween: Tween = create_tween()
-	#tween.set_ease(Tween.EASE_OUT)
-	#tween.set_trans(Tween.TRANS_SINE)
-	#tween.tween_property($Player.find_child("Movement"), "force", -2000, 1)
-	#tween.tween_property(self, "modulate:a", 1, 1)
-	#
-	#current_level = MAIN_MENU_SCENE.instantiate()
-	#current_level.level_cleared.connect(_on_level_3_cleared)
-	#add_child(current_level)
+func _on_main_menu_game_start() -> void:
+	current_level = SPACE_SHOOTER_LEVEL_1_SCENE.instantiate()
+	current_level.level_cleared.connect(_on_level_1_cleared)
+	current_level.modulate.v = 0
+	add_child(current_level)
 
 
 func _on_level_1_cleared():

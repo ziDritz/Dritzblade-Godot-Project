@@ -10,6 +10,6 @@ name = "Auto Cannon"
 sprite_frames = ExtResource("3_rkmmc")
 sound = ExtResource("2_rkmmc")
 damage = 10
-fire_rate = 0.1
+fire_rate = 0.4
 speed = 500
 metadata/_custom_type_script = "uid://b0ajv5t5he1qy"

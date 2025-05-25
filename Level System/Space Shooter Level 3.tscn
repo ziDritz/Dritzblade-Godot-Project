@@ -1,11 +1,15 @@
-[gd_scene load_steps=20 format=3 uid="uid://bihirybdb44dq"]
+[gd_scene load_steps=25 format=3 uid="uid://bihirybdb44dq"]
 
 [ext_resource type="Script" uid="uid://bkfsr1r06jaq1" path="res://Level System/space_shooter_level.gd" id="1_iu03b"]
+[ext_resource type="PackedScene" uid="uid://2p8t5pmie1mf" path="res://camera.tscn" id="2_kmupl"]
 [ext_resource type="Script" uid="uid://buyfh6jeyc3c7" path="res://Level System/ui_level.gd" id="2_yhb0r"]
 [ext_resource type="FontFile" uid="uid://gff28tlo7v6d" path="res://_assets/font_Robtronika/TrueType (.ttf)/Robtronika-Regular.ttf" id="3_kmupl"]
 [ext_resource type="Script" uid="uid://co6g1v3ikj31g" path="res://Text/highlight_text_effect.gd" id="4_vg103"]
 [ext_resource type="Script" uid="uid://btp7tr7j06bg2" path="res://Level System/audio_stream_player_level.gd" id="5_yiv6q"]
 [ext_resource type="PackedScene" uid="uid://c6hcg7jwuon3w" path="res://Level System/Wave.tscn" id="6_v726u"]
+[ext_resource type="PackedScene" uid="uid://cra5svle4din1" path="res://Unit Manager/Scenes/Player.tscn" id="8_vg103"]
+[ext_resource type="Animation" uid="uid://bmr45bbomwfak" path="res://level_transition_in.res" id="9_yiv6q"]
+[ext_resource type="Animation" uid="uid://c62o3hy2w43lp" path="res://level_transition_out.res" id="10_v726u"]
 
 [sub_resource type="Theme" id="Theme_vnsei"]
 default_font = ExtResource("3_kmupl")
@@ -76,8 +80,17 @@ _data = {
 }
 point_count = 3
 
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wyn0m"]
+_data = {
+&"level_transition_in": ExtResource("9_yiv6q"),
+&"level_transition_out": ExtResource("10_v726u")
+}
+
 [node name="SpaceShooterLevel 3" type="Node2D"]
+modulate = Color(0, 0, 0, 1)
 script = ExtResource("1_iu03b")
+
+[node name="Camera2D" parent="." instance=ExtResource("2_kmupl")]
 
 [node name="UI_level" type="CanvasLayer" parent="."]
 script = ExtResource("2_yhb0r")
@@ -184,9 +197,18 @@ curve = SubResource("Curve2D_5elvm")
 [node name="LineFormation" parent="Wave10" index="1"]
 points = PackedVector2Array(1088, 768, 1024, 384)
 
+[node name="Player" parent="." instance=ExtResource("8_vg103")]
+position = Vector2(960, 1180)
+
+[node name="LevelTransition" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_wyn0m")
+}
+
 [connection signal="timeout" from="TimerLevel" to="UI_level" method="_on_timer_level_timeout"]
 [connection signal="timeout" from="TimerLevel" to="Wave" method="_on_timer_level_timeout"]
-[connection signal="enemy_spawned" from="Wave" to="AudioStreamPlayer" method="_on_wave_enemy_spawned"]
+[connection signal="animation_finished" from="LevelTransition" to="." method="_on_level_transition_animation_finished"]
+[connection signal="animation_finished" from="LevelTransition" to="Player" method="_on_level_transition_animation_finished"]
 
 [editable path="Wave"]
 [editable path="Wave2"]
