@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://cr64eprmpxfuy"]
 
-[ext_resource type="FontFile" uid="uid://gff28tlo7v6d" path="res://_assets/font_Robtronika/TrueType (.ttf)/Robtronika-Regular.ttf" id="1_e1x85"]
+[ext_resource type="FontFile" uid="uid://gff28tlo7v6d" path="res://theme/font_Robtronika/TrueType (.ttf)/Robtronika-Regular.ttf" id="1_e1x85"]
 
 [resource]
 default_font = ExtResource("1_e1x85")

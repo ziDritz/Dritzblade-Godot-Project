@@ -16,7 +16,8 @@ class_name Enemy extends CharacterBody2D
 
 func _ready() -> void:
 	await get_tree().create_timer(randf()).timeout
-	decision_timer.start()
+	if decision_timer != null:
+		decision_timer.start()
 
 
 func _process(_delta: float) -> void:

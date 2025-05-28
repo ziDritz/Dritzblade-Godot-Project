@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://papevfjp2ln5" path="res://level_system/wave/wave.gd" id="1_2k6mg"]
 [ext_resource type="Script" uid="uid://uy10i6srb75d" path="res://level_system/wave/path_2d_extension.gd" id="3_y8pwq"]
 [ext_resource type="Script" uid="uid://cqlexjq5flx5m" path="res://level_system/wave/line_formation.gd" id="4_5ihap"]
-[ext_resource type="Script" uid="uid://cuanqxj60nbp2" path="res://units/Scripts/idle_movement.gd" id="4_m51ay"]
+[ext_resource type="Script" uid="uid://cuanqxj60nbp2" path="res://units/scripts/idle_movement.gd" id="4_m51ay"]
 
 [node name="Wave" type="Node2D"]
 script = ExtResource("1_2k6mg")

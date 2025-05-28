@@ -1,58 +1,58 @@
 [gd_scene load_steps=19 format=3 uid="uid://cra5svle4din1"]
 
-[ext_resource type="Script" uid="uid://b2cnacw0lfp3t" path="res://units/Scripts/health.gd" id="2_bc7hr"]
-[ext_resource type="Script" uid="uid://c1fqy7fpgejn5" path="res://units/Scripts/player.gd" id="2_u52hc"]
-[ext_resource type="PackedScene" uid="uid://3qci2mm701cn" path="res://projectile_system/Scene/Shooter.tscn" id="4_fqkx8"]
-[ext_resource type="Texture2D" uid="uid://bpfmdotx6uol6" path="res://units/Assets/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Full health 64.png" id="5_g5dyo"]
-[ext_resource type="Script" uid="uid://78hrs141avsx" path="res://units/Assets/unit_animated_sprite_2d.gd" id="6_5i6gt"]
-[ext_resource type="Texture2D" uid="uid://d2ciwux2crcxb" path="res://units/Assets/Main Ship/Main Ship - Destruction/Main Ship - Destruction.png" id="6_fqkx8"]
-[ext_resource type="Script" uid="uid://dd31iw8aaeh3o" path="res://units/Scripts/audio_stream_player_2d_extension.gd" id="8_g5dyo"]
+[ext_resource type="Script" uid="uid://c1fqy7fpgejn5" path="res://units/scripts/player.gd" id="1_6cl77"]
+[ext_resource type="Script" uid="uid://b2cnacw0lfp3t" path="res://units/scripts/health.gd" id="2_5g656"]
+[ext_resource type="PackedScene" uid="uid://3qci2mm701cn" path="res://projectiles/Scene/Shooter.tscn" id="3_htbh2"]
+[ext_resource type="Texture2D" uid="uid://cm1uq1vpr0htv" path="res://units/assets/Main Ship - Base - Full health 64.png" id="4_dxhcm"]
+[ext_resource type="Texture2D" uid="uid://b84167i4evvyr" path="res://units/assets/Main Ship - Destruction.png" id="5_6x5ac"]
+[ext_resource type="Script" uid="uid://78hrs141avsx" path="res://units/assets/unit_animated_sprite_2d.gd" id="6_h8fsg"]
+[ext_resource type="Script" uid="uid://dd31iw8aaeh3o" path="res://units/scripts/audio_stream_player_2d_extension.gd" id="7_pu36u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8gd2v"]
-atlas = ExtResource("6_fqkx8")
+atlas = ExtResource("5_6x5ac")
 region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_chg86"]
-atlas = ExtResource("6_fqkx8")
+atlas = ExtResource("5_6x5ac")
 region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rt15y"]
-atlas = ExtResource("6_fqkx8")
+atlas = ExtResource("5_6x5ac")
 region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p3nwn"]
-atlas = ExtResource("6_fqkx8")
+atlas = ExtResource("5_6x5ac")
 region = Rect2(256, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hpcla"]
-atlas = ExtResource("6_fqkx8")
+atlas = ExtResource("5_6x5ac")
 region = Rect2(320, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x27lt"]
-atlas = ExtResource("6_fqkx8")
+atlas = ExtResource("5_6x5ac")
 region = Rect2(384, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_upn82"]
-atlas = ExtResource("6_fqkx8")
+atlas = ExtResource("5_6x5ac")
 region = Rect2(448, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yyrty"]
-atlas = ExtResource("6_fqkx8")
+atlas = ExtResource("5_6x5ac")
 region = Rect2(512, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o6kxy"]
-atlas = ExtResource("6_fqkx8")
+atlas = ExtResource("5_6x5ac")
 region = Rect2(576, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uv5tj"]
-atlas = ExtResource("6_fqkx8")
+atlas = ExtResource("5_6x5ac")
 region = Rect2(640, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ur1d7"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_g5dyo")
+"texture": ExtResource("4_dxhcm")
 }],
 "loop": false,
 "name": &"default",
@@ -95,13 +95,13 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
-script = ExtResource("2_u52hc")
+script = ExtResource("1_6cl77")
 speed = 500.0
 
 [node name="Health" type="Node" parent="."]
-script = ExtResource("2_bc7hr")
+script = ExtResource("2_5g656")
 
-[node name="Shooter" parent="." instance=ExtResource("4_fqkx8")]
+[node name="Shooter" parent="." instance=ExtResource("3_htbh2")]
 
 [node name="Muzzle" type="Marker2D" parent="Shooter"]
 position = Vector2(0, -26)
@@ -109,14 +109,14 @@ position = Vector2(0, -26)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.43, 1.43)
 sprite_frames = SubResource("SpriteFrames_ur1d7")
-script = ExtResource("6_5i6gt")
+script = ExtResource("6_h8fsg")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 scale = Vector2(2, 2)
 polygon = PackedVector2Array(-3, 13, 3, 13, 3, 11, 14, 11, 14, 6, 5, -3, 0, -13, -5, -3, -14, 5, -14, 11, -3, 11, -3, 13)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-script = ExtResource("8_g5dyo")
+script = ExtResource("7_pu36u")
 
 [connection signal="died" from="Health" to="AnimatedSprite2D" method="_on_health_died"]
 [connection signal="died" from="Health" to="AudioStreamPlayer2D" method="_on_health_died"]

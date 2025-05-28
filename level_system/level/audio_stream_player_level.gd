@@ -8,7 +8,7 @@ func _ready() -> void:
 	stream = AudioStreamPolyphonic.new()
 	stream.polyphony = 32
 
-	audio_stream = preload("res://_SFX/SFXPack/Explosions/Explosion2.mp3")
+	audio_stream = preload("res://units/assets/Explosion2.mp3")
 	
 	#playback = get_stream_playback()
 	#playback.play_stream(music_level_1)

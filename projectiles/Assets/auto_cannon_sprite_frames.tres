@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://cfqrbgan04ya0"]
+
+[ext_resource type="Texture2D" uid="uid://gfhkny7ccrsf" path="res://projectiles/Assets/Main ship weapon - Projectile - Auto cannon bullet.png" id="1_fyya2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhxxf"]
+atlas = ExtResource("1_fyya2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjx0c"]
+atlas = ExtResource("1_fyya2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwfd7"]
+atlas = ExtResource("1_fyya2")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqbf3"]
+atlas = ExtResource("1_fyya2")
+region = Rect2(96, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhxxf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjx0c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwfd7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqbf3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

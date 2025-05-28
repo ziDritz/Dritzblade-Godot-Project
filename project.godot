@@ -23,7 +23,7 @@ resources_spreadsheet_view/freeze_first_column=true
 
 [application]
 
-config/name="Shooter"
+config/name="Dritzblade"
 run/main_scene="uid://cwkw4ps14kknl"
 config/features=PackedStringArray("4.4", "Forward Plus")
 

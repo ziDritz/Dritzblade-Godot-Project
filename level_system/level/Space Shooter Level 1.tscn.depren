@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://buyfh6jeyc3c7" path="res://level_system/level/ui_level.gd" id="3_cnv2j"]
 [ext_resource type="Theme" uid="uid://cr64eprmpxfuy" path="res://theme.tres" id="4_cnv2j"]
 [ext_resource type="Script" uid="uid://btp7tr7j06bg2" path="res://level_system/level/audio_stream_player_level.gd" id="5_g5hxm"]
-[ext_resource type="PackedScene" uid="uid://cra5svle4din1" path="res://units/Scenes/Player.tscn" id="8_v5f8a"]
+[ext_resource type="PackedScene" uid="uid://cra5svle4din1" path="res://units/scenes/Player.tscn" id="8_v5f8a"]
 [ext_resource type="Animation" uid="uid://bmr45bbomwfak" path="res://level_transition_in.res" id="9_v5f8a"]
 [ext_resource type="Animation" uid="uid://c62o3hy2w43lp" path="res://level_transition_out.res" id="10_tdv3y"]
 
