@@ -117,7 +117,5 @@ bus = "SFX"
 events = Array[ExtResource("11_6y3qq")]([SubResource("Resource_p6x64")])
 metadata/_custom_type_script = "uid://13ot4s2r8210"
 
-[connection signal="game_start" from="MainMenu" to="." method="_on_main_menu_game_start"]
-
 [editable path="MainMenu"]
 [editable path="MainMenu/Player"]

@@ -1,18 +1,17 @@
 extends Node
 
-
-const MAIN_MENU_SCENE: PackedScene = preload("res://Main Menu/Main Menu.tscn")
-const SPACE_SHOOTER_LEVEL_1_SCENE: PackedScene = preload("res://Level System/Space Shooter Level 1.tscn")
-const SPACE_SHOOTER_LEVEL_2_SCENE: PackedScene = preload("res://Level System/Space Shooter Level 2.tscn")
-const SPACE_SHOOTER_LEVEL_3_SCENE: PackedScene = preload("res://Level System/Space Shooter Level 3.tscn")
-const SPACE_SHOOTER_BOSS_LEVEL_SCENE: PackedScene = preload("res://Level System/Space Shooter Boss Level.tscn")
-const MENU_SCENE: PackedScene = preload("res://Main Menu/Options Menu.tscn")
+const MAIN_MENU_SCENE: PackedScene = preload("res://menus/Main Menu.tscn")
+const SPACE_SHOOTER_LEVEL_1_SCENE: PackedScene = preload("res://level_system/level/Space Shooter Level 1.tscn")
+const SPACE_SHOOTER_LEVEL_2_SCENE: PackedScene = preload("res://level_system/level/Space Shooter Level 2.tscn")
+const SPACE_SHOOTER_LEVEL_3_SCENE: PackedScene = preload("res://level_system/level/Space Shooter Level 3.tscn")
+const SPACE_SHOOTER_BOSS_LEVEL_SCENE: PackedScene = preload("res://level_system/boss/Space Shooter Boss Level.tscn")
+const MENU_SCENE: PackedScene = preload("res://menus/Options Menu.tscn")
 
 var current_level
 var menu_scene
 var is_level_paused = false
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause") && current_level != null:
 		if is_level_paused == false:
 			current_level.process_mode = Node.PROCESS_MODE_DISABLED
@@ -36,17 +35,17 @@ func _process(delta: float) -> void:
 
 
 func _on_main_menu_game_start() -> void:
-	current_level = SPACE_SHOOTER_LEVEL_1_SCENE.instantiate()
-	current_level.level_transition_animation_out_finished.connect(_on_level_1_cleared)
-	current_level.modulate.v = 0
-	MusicManager.play("musics", "music_level_1", 3.0, true)
-	add_child(current_level)
-
-	#current_level = SPACE_SHOOTER_BOSS_LEVEL_SCENE.instantiate()
-	##current_level.level_transition_animation_out_finished.connect(_on_level_3_cleared)
+	#current_level = SPACE_SHOOTER_LEVEL_1_SCENE.instantiate()
+	#current_level.level_transition_animation_out_finished.connect(_on_level_1_cleared)
 	#current_level.modulate.v = 0
-	#MusicManager.play("musics", "boss_music", 3.0, true)
+	#MusicManager.play("musics", "music_level_1", 3.0, true)
 	#add_child(current_level)
+
+	current_level = SPACE_SHOOTER_BOSS_LEVEL_SCENE.instantiate()
+	#current_level.level_transition_animation_out_finished.connect(_on_level_3_cleared)
+	current_level.modulate.v = 0
+	MusicManager.play("musics", "boss_music", 3.0, true)
+	add_child(current_level)
 
 
 func _on_level_1_cleared():
