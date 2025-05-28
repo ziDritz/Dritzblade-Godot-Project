@@ -1,0 +1,118 @@
+[gd_scene load_steps=19 format=3 uid="uid://xf324u56hg6d"]
+
+[ext_resource type="Script" uid="uid://duamwnmnrd2tx" path="res://Level System/space_shooter_boss_level.gd" id="1_pd14p"]
+[ext_resource type="PackedScene" uid="uid://2p8t5pmie1mf" path="res://camera.tscn" id="2_pd14p"]
+[ext_resource type="Script" uid="uid://buyfh6jeyc3c7" path="res://Level System/ui_level.gd" id="3_k8rf6"]
+[ext_resource type="FontFile" uid="uid://gff28tlo7v6d" path="res://_assets/font_Robtronika/TrueType (.ttf)/Robtronika-Regular.ttf" id="4_83yn4"]
+[ext_resource type="Script" uid="uid://co6g1v3ikj31g" path="res://Text/highlight_text_effect.gd" id="5_7e2rt"]
+[ext_resource type="Theme" uid="uid://cr64eprmpxfuy" path="res://theme.tres" id="6_3wdpr"]
+[ext_resource type="Script" uid="uid://btp7tr7j06bg2" path="res://Level System/audio_stream_player_level.gd" id="7_bvy32"]
+[ext_resource type="Curve2D" uid="uid://iv45dovav8m8" path="res://Level System/Boss Curves/entrance_curve.tres" id="8_83yn4"]
+[ext_resource type="PackedScene" uid="uid://hitj2554n672" path="res://Unit Manager/Scenes/Boss.tscn" id="8_pd14p"]
+[ext_resource type="Script" uid="uid://ba4mkqjn02qwt" path="res://Level System/path_2d_boss.gd" id="9_83yn4"]
+[ext_resource type="PackedScene" uid="uid://cra5svle4din1" path="res://Unit Manager/Scenes/Player.tscn" id="9_p0l8b"]
+[ext_resource type="Script" uid="uid://54ksyhgfbxto" path="res://Level System/path_follow_2D_boss.gd" id="10_7e2rt"]
+[ext_resource type="Animation" uid="uid://bmr45bbomwfak" path="res://level_transition_in.res" id="10_bsrbj"]
+[ext_resource type="Animation" uid="uid://c62o3hy2w43lp" path="res://level_transition_out.res" id="11_aojw0"]
+
+[sub_resource type="Theme" id="Theme_vnsei"]
+default_font = ExtResource("4_83yn4")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_qwjrg"]
+script = ExtResource("5_7e2rt")
+metadata/_custom_type_script = "uid://co6g1v3ikj31g"
+
+[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_cnv2j"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wyn0m"]
+_data = {
+&"level_transition_in": ExtResource("10_bsrbj"),
+&"level_transition_out": ExtResource("11_aojw0")
+}
+
+[node name="SpaceShooter Boss Level" type="Node2D"]
+script = ExtResource("1_pd14p")
+
+[node name="Camera2D" parent="." instance=ExtResource("2_pd14p")]
+
+[node name="UI_level" type="CanvasLayer" parent="."]
+script = ExtResource("3_k8rf6")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI_level"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_vnsei")
+bbcode_enabled = true
+text = "[font size=64][highlight]BOSS LEVEL"
+horizontal_alignment = 1
+vertical_alignment = 1
+custom_effects = [SubResource("RichTextEffect_qwjrg")]
+
+[node name="Button" type="Button" parent="UI_level"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -287.0
+offset_top = 100.0
+offset_right = 287.0
+offset_bottom = 166.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme = ExtResource("6_3wdpr")
+theme_override_font_sizes/font_size = 50
+text = "Retry"
+
+[node name="TimerLevel" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamPolyphonic_cnv2j")
+volume_db = -9.0
+script = ExtResource("7_bvy32")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = ExtResource("8_83yn4")
+script = ExtResource("9_83yn4")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-448, 128)
+rotates = false
+loop = false
+script = ExtResource("10_7e2rt")
+
+[node name="Boss" parent="Path2D/PathFollow2D" node_paths=PackedStringArray("path_2D", "path_follow_2D", "shooter") instance=ExtResource("8_pd14p")]
+path_2D = NodePath("../..")
+path_follow_2D = NodePath("..")
+shooter = NodePath("Movement/Shooter")
+speed_move_entrance = 600
+speed_move_1 = 500
+speed_move_2 = 750
+
+[node name="Player" parent="." instance=ExtResource("9_p0l8b")]
+position = Vector2(960, 1180)
+is_controlable = false
+
+[node name="LevelTransition" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_wyn0m")
+}
+
+[connection signal="level_cleared" from="." to="UI_level" method="_on_space_shooter_level_cleared"]
+[connection signal="pressed" from="UI_level/Button" to="." method="_on_button_restart_pressed"]
+[connection signal="timeout" from="TimerLevel" to="UI_level" method="_on_timer_level_timeout"]
+[connection signal="died" from="Player/Health" to="UI_level" method="_on_health_player_died"]
+[connection signal="animation_finished" from="LevelTransition" to="." method="_on_level_transition_animation_finished"]
+[connection signal="animation_finished" from="LevelTransition" to="Player" method="_on_level_transition_animation_finished"]
+
+[editable path="Path2D/PathFollow2D/Boss"]
+[editable path="Path2D/PathFollow2D/Boss/Movement/Shooter"]
+[editable path="Player"]

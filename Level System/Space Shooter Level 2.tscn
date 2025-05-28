@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c0t5s5smlpp4o"]
+[gd_scene load_steps=21 format=3 uid="uid://c0t5s5smlpp4o"]
 
 [ext_resource type="Script" uid="uid://bkfsr1r06jaq1" path="res://Level System/space_shooter_level.gd" id="1_pebiv"]
 [ext_resource type="PackedScene" uid="uid://c6hcg7jwuon3w" path="res://Level System/Wave.tscn" id="2_hpmku"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://gff28tlo7v6d" path="res://_assets/font_Robtronika/TrueType (.ttf)/Robtronika-Regular.ttf" id="4_cgxpd"]
 [ext_resource type="Script" uid="uid://co6g1v3ikj31g" path="res://Text/highlight_text_effect.gd" id="5_ah2q4"]
 [ext_resource type="Script" uid="uid://btp7tr7j06bg2" path="res://Level System/audio_stream_player_level.gd" id="6_0g1xp"]
+[ext_resource type="Theme" uid="uid://cr64eprmpxfuy" path="res://theme.tres" id="6_fkpim"]
 [ext_resource type="PackedScene" uid="uid://cra5svle4din1" path="res://Unit Manager/Scenes/Player.tscn" id="7_hpmku"]
 [ext_resource type="Animation" uid="uid://bmr45bbomwfak" path="res://level_transition_in.res" id="9_ah2q4"]
 [ext_resource type="Animation" uid="uid://c62o3hy2w43lp" path="res://level_transition_out.res" id="10_0g1xp"]
@@ -19,6 +20,12 @@ script = ExtResource("5_ah2q4")
 metadata/_custom_type_script = "uid://co6g1v3ikj31g"
 
 [sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_cnv2j"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ah2q4"]
+_data = {
+&"level_transition_in": ExtResource("9_ah2q4"),
+&"level_transition_out": ExtResource("10_0g1xp")
+}
 
 [sub_resource type="Curve2D" id="Curve2D_pebiv"]
 _data = {
@@ -50,12 +57,6 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ah2q4"]
-_data = {
-&"level_transition_in": ExtResource("9_ah2q4"),
-&"level_transition_out": ExtResource("10_0g1xp")
-}
-
 [node name="SpaceShooterLevel 2" type="Node2D"]
 modulate = Color(0, 0, 0, 1)
 script = ExtResource("1_pebiv")
@@ -78,7 +79,26 @@ horizontal_alignment = 1
 vertical_alignment = 1
 custom_effects = [SubResource("RichTextEffect_qwjrg")]
 
+[node name="Button" type="Button" parent="UI_level"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -287.0
+offset_top = 100.0
+offset_right = 287.0
+offset_bottom = 166.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme = ExtResource("6_fkpim")
+theme_override_font_sizes/font_size = 50
+text = "Retry"
+
 [node name="TimerLevel" type="Timer" parent="."]
+wait_time = 3.0
 one_shot = true
 autostart = true
 
@@ -87,7 +107,17 @@ stream = SubResource("AudioStreamPolyphonic_cnv2j")
 volume_db = -9.0
 script = ExtResource("6_0g1xp")
 
+[node name="LevelTransition" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ah2q4")
+}
+
+[node name="Player" parent="." instance=ExtResource("7_hpmku")]
+position = Vector2(960, 1180)
+is_controlable = false
+
 [node name="Wave" parent="." instance=ExtResource("2_hpmku")]
+wave_size = 10
 
 [node name="Path2D" parent="Wave" index="0"]
 curve = SubResource("Curve2D_pebiv")
@@ -96,6 +126,7 @@ curve = SubResource("Curve2D_pebiv")
 points = PackedVector2Array(128, 640, 640, 64)
 
 [node name="Wave2" parent="." instance=ExtResource("2_hpmku")]
+wave_size = 10
 
 [node name="Path2D" parent="Wave2" index="0"]
 curve = SubResource("Curve2D_hpmku")
@@ -104,6 +135,7 @@ curve = SubResource("Curve2D_hpmku")
 points = PackedVector2Array(1280, 64, 1792, 640)
 
 [node name="Wave3" parent="." instance=ExtResource("2_hpmku")]
+wave_size = 10
 
 [node name="Path2D" parent="Wave3" index="0"]
 curve = SubResource("Curve2D_nup4n")
@@ -112,6 +144,7 @@ curve = SubResource("Curve2D_nup4n")
 points = PackedVector2Array(320, 640, 1600, 640)
 
 [node name="Wave4" parent="." instance=ExtResource("2_hpmku")]
+wave_size = 10
 
 [node name="Path2D" parent="Wave4" index="0"]
 curve = SubResource("Curve2D_cgxpd")
@@ -120,6 +153,7 @@ curve = SubResource("Curve2D_cgxpd")
 points = PackedVector2Array(640, 384, 1280, 384)
 
 [node name="Wave5" parent="." instance=ExtResource("2_hpmku")]
+wave_size = 10
 
 [node name="Path2D" parent="Wave5" index="0"]
 curve = SubResource("Curve2D_ah2q4")
@@ -127,21 +161,16 @@ curve = SubResource("Curve2D_ah2q4")
 [node name="LineFormation" parent="Wave5" index="1"]
 points = PackedVector2Array(832, 128, 1088, 128)
 
-[node name="Player" parent="." instance=ExtResource("7_hpmku")]
-position = Vector2(960, 1180)
-
-[node name="LevelTransition" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_ah2q4")
-}
-
+[connection signal="level_cleared" from="." to="UI_level" method="_on_space_shooter_level_cleared"]
+[connection signal="pressed" from="UI_level/Button" to="." method="_on_button_restart_pressed"]
 [connection signal="timeout" from="TimerLevel" to="UI_level" method="_on_timer_level_timeout"]
 [connection signal="animation_finished" from="LevelTransition" to="." method="_on_level_transition_animation_finished"]
 [connection signal="animation_finished" from="LevelTransition" to="Player" method="_on_level_transition_animation_finished"]
+[connection signal="died" from="Player/Health" to="UI_level" method="_on_health_player_died"]
 
+[editable path="Player"]
 [editable path="Wave"]
 [editable path="Wave2"]
 [editable path="Wave3"]
 [editable path="Wave4"]
 [editable path="Wave5"]
-[editable path="Player"]

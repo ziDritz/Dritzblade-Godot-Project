@@ -1,10 +1,16 @@
 class_name Movement extends CharacterBody2D
 
+
+
 @export var speed: float = 10
 @export var force: float = 500
 @export var direction: Vector2
 var controlled_velocity: Vector2
 @export var destination: Vector2 = Vector2.ZERO
+
+@onready var shooter: Shooter = $Shooter
+
+
 
 func _physics_process(_delta):
 	velocity = direction * force

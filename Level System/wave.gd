@@ -3,7 +3,7 @@ class_name Wave extends Node2D
 const ENEMY_SCENE: PackedScene = preload("res://Unit Manager/Scenes/Enemy.tscn")
 
 var enemy_spawned_count: int = 0
-var wave_size: int = 10
+@export var wave_size: int
 var is_all_enemy_spawned: bool
 var enemy_array: Array[Enemy]
 @onready var timer: Timer

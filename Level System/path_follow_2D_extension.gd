@@ -1,7 +1,7 @@
 extends PathFollow2D
 
 var path_speed = 500
-var child_unit: Unit
+@export var child_unit: Unit
 
 signal progess_ratio_ended(end_position: Vector2, unit: Unit)
 signal progess_ratio_ended_without_follower()
