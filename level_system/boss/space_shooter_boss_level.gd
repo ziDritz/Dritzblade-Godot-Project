@@ -24,3 +24,7 @@ func _on_path_follow_2d_progess_ratio_ended_without_follower() -> void:
 
 func _on_shooter_projectile_shot(projectile: Projectile) -> void:
 	add_child(projectile)
+
+
+func _on_boss_shooter_projectile_shot(projectile: Projectile) -> void:
+	add_child(projectile)

@@ -2,11 +2,11 @@ class_name Shooter extends Node2D
 
 signal projectile_shot(projectile: Projectile)
 
-@export var projectile_resource : ProjectileResource = preload("res://projectiles/Resources/auto_cannon_resource.tres")
+const PROJECTILE_SCENE: PackedScene = preload("res://projectiles/Scene/Projectile.tscn")
 
-var projectile_scene: PackedScene = preload("res://projectiles/Scene/Projectile.tscn")
-var spawn_projectile_pos: Vector2 = Vector2(0,-50)
-var fire_rate : float
+@export var projectile_resource : ProjectileResource = preload("res://projectiles/Resources/auto_cannon_resource.tres")
+@export var fire_rate : float
+
 var is_projectile_ready: bool = true
 
 @onready var muzzle: Marker2D = $"Muzzle"
@@ -14,8 +14,9 @@ var is_projectile_ready: bool = true
 
 func shoot():
 	if is_projectile_ready:
-		var projectile: Projectile = projectile_scene.instantiate()
+		var projectile: Projectile = PROJECTILE_SCENE.instantiate()
 		projectile.projectile_resource = projectile_resource
+		projectile.shooter = self
 		
 		if owner is Player: 
 			projectile.direction = Vector2.UP
@@ -31,10 +32,6 @@ func shoot():
 		$Timer.start(fire_rate)
 		is_projectile_ready = false
 		
-		# C'est dégeu de faire ça, j'ai essaer de mettre un signal
-		# pour que le level add_child, mais la rotation du
-		# projectil faisait n'importe
-		#owner.get_parent().add_child(projectile)
 		projectile_shot.emit(projectile)
 
 func _on_timer_timeout() -> void:

@@ -8,6 +8,7 @@ var direction: Vector2 = Vector2(0, -1)
 
 var sound: AudioStreamMP3
 var damage : int
+var shooter
 var shooter_owner: CharacterBody2D
 var shooter_owner_type
 
@@ -23,6 +24,7 @@ func _ready() -> void:
 	damage = projectile_resource.damage
 	speed = projectile_resource.speed
 
+	rotation = shooter.rotation
 	animated_sprite_2d.play()
 	audio_stream_player.play()
 

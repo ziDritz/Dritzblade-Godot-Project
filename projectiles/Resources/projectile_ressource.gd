@@ -1,5 +1,7 @@
 class_name ProjectileResource extends Resource
 
+var shooter: Shooter
+
 @export var name: String
 @export var sprite_frames: SpriteFrames
 @export var sound: AudioStreamMP3

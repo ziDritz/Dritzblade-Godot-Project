@@ -96,6 +96,10 @@ speed_move_entrance = 600
 speed_move_1 = 500
 speed_move_2 = 750
 
+[node name="BossShooter" parent="Path2D/PathFollow2D/Boss" index="5"]
+first_angle_side = -45.0
+second_angle_side = 45.0
+
 [node name="Player" parent="." instance=ExtResource("9_p0l8b")]
 position = Vector2(960, 1180)
 is_controlable = false
@@ -108,11 +112,12 @@ libraries = {
 [connection signal="level_cleared" from="." to="UI_level" method="_on_space_shooter_level_cleared"]
 [connection signal="pressed" from="UI_level/Button" to="." method="_on_button_restart_pressed"]
 [connection signal="timeout" from="TimerLevel" to="UI_level" method="_on_timer_level_timeout"]
+[connection signal="projectile_shot" from="Path2D/PathFollow2D/Boss/BossShooter" to="." method="_on_boss_shooter_projectile_shot"]
 [connection signal="died" from="Player/Health" to="UI_level" method="_on_health_player_died"]
 [connection signal="projectile_shot" from="Player/Shooter" to="." method="_on_shooter_projectile_shot"]
 [connection signal="animation_finished" from="LevelTransition" to="." method="_on_level_transition_animation_finished"]
 [connection signal="animation_finished" from="LevelTransition" to="Player" method="_on_level_transition_animation_finished"]
 
 [editable path="Path2D/PathFollow2D/Boss"]
-[editable path="Path2D/PathFollow2D/Boss/Shooter"]
+[editable path="Path2D/PathFollow2D/Boss/BossShooter"]
 [editable path="Player"]

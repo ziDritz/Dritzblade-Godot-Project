@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ProjectileResource" load_steps=4 format=3 uid="uid://dl2t6bi50nakq"]
+
+[ext_resource type="Script" uid="uid://b0ajv5t5he1qy" path="res://projectiles/Resources/projectile_ressource.gd" id="1_h16wd"]
+[ext_resource type="SpriteFrames" uid="uid://cltvryj2gv0ms" path="res://projectiles/Assets/big_space_gun_sprite_frames_.tres" id="2_0virp"]
+[ext_resource type="AudioStream" uid="uid://be3cte6eef6fa" path="res://projectiles/Assets/Big Space Gun SFX.mp3" id="2_aywlm"]
+
+[resource]
+script = ExtResource("1_h16wd")
+name = "Big Space Gun"
+sprite_frames = ExtResource("2_0virp")
+sound = ExtResource("2_aywlm")
+damage = 0
+direction = Vector2(0, 0)
+speed = 200
+metadata/_custom_type_script = "uid://b0ajv5t5he1qy"

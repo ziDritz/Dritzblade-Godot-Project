@@ -15,7 +15,7 @@ const MOVE_2_CURVE = preload("res://level_system/boss/boss_curves/move 2.tres")
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var shooter: Shooter = $Shooter
+@onready var boss_shooter: BossShooter = $BossShooter
 @onready var decision_timer: Timer = $DecisionTimer
 
 
@@ -28,17 +28,19 @@ func _unhandled_input(event):
 			move_1()
 		if event.pressed and event.keycode == KEY_E:
 			move_2()
+		if event.pressed and event.keycode == KEY_R:
+			boss_shooter.shoot()
 
 func move_1():
 	path_2D.curve = MOVE_1_CURVE
 	path_follow_2D.progess_path(speed_move_1)
 
-	var timer = Timer.new()
-	add_child(timer)
-	timer.wait_time = 1.0
-	timer.one_shot = false
-	timer.timeout.connect(shooter.shoot)
-	timer.start()
+	#var timer = Timer.new()
+	#add_child(timer)
+	#timer.wait_time = 1.0
+	#timer.one_shot = false
+	#timer.timeout.connect(boss_shooter.shoot)
+	#timer.start()
 
 func move_2():
 	path_2D.curve = MOVE_2_CURVE

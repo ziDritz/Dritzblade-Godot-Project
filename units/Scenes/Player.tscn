@@ -102,6 +102,7 @@ speed = 500.0
 script = ExtResource("2_5g656")
 
 [node name="Shooter" parent="." instance=ExtResource("3_htbh2")]
+fire_rate = 0.2
 
 [node name="Muzzle" type="Marker2D" parent="Shooter"]
 position = Vector2(0, -26)

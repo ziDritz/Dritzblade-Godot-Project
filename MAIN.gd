@@ -35,17 +35,17 @@ func _process(_delta: float) -> void:
 
 
 func _on_main_menu_game_start() -> void:
-	current_level = SPACE_SHOOTER_LEVEL_1_SCENE.instantiate()
-	current_level.level_transition_animation_out_finished.connect(_on_level_1_cleared)
-	current_level.modulate.v = 0
-	MusicManager.play("musics", "music_level_1", 3.0, true)
-	add_child(current_level)
-
-	#current_level = SPACE_SHOOTER_BOSS_LEVEL_SCENE.instantiate()
-	##current_level.level_transition_animation_out_finished.connect(_on_level_3_cleared)
+	#current_level = SPACE_SHOOTER_LEVEL_1_SCENE.instantiate()
+	#current_level.level_transition_animation_out_finished.connect(_on_level_1_cleared)
 	#current_level.modulate.v = 0
-	#MusicManager.play("musics", "boss_music", 3.0, true)
+	#MusicManager.play("musics", "music_level_1", 3.0, true)
 	#add_child(current_level)
+
+	current_level = SPACE_SHOOTER_BOSS_LEVEL_SCENE.instantiate()
+	#current_level.level_transition_animation_out_finished.connect(_on_level_3_cleared)
+	current_level.modulate.v = 0
+	MusicManager.play("musics", "boss_music", 3.0, true)
+	add_child(current_level)
 
 
 func _on_level_1_cleared():
