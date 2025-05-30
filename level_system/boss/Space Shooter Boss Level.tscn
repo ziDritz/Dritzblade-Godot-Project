@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://xf324u56hg6d"]
+[gd_scene load_steps=21 format=3 uid="uid://xf324u56hg6d"]
 
 [ext_resource type="Script" uid="uid://duamwnmnrd2tx" path="res://level_system/boss/space_shooter_boss_level.gd" id="1_pd14p"]
 [ext_resource type="PackedScene" uid="uid://2p8t5pmie1mf" path="res://camera.tscn" id="2_pd14p"]
@@ -21,6 +21,13 @@ default_font = ExtResource("4_83yn4")
 [sub_resource type="RichTextEffect" id="RichTextEffect_qwjrg"]
 script = ExtResource("5_7e2rt")
 metadata/_custom_type_script = "uid://co6g1v3ikj31g"
+
+[sub_resource type="Gradient" id="Gradient_1mdmk"]
+colors = PackedColorArray(1, 0, 0, 1, 0, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ntgth"]
+gradient = SubResource("Gradient_1mdmk")
+width = 530
 
 [sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_cnv2j"]
 
@@ -68,6 +75,18 @@ size_flags_vertical = 3
 theme = ExtResource("6_3wdpr")
 theme_override_font_sizes/font_size = 50
 text = "Retry"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="UI_level"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -265.0
+offset_top = 37.0
+offset_right = 265.0
+offset_bottom = 65.0
+grow_horizontal = 2
+value = 100.0
+texture_progress = SubResource("GradientTexture2D_ntgth")
 
 [node name="TimerLevel" type="Timer" parent="."]
 wait_time = 3.0

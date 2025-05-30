@@ -22,9 +22,13 @@ func _on_path_follow_2d_progess_ratio_ended_without_follower() -> void:
 	pass # Replace with function body.
 
 
-func _on_shooter_projectile_shot(projectile: Projectile) -> void:
+func _on_boss_shooter_projectile_shot(projectile: Projectile) -> void:
 	add_child(projectile)
 
 
-func _on_boss_shooter_projectile_shot(projectile: Projectile) -> void:
+func _on_button_restart_pressed() -> void:
+	get_tree().reload_current_scene()
+
+
+func _on_shooter_projectile_shot(projectile: Projectile) -> void:
 	add_child(projectile)

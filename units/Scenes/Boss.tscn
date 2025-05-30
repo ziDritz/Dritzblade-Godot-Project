@@ -113,6 +113,7 @@ script = ExtResource("1_588mx")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("2_7xn38")
+max_health = 100
 
 [node name="DecisionTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -137,5 +138,8 @@ projectile_count = 12
 
 [node name="Muzzle" parent="BossShooter" index="0"]
 position = Vector2(0, 105.39)
+
+[connection signal="died" from="Health" to="AudioStreamPlayer2D" method="_on_health_died"]
+[connection signal="died" from="Health" to="AnimatedSprite2D" method="_on_health_died"]
 
 [editable path="BossShooter"]

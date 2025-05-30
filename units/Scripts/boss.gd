@@ -32,16 +32,39 @@ func _unhandled_input(event):
 			boss_shooter.shoot()
 
 func move_1():
+	var timer = Timer.new()
+	add_child(timer)
+	timer.wait_time = 1.0
+	timer.one_shot = false
+	timer.timeout.connect(boss_shooter.shoot)
+	timer.start()
+	
 	path_2D.curve = MOVE_1_CURVE
 	path_follow_2D.progess_path(speed_move_1)
+	path_follow_2D.connect(
+		"progess_ratio_ended", 
+		func():	
+			if timer != null:
+				timer.stop()
+				timer.queue_free()	
+	)
 
-	#var timer = Timer.new()
-	#add_child(timer)
-	#timer.wait_time = 1.0
-	#timer.one_shot = false
-	#timer.timeout.connect(boss_shooter.shoot)
-	#timer.start()
+
 
 func move_2():
+	var timer = Timer.new()
+	add_child(timer)
+	timer.wait_time = 1.0
+	timer.one_shot = false
+	timer.timeout.connect(boss_shooter.shoot)
+	timer.start()
+	
 	path_2D.curve = MOVE_2_CURVE
 	path_follow_2D.progess_path(speed_move_2)
+	path_follow_2D.connect(
+		"progess_ratio_ended", 
+		func():	
+			if timer != null:
+				timer.stop()
+				timer.queue_free()	
+	)
