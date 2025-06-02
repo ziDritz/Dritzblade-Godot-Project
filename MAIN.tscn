@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cwkw4ps14kknl"]
+[gd_scene load_steps=27 format=3 uid="uid://cwkw4ps14kknl"]
 
 [ext_resource type="Script" uid="uid://dw03ytbg02v2r" path="res://MAIN.gd" id="1_a1u8q"]
 [ext_resource type="Script" uid="uid://dobneoni3xsj" path="res://addons/resonate/music_manager/music_bank.gd" id="3_xm6fk"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://bknlmp66qy70r" path="res://_music/DavidKBD - Eternity Pack - 06 - God of darkness - loop.mp3" id="10_6y3qq"]
 [ext_resource type="Script" uid="uid://13ot4s2r8210" path="res://addons/resonate/sound_manager/sound_bank.gd" id="10_h2cot"]
 [ext_resource type="Script" uid="uid://bk6wfdf1bn68d" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="11_6y3qq"]
+[ext_resource type="AudioStream" uid="uid://5poj14ml08f2" path="res://_music/peaceful-garden-music-with-birdsx27-sounds-165222.mp3" id="11_h2cot"]
 
 [sub_resource type="Resource" id="Resource_ao5vc"]
 script = ExtResource("5_7ct82")
@@ -88,6 +89,21 @@ bus = ""
 stems = Array[ExtResource("5_7ct82")]([SubResource("Resource_6t3px")])
 metadata/_custom_type_script = "uid://ck4686aywk1sc"
 
+[sub_resource type="Resource" id="Resource_6y3qq"]
+script = ExtResource("5_7ct82")
+name = ""
+enabled = false
+volume = -6.0
+stream = ExtResource("11_h2cot")
+metadata/_custom_type_script = "uid://dsjd63rlyink7"
+
+[sub_resource type="Resource" id="Resource_s0s18"]
+script = ExtResource("4_5nrqa")
+name = "final_screen"
+bus = ""
+stems = Array[ExtResource("5_7ct82")]([SubResource("Resource_6y3qq")])
+metadata/_custom_type_script = "uid://ck4686aywk1sc"
+
 [sub_resource type="Resource" id="Resource_p6x64"]
 script = ExtResource("11_6y3qq")
 name = "explosion"
@@ -106,7 +122,7 @@ script = ExtResource("1_a1u8q")
 script = ExtResource("3_xm6fk")
 label = "musics"
 bus = "Music"
-tracks = Array[ExtResource("4_5nrqa")]([SubResource("Resource_gix1a"), SubResource("Resource_jn4fx"), SubResource("Resource_a8dnc"), SubResource("Resource_uocqw"), SubResource("Resource_obmmj")])
+tracks = Array[ExtResource("4_5nrqa")]([SubResource("Resource_gix1a"), SubResource("Resource_jn4fx"), SubResource("Resource_a8dnc"), SubResource("Resource_uocqw"), SubResource("Resource_obmmj"), SubResource("Resource_s0s18")])
 metadata/_custom_type_script = "uid://dobneoni3xsj"
 
 [node name="SoundBank" type="Node" parent="."]

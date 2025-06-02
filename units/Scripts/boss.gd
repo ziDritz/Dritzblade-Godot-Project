@@ -12,7 +12,7 @@ const MOVE_2_CURVE = preload("res://level_system/boss/boss_curves/move 2.tres")
 @export var speed_move_2: int
 
 @onready var health: Health = $Health
-@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var collision_polygon_2d: CollisionPolygon2D = $CollisionPolygon2D
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var boss_shooter: BossShooter = $BossShooter
@@ -68,3 +68,13 @@ func move_2():
 				timer.stop()
 				timer.queue_free()	
 	)
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	queue_free()
+
+
+func _on_health_died(character_body_2D: CharacterBody2D) -> void:
+	collision_polygon_2d.queue_free()
+	decision_timer.queue_free()
+	boss_shooter.queue_free()

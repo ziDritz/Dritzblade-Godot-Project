@@ -44,5 +44,6 @@ func _on_body_entered(body: Node2D) -> void:
 	var body_type = body.get_script().get_global_name()
 	
 	if body.has_node("Health") && body_type != shooter_owner_type:
-		body.health.die()
+		var health = body.health.get_health()
+		body.health.set_health(health-damage)
 		queue_free()

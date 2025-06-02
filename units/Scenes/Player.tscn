@@ -100,6 +100,7 @@ speed = 500.0
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("2_5g656")
+max_health = 1
 
 [node name="Shooter" parent="." instance=ExtResource("3_htbh2")]
 fire_rate = 0.2

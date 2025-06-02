@@ -97,6 +97,7 @@ speed = 10.0
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("2_26sfu")
+max_health = 1
 
 [node name="DecisionTimer" type="Timer" parent="."]
 wait_time = 0.5

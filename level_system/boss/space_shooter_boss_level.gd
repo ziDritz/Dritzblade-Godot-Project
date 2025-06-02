@@ -6,6 +6,9 @@ signal level_paused(level)
 
 @export var boss: CharacterBody2D
 
+@onready var player: Player = $Player
+@onready var level_transition: AnimationPlayer = $LevelTransition
+
 func _ready() -> void:
 	$LevelTransition.play("level_transition_in")
 
@@ -32,3 +35,15 @@ func _on_button_restart_pressed() -> void:
 
 func _on_shooter_projectile_shot(projectile: Projectile) -> void:
 	add_child(projectile)
+
+
+func _on_boss_tree_exited() -> void:
+	level_cleared.emit()
+	await get_tree().create_timer(3.0).timeout
+	player.is_controlable = false
+	level_transition.play("level_transition_out")
+
+func _on_level_transition_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "level_transition_out":
+		level_transition_animation_out_finished.emit()
+		queue_free()
