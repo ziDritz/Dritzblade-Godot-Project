@@ -29,7 +29,8 @@ func _physics_process(_delta):
 
 func _on_health_died(_character_body_2D) -> void:
 	collision_polygon_2d.queue_free()
-	shooter.queue_free() 
+	shooter.queue_free()
+	animated_sprite_2d.play("die") 
 
 func _on_level_transition_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "level_transition_in": is_controlable = true

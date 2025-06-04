@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://f4lqkm1uwvda"]
+[gd_scene load_steps=20 format=3 uid="uid://b5nr3fa6778w4"]
 
 [ext_resource type="Script" uid="uid://b07iun3256eve" path="res://game_objects/units/scripts/enemy.gd" id="1_ewkea"]
 [ext_resource type="Script" uid="uid://b2cnacw0lfp3t" path="res://game_objects/units/scripts/health.gd" id="2_26sfu"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://hitj2554n672"]
+[gd_scene load_steps=21 format=3 uid="uid://dhxd68cja2u7l"]
 
 [ext_resource type="Script" uid="uid://c061jxg6f05yk" path="res://game_objects/units/scripts/boss.gd" id="1_588mx"]
 [ext_resource type="Script" uid="uid://b2cnacw0lfp3t" path="res://game_objects/units/scripts/health.gd" id="2_7xn38"]
