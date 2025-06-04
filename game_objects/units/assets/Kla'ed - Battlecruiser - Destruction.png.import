@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< Updated upstream
 uid="uid://ysp8d56hutar"
+=======
+uid="uid://d31ea75la8pg4"
+>>>>>>> Stashed changes
 path="res://.godot/imported/Kla'ed - Battlecruiser - Destruction.png-64430e30c0395163619cc730102696c5.ctex"
 metadata={
 "vram_texture": false

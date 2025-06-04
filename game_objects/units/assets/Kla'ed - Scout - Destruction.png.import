@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< Updated upstream
 uid="uid://dbdlgv0a6gieb"
+=======
+uid="uid://dvcud4lqhsg33"
+>>>>>>> Stashed changes
 path="res://.godot/imported/Kla'ed - Scout - Destruction.png-7b2e205da42d722ac52444ff306518f2.ctex"
 metadata={
 "vram_texture": false

@@ -2,16 +2,36 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< Updated upstream
 uid="uid://cmhiwtwhlx4vx"
 path="res://.godot/imported/Main Ship - Destruction.png-596bb22b24ac8f39539d9cf8300f04e2.ctex"
+=======
+<<<<<<<< Updated upstream:game_objects/units/assets/Kla'ed - Scout - Base.png.import
+uid="uid://b63kcfpxbu5qy"
+path="res://.godot/imported/Kla'ed - Scout - Base.png-6de657f95143397e59defcb7a35fffdc.ctex"
+========
+uid="uid://b84167i4evvyr"
+path="res://.godot/imported/Main Ship - Destruction.png-596bb22b24ac8f39539d9cf8300f04e2.ctex"
+>>>>>>>> Stashed changes:game_objects/units/assets/Main Ship - Destruction.png.import
+>>>>>>> Stashed changes
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
+<<<<<<< Updated upstream
 source_file="res://game_objects/units/assets/Main Ship - Destruction.png"
 dest_files=["res://.godot/imported/Main Ship - Destruction.png-596bb22b24ac8f39539d9cf8300f04e2.ctex"]
+=======
+<<<<<<<< Updated upstream:game_objects/units/assets/Kla'ed - Scout - Base.png.import
+source_file="res://game_objects/units/assets/Kla'ed - Scout - Base.png"
+dest_files=["res://.godot/imported/Kla'ed - Scout - Base.png-6de657f95143397e59defcb7a35fffdc.ctex"]
+========
+source_file="res://game_objects/units/assets/Main Ship - Destruction.png"
+dest_files=["res://.godot/imported/Main Ship - Destruction.png-596bb22b24ac8f39539d9cf8300f04e2.ctex"]
+>>>>>>>> Stashed changes:game_objects/units/assets/Main Ship - Destruction.png.import
+>>>>>>> Stashed changes
 
 [params]
 
