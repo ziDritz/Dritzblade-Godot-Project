@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://cnrc2yro6533p"]
+
+[ext_resource type="Script" uid="uid://bkfsr1r06jaq1" path="res://game_world/space_shooter_level.gd" id="1_hggu6"]
+[ext_resource type="PackedScene" uid="uid://2p8t5pmie1mf" path="res://game_world/camera.tscn" id="2_44yt4"]
+[ext_resource type="Script" uid="uid://btp7tr7j06bg2" path="res://game_world/audio_stream_player_level.gd" id="3_uwvgb"]
+[ext_resource type="PackedScene" uid="uid://cra5svle4din1" path="res://game_objects/units/scenes/player.tscn" id="6_4wdgg"]
+
+[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_cnv2j"]
+
+[node name="SpaceShooterLevel" type="Node2D"]
+script = ExtResource("1_hggu6")
+
+[node name="Camera2D" parent="." instance=ExtResource("2_44yt4")]
+
+[node name="TimerLevel" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamPolyphonic_cnv2j")
+volume_db = -9.0
+script = ExtResource("3_uwvgb")
+
+[node name="Player" parent="." instance=ExtResource("6_4wdgg")]
+position = Vector2(960, 1180)
+is_controlable = false
+
+[connection signal="projectile_shot" from="Player/Shooter" to="." method="_on_shooter_projectile_shot"]
+
+[editable path="Player"]
+[editable path="Player/Shooter"]

@@ -1,9 +1,6 @@
-[gd_scene load_steps=30 format=3 uid="uid://cwkw4ps14kknl"]
+[gd_scene load_steps=28 format=3 uid="uid://cwkw4ps14kknl"]
 
 [ext_resource type="Script" uid="uid://dw03ytbg02v2r" path="res://main.gd" id="1_yaehf"]
-[ext_resource type="PackedScene" uid="uid://dhfial3swgy08" path="res://screen_states/main_menu.tscn" id="2_074og"]
-[ext_resource type="PackedScene" uid="uid://6nt2subaon3n" path="res://screen_states/game.tscn" id="3_cegan"]
-[ext_resource type="PackedScene" uid="uid://bbfhkg3bf3od7" path="res://screen_states/ending.tscn" id="6_ryguw"]
 [ext_resource type="Script" uid="uid://dobneoni3xsj" path="res://addons/resonate/music_manager/music_bank.gd" id="7_d13ii"]
 [ext_resource type="Script" uid="uid://ck4686aywk1sc" path="res://addons/resonate/music_manager/music_track_resource.gd" id="8_1u8w0"]
 [ext_resource type="Script" uid="uid://dsjd63rlyink7" path="res://addons/resonate/music_manager/music_stem_resource.gd" id="9_0odxb"]
@@ -15,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://5poj14ml08f2" path="res://game_world/musics/peaceful-garden-music-with-birdsx27-sounds-165222.mp3" id="15_seu75"]
 [ext_resource type="Script" uid="uid://13ot4s2r8210" path="res://addons/resonate/sound_manager/sound_bank.gd" id="16_htxhm"]
 [ext_resource type="Script" uid="uid://bk6wfdf1bn68d" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="17_jq2sk"]
+[ext_resource type="AnimationLibrary" uid="uid://cutyrbtpddlwp" path="res://screen_states/main_animations.res" id="17_yaehf"]
 [ext_resource type="PackedScene" uid="uid://cmt6nkflprs7q" path="res://screen_states/scene_transition_player.tscn" id="18_074og"]
 
 [sub_resource type="Resource" id="Resource_ao5vc"]
@@ -116,15 +114,8 @@ pitch = 1.0
 streams = Array[AudioStream]([])
 metadata/_custom_type_script = "uid://bk6wfdf1bn68d"
 
-[node name="MAIN" type="Node"]
+[node name="Main" type="Node"]
 script = ExtResource("1_yaehf")
-
-[node name="MainMenu" parent="." instance=ExtResource("2_074og")]
-
-[node name="Game" parent="." instance=ExtResource("3_cegan")]
-
-[node name="Ending" parent="." instance=ExtResource("6_ryguw")]
-visible = false
 
 [node name="MusicBank" type="Node" parent="."]
 script = ExtResource("7_d13ii")
@@ -141,9 +132,14 @@ events = Array[ExtResource("17_jq2sk")]([SubResource("Resource_p6x64")])
 metadata/_custom_type_script = "uid://13ot4s2r8210"
 
 [node name="SceneTransitionPlayer" parent="." instance=ExtResource("18_074og")]
+visible = false
 
-[connection signal="button_start_pressed" from="MainMenu" to="." method="_on_main_menu_button_start_pressed"]
+[node name="AnimationPlayer" parent="SceneTransitionPlayer" index="0"]
+libraries = {
+&"main_animations": ExtResource("17_yaehf")
+}
 
-[editable path="MainMenu"]
-[editable path="MainMenu/Player"]
-[editable path="MainMenu/Player/Shooter"]
+[node name="ColorRect" parent="SceneTransitionPlayer" index="1"]
+color = Color(0, 0, 0, 1)
+
+[editable path="SceneTransitionPlayer"]

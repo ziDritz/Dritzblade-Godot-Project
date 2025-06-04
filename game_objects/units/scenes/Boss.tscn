@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://c061jxg6f05yk" path="res://game_objects/units/scripts/boss.gd" id="1_588mx"]
 [ext_resource type="Script" uid="uid://b2cnacw0lfp3t" path="res://game_objects/units/scripts/health.gd" id="2_7xn38"]
 [ext_resource type="Script" uid="uid://dd31iw8aaeh3o" path="res://game_objects/units/scripts/audio_stream_player_2d_extension.gd" id="3_xqycq"]
-[ext_resource type="Texture2D" uid="uid://d3r7jcpmr7ghh" path="res://game_objects/units/assets/Kla'ed - Battlecruiser - Base.png" id="5_nuots"]
-[ext_resource type="Texture2D" uid="uid://d31ea75la8pg4" path="res://game_objects/units/assets/Kla'ed - Battlecruiser - Destruction.png" id="6_wuhao"]
+[ext_resource type="Texture2D" uid="uid://sf2huycoe0si" path="res://game_objects/units/assets/Kla'ed - Battlecruiser - Base.png" id="5_nuots"]
+[ext_resource type="Texture2D" uid="uid://h3b2kys8f0tq" path="res://game_objects/units/assets/Kla'ed - Battlecruiser - Destruction.png" id="6_wuhao"]
 [ext_resource type="PackedScene" uid="uid://drk6o3f0afku0" path="res://game_objects/projectiles/Scene/BossShooter.tscn" id="7_588mx"]
 [ext_resource type="Script" uid="uid://78hrs141avsx" path="res://game_objects/units/assets/unit_animated_sprite_2d.gd" id="7_mptpj"]
 

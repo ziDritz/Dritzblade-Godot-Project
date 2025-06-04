@@ -67,7 +67,7 @@ func _go_to_main_menu():
 
 	
 func _go_to_game():
-	scene_transition_player.transition_fade_out()
+	scene_transition_player.play_transition('main_animations/fade_out')
 	await scene_transition_player.animation_finished
 	
 	if main_menu != null: main_menu.queue_free()
@@ -76,7 +76,7 @@ func _go_to_game():
 	game = GAME_SCENE.instantiate()
 	add_child(game)
 	
-	scene_transition_player.transition_fade_in()
+	scene_transition_player.play_transition('main_animations/fade_in')
 	
 	
 func _go_to_ending():

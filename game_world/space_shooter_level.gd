@@ -8,24 +8,23 @@ var wave_count: int
 
 @onready var timer_level: Timer = $TimerLevel
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
-@onready var level_transition: AnimationPlayer = $LevelTransition
 @onready var player: Player = $Player
 
 
-func _ready() -> void:
-	_init()
-
-
-func _init():
-	for child in get_children():
-		if child is Wave:
-			var wave = child
-			wave_count += 1
-			wave.wave_destroyed.connect(_on_wave_destroyed)
-			wave.enemy_spawned.connect(audio_stream_player._on_wave_enemy_spawned)
-			wave.enemy_spawned.connect(_on_wave_enemy_spawned)
-			timer_level.timeout.connect(wave._on_timer_level_timeout)
+func init(_waves_scene: PackedScene):
+	var waves = _waves_scene.instantiate()
+	add_child(waves)
 	
+	for wave: Wave in waves.get_children():
+		wave_count += 1
+		wave.wave_destroyed.connect(_on_wave_destroyed)
+		wave.enemy_spawned.connect(audio_stream_player._on_wave_enemy_spawned)
+		wave.enemy_spawned.connect(_on_wave_enemy_spawned)
+		timer_level.timeout.connect(wave._on_timer_level_timeout)
+		wave.reparent(self)
+	
+
+
 			
 func _on_wave_destroyed(_wave) -> void:
 	wave_count -= 1
@@ -33,7 +32,6 @@ func _on_wave_destroyed(_wave) -> void:
 		level_cleared.emit()
 		await get_tree().create_timer(3.0).timeout
 		player.is_controlable = false
-		level_transition.play("level_transition_out")
 
 
 func _on_wave_enemy_spawned(_character_body_2D: CharacterBody2D):

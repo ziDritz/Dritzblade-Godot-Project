@@ -3,16 +3,20 @@ extends CanvasLayer
 
 signal animation_finished
 
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var animation_player: AnimationPlayer = $AnimationPlayer 
+
+func _ready() -> void:
+	visible = false 
+	# Sinon, le layer est au dessus de tout et impossible 
+	# d'intéragir avec les controle nodes d'autres states 
+	# (ex, Buttons du Main Menu) 
 
 
-func transition_fade_out() -> void:
-	animation_player.play('fade_out')
-	
-	
-func transition_fade_in() -> void:
-	animation_player.play('fade_in')
+func play_transition(transition_name: String):
+	visible = true
+	animation_player.play(transition_name)
 	
 
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
+	visible = false
 	animation_finished.emit()

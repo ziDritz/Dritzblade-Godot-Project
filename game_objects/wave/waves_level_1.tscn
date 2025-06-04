@@ -1,3 +1,55 @@
-[gd_scene format=3 uid="uid://csll3gqhnkjn5"]
+[gd_scene load_steps=5 format=3 uid="uid://cdghkrg6afedo"]
+
+[ext_resource type="PackedScene" uid="uid://c6hcg7jwuon3w" path="res://game_objects/wave/wave.tscn" id="1_lgkvf"]
+
+[sub_resource type="Curve2D" id="Curve2D_qwjrg"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 320, -128, -195.005, -193.301, 195.005, 193.301, 512, 448, 0, 0, 0, 0, 768, 448)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_ef6nb"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1596.95, -138.786, 187.387, -193.301, -187.387, 193.301, 1404.95, 437.214, 0, 0, 0, 0, 1148.95, 437.214)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_vnsei"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 960, -128, 0, 0, 0, 0, 960, 640)
+}
+point_count = 2
 
 [node name="WavesLevel1" type="Node2D"]
+
+[node name="Wave" parent="." instance=ExtResource("1_lgkvf")]
+wave_size = 10
+
+[node name="Path2D" parent="Wave" index="0"]
+curve = SubResource("Curve2D_qwjrg")
+
+[node name="LineFormation" parent="Wave" index="1"]
+points = PackedVector2Array(320, 128, 1600, 128)
+
+[node name="Wave2" parent="." instance=ExtResource("1_lgkvf")]
+position = Vector2(3.05234, 10.7856)
+wave_size = 10
+
+[node name="Path2D" parent="Wave2" index="0"]
+curve = SubResource("Curve2D_ef6nb")
+
+[node name="LineFormation" parent="Wave2" index="1"]
+points = PackedVector2Array(1596.95, 501.214, 316.948, 501.214)
+
+[node name="Wave3" parent="." instance=ExtResource("1_lgkvf")]
+wave_size = 10
+
+[node name="Path2D" parent="Wave3" index="0"]
+curve = SubResource("Curve2D_vnsei")
+
+[node name="LineFormation" parent="Wave3" index="1"]
+points = PackedVector2Array(192, 320, 1728, 320)
+
+[editable path="Wave"]
+[editable path="Wave2"]
+[editable path="Wave3"]

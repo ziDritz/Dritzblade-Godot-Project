@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://2p8t5pmie1mf"]
 
-[ext_resource type="Texture2D" uid="uid://dbup7row71lqi" path="res://game_world/background_seamless_image.jpg" id="1_u5kg4"]
+[ext_resource type="Texture2D" uid="uid://dljrxo77ttsit" path="res://game_world/background_seamless_image.jpg" id="1_u5kg4"]
 
 [node name="Camera2D" type="Camera2D"]
 anchor_mode = 0

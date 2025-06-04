@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://b2cnacw0lfp3t" path="res://game_objects/units/scripts/health.gd" id="2_5g656"]
 [ext_resource type="PackedScene" uid="uid://3qci2mm701cn" path="res://game_objects/projectiles/Scene/Shooter.tscn" id="3_htbh2"]
 [ext_resource type="Resource" uid="uid://xvd5xbhhbx6l" path="res://game_objects/projectiles/Resources/auto_cannon_resource.tres" id="4_chqt7"]
-[ext_resource type="Texture2D" uid="uid://cm1uq1vpr0htv" path="res://game_objects/units/assets/Main Ship - Base - Full health 64.png" id="4_dxhcm"]
-[ext_resource type="Texture2D" uid="uid://b84167i4evvyr" path="res://game_objects/units/assets/Main Ship - Destruction.png" id="5_6x5ac"]
+[ext_resource type="Texture2D" uid="uid://cn0wccfyk6g81" path="res://game_objects/units/assets/Main Ship - Base - Full health 64.png" id="4_dxhcm"]
+[ext_resource type="Texture2D" uid="uid://bntbma8eso7x8" path="res://game_objects/units/assets/Main Ship - Destruction.png" id="5_6x5ac"]
 [ext_resource type="Script" uid="uid://78hrs141avsx" path="res://game_objects/units/assets/unit_animated_sprite_2d.gd" id="6_h8fsg"]
 [ext_resource type="Script" uid="uid://dd31iw8aaeh3o" path="res://game_objects/units/scripts/audio_stream_player_2d_extension.gd" id="7_pu36u"]
 

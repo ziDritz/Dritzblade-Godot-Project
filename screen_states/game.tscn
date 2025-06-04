@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://6nt2subaon3n"]
+[gd_scene load_steps=8 format=3 uid="uid://6nt2subaon3n"]
 
 [ext_resource type="Script" uid="uid://bq2jhkyb2er2e" path="res://screen_states/game.gd" id="1_2fdfw"]
 [ext_resource type="PackedScene" uid="uid://b5rmlfimlmky5" path="res://screen_states/game_ui.tscn" id="2_mhc0l"]
 [ext_resource type="Script" uid="uid://co6g1v3ikj31g" path="res://global/theme/highlight_text_effect.gd" id="3_phq4f"]
-[ext_resource type="PackedScene" uid="uid://cq8wr4w6t03vn" path="res://screen_states/options_menu.tscn" id="5_nlyhc"]
-[ext_resource type="PackedScene" uid="uid://bjg4xm1s7ehcp" path="res://screen_states/game_over.tscn" id="5_yigvy"]
+[ext_resource type="PackedScene" uid="uid://cnrc2yro6533p" path="res://game_world/space_shooter_level.tscn" id="4_qh561"]
+[ext_resource type="PackedScene" uid="uid://cmt6nkflprs7q" path="res://screen_states/scene_transition_player.tscn" id="5_yigvy"]
+[ext_resource type="AnimationLibrary" uid="uid://ds16s7x207jie" path="res://game_world/level_transition.res" id="6_nlyhc"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_qwjrg"]
 script = ExtResource("3_phq4f")
@@ -21,10 +22,20 @@ await_time = 1.0
 visible = true
 custom_effects = [SubResource("RichTextEffect_qwjrg")]
 
-[node name="OptionsMenu" parent="." instance=ExtResource("5_nlyhc")]
-visible = false
+[node name="SpaceShooterLevel" parent="." instance=ExtResource("4_qh561")]
 
-[node name="GameOver" parent="." instance=ExtResource("5_yigvy")]
-visible = false
+[node name="SceneTransitionPlayer" parent="." instance=ExtResource("5_yigvy")]
+
+[node name="AnimationPlayer" parent="SceneTransitionPlayer" index="0"]
+libraries = {
+&"level_transition": ExtResource("6_nlyhc")
+}
+
+[node name="ColorRect" parent="SceneTransitionPlayer" index="1"]
+color = Color(0, 0, 0, 1)
 
 [editable path="GameUI"]
+[editable path="SpaceShooterLevel"]
+[editable path="SpaceShooterLevel/Player"]
+[editable path="SpaceShooterLevel/Player/Shooter"]
+[editable path="SceneTransitionPlayer"]
