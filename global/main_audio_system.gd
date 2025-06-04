@@ -8,7 +8,7 @@ func _ready() -> void:
 	stream = AudioStreamPolyphonic.new()
 	stream.polyphony = 32
 
-	audio_stream = preload("res://_SFX/SFXPack/Explosions/Explosion2.mp3")
+	audio_stream = preload("res://game_objects/units/assets/Explosion2.mp3")
 	
 
 func _on_wave_enemy_spawned(character_body_2D: CharacterBody2D):

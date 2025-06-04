@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://c0t5s5smlpp4o"]
 
 [ext_resource type="Script" uid="uid://bkfsr1r06jaq1" path="res://game_world/space_shooter_level.gd" id="1_pebiv"]
-[ext_resource type="PackedScene" uid="uid://c6hcg7jwuon3w" path="res://game_objects/wave/Wave.tscn" id="2_hpmku"]
+[ext_resource type="PackedScene" uid="uid://c6hcg7jwuon3w" path="res://game_objects/wave/wave.tscn" id="2_hpmku"]
 [ext_resource type="PackedScene" uid="uid://2p8t5pmie1mf" path="res://game_world/camera.tscn" id="2_nup4n"]
 [ext_resource type="Script" uid="uid://buyfh6jeyc3c7" path="res://screen_states/game_ui.gd" id="3_nup4n"]
 [ext_resource type="FontFile" uid="uid://gff28tlo7v6d" path="res://global/theme/font_Robtronika/TrueType (.ttf)/Robtronika-Regular.ttf" id="4_cgxpd"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cgprgatxwdo7b" path="res://_test/test.gd" id="1_8a8pi"]
 [ext_resource type="PackedScene" uid="uid://f4lqkm1uwvda" path="res://game_objects/units/scenes/Enemy.tscn" id="2_65205"]
-[ext_resource type="PackedScene" uid="uid://c6hcg7jwuon3w" path="res://game_objects/wave/Wave.tscn" id="2_hrq6i"]
+[ext_resource type="PackedScene" uid="uid://c6hcg7jwuon3w" path="res://game_objects/wave/wave.tscn" id="2_hrq6i"]
 
 [sub_resource type="Curve2D" id="Curve2D_s3n3v"]
 _data = {

@@ -2,46 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<<< Updated upstream:game_world/background_seamless_image.jpg.import
-uid="uid://s1p15yn3npjs"
+uid="uid://dljrxo77ttsit"
 path="res://.godot/imported/background_seamless_image.jpg-554b439518466033dc81b00cf00ec2b6.ctex"
-========
-uid="uid://cskguwnc1orie"
-path="res://.godot/imported/Kla'ed - Scout - Base.png-6de657f95143397e59defcb7a35fffdc.ctex"
->>>>>>>> Stashed changes:game_objects/units/assets/Kla'ed - Scout - Base.png.import
-=======
-uid="uid://dbup7row71lqi"
-path="res://.godot/imported/background_seamless_image.jpg-554b439518466033dc81b00cf00ec2b6.ctex"
->>>>>>> Stashed changes
-=======
-uid="uid://dbup7row71lqi"
-path="res://.godot/imported/background_seamless_image.jpg-554b439518466033dc81b00cf00ec2b6.ctex"
->>>>>>> Stashed changes
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<<< Updated upstream:game_world/background_seamless_image.jpg.import
 source_file="res://game_world/background_seamless_image.jpg"
 dest_files=["res://.godot/imported/background_seamless_image.jpg-554b439518466033dc81b00cf00ec2b6.ctex"]
-========
-source_file="res://game_objects/units/assets/Kla'ed - Scout - Base.png"
-dest_files=["res://.godot/imported/Kla'ed - Scout - Base.png-6de657f95143397e59defcb7a35fffdc.ctex"]
->>>>>>>> Stashed changes:game_objects/units/assets/Kla'ed - Scout - Base.png.import
-=======
-source_file="res://game_world/background_seamless_image.jpg"
-dest_files=["res://.godot/imported/background_seamless_image.jpg-554b439518466033dc81b00cf00ec2b6.ctex"]
->>>>>>> Stashed changes
-=======
-source_file="res://game_world/background_seamless_image.jpg"
-dest_files=["res://.godot/imported/background_seamless_image.jpg-554b439518466033dc81b00cf00ec2b6.ctex"]
->>>>>>> Stashed changes
 
 [params]
 

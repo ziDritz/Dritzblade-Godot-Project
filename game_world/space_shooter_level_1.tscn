@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://cdghkrg6afedo"]
 
-[ext_resource type="PackedScene" uid="uid://c6hcg7jwuon3w" path="res://game_objects/wave/Wave.tscn" id="1_ef6nb"]
+[ext_resource type="PackedScene" uid="uid://c6hcg7jwuon3w" path="res://game_objects/wave/wave.tscn" id="1_ef6nb"]
 [ext_resource type="Script" uid="uid://bkfsr1r06jaq1" path="res://game_world/space_shooter_level.gd" id="1_vnsei"]
 [ext_resource type="PackedScene" uid="uid://2p8t5pmie1mf" path="res://game_world/camera.tscn" id="2_w7xl5"]
 [ext_resource type="Script" uid="uid://btp7tr7j06bg2" path="res://game_world/audio_stream_player_level.gd" id="5_g5hxm"]

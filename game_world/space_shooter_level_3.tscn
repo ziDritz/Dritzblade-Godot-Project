@@ -6,7 +6,7 @@
 [ext_resource type="FontFile" uid="uid://gff28tlo7v6d" path="res://global/theme/font_Robtronika/TrueType (.ttf)/Robtronika-Regular.ttf" id="3_kmupl"]
 [ext_resource type="Script" uid="uid://co6g1v3ikj31g" path="res://global/theme/highlight_text_effect.gd" id="4_vg103"]
 [ext_resource type="Script" uid="uid://btp7tr7j06bg2" path="res://game_world/audio_stream_player_level.gd" id="5_yiv6q"]
-[ext_resource type="PackedScene" uid="uid://c6hcg7jwuon3w" path="res://game_objects/wave/Wave.tscn" id="6_v726u"]
+[ext_resource type="PackedScene" uid="uid://c6hcg7jwuon3w" path="res://game_objects/wave/wave.tscn" id="6_v726u"]
 [ext_resource type="Theme" uid="uid://cr64eprmpxfuy" path="res://global/theme/theme.tres" id="6_wyn0m"]
 [ext_resource type="PackedScene" uid="uid://cra5svle4din1" path="res://game_objects/units/scenes/Player.tscn" id="8_vg103"]
 [ext_resource type="Animation" uid="uid://bmr45bbomwfak" path="res://level_transition_in.res" id="9_yiv6q"]
