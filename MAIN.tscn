@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dduh40mciienr"]
+[gd_scene load_steps=31 format=3 uid="uid://dduh40mciienr"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_yaehf"]
 [ext_resource type="Script" uid="uid://dobneoni3xsj" path="res://addons/resonate/music_manager/music_bank.gd" id="7_d13ii"]
@@ -7,8 +7,10 @@
 [ext_resource type="AudioStream" uid="uid://c2dehnwhqqw6l" path="res://game_world/musics/Before_the_halvening.mp3" id="10_lswn8"]
 [ext_resource type="AudioStream" uid="uid://dyjjt8n57fuol" path="res://game_world/musics/game-music-by-deepmusiceveryday.mp3" id="11_a6jrf"]
 [ext_resource type="AudioStream" uid="uid://cpm13r6wdqjfe" path="res://game_world/musics/spaceship-arcade-shooter-game-background-soundtrack-by-serhii_kliets.mp3" id="12_xuqvo"]
+[ext_resource type="AudioStream" uid="uid://olfe4ssbkuke" path="res://game_objects/units/assets/Explosion2.mp3" id="13_2cqfq"]
 [ext_resource type="AudioStream" uid="uid://8whyxbqdiqth" path="res://game_world/musics/short-8-bit-background-music-for-video-mobile-game-old-school-by-white_records.mp3" id="13_qsp4k"]
 [ext_resource type="AudioStream" uid="uid://bknlmp66qy70r" path="res://game_world/musics/DavidKBD - Eternity Pack - 06 - God of darkness - loop.mp3" id="14_kq58d"]
+[ext_resource type="AudioStream" uid="uid://wli20upqtgtl" path="res://game_objects/units/assets/Explosion1.mp3" id="14_yaehf"]
 [ext_resource type="AudioStream" uid="uid://5poj14ml08f2" path="res://game_world/musics/peaceful-garden-music-with-birdsx27-sounds-165222.mp3" id="15_seu75"]
 [ext_resource type="Script" uid="uid://13ot4s2r8210" path="res://addons/resonate/sound_manager/sound_bank.gd" id="16_htxhm"]
 [ext_resource type="Script" uid="uid://bk6wfdf1bn68d" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="17_jq2sk"]
@@ -107,11 +109,20 @@ metadata/_custom_type_script = "uid://ck4686aywk1sc"
 
 [sub_resource type="Resource" id="Resource_p6x64"]
 script = ExtResource("17_jq2sk")
-name = "explosion"
+name = "enemy_explosion"
 bus = ""
 volume = -6.0
 pitch = 1.0
-streams = Array[AudioStream]([])
+streams = Array[AudioStream]([ExtResource("13_2cqfq")])
+metadata/_custom_type_script = "uid://bk6wfdf1bn68d"
+
+[sub_resource type="Resource" id="Resource_074og"]
+script = ExtResource("17_jq2sk")
+name = "player_explosion"
+bus = ""
+volume = 0.0
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("14_yaehf")])
 metadata/_custom_type_script = "uid://bk6wfdf1bn68d"
 
 [node name="Main" type="Node"]
@@ -128,7 +139,7 @@ metadata/_custom_type_script = "uid://dobneoni3xsj"
 script = ExtResource("16_htxhm")
 label = "SFXs"
 bus = "SFX"
-events = Array[ExtResource("17_jq2sk")]([SubResource("Resource_p6x64")])
+events = Array[ExtResource("17_jq2sk")]([SubResource("Resource_p6x64"), SubResource("Resource_074og")])
 metadata/_custom_type_script = "uid://13ot4s2r8210"
 
 [node name="SceneTransitionPlayer" parent="." instance=ExtResource("18_074og")]

@@ -28,3 +28,6 @@ func transient_rich_text_label(text: String):
 func set_pause(_bool: bool):
 	pause_menu.visible = _bool
 	
+	
+func set_game_over():
+	game_over.visible = true

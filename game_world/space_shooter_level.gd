@@ -3,6 +3,7 @@ extends Node2D
 
 
 signal level_cleared
+signal game_over
 
 var wave_count: int
 
@@ -47,3 +48,7 @@ func _on_shooter_projectile_shot(projectile: Projectile):
 	if projectile.shooter_owner is Enemy: 
 		projectile.direction = Vector2.DOWN
 		projectile.rotation = 180.0
+
+
+func _on_player_died() -> void:
+	game_over.emit()

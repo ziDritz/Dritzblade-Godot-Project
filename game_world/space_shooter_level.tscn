@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bkfsr1r06jaq1" path="res://game_world/space_shooter_level.gd" id="1_hggu6"]
 [ext_resource type="PackedScene" uid="uid://2p8t5pmie1mf" path="res://game_world/camera.tscn" id="2_44yt4"]
 [ext_resource type="Script" uid="uid://btp7tr7j06bg2" path="res://game_world/audio_stream_player_level.gd" id="3_uwvgb"]
-[ext_resource type="PackedScene" uid="uid://cra5svle4din1" path="res://game_objects/units/scenes/player.tscn" id="6_4wdgg"]
+[ext_resource type="PackedScene" uid="uid://nx3nkq8x40ws" path="res://game_objects/units/scenes/player.tscn" id="6_4wdgg"]
 
 [sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_cnv2j"]
 
@@ -26,6 +26,7 @@ script = ExtResource("3_uwvgb")
 position = Vector2(960, 1180)
 is_controlable = false
 
+[connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="projectile_shot" from="Player/Shooter" to="." method="_on_shooter_projectile_shot"]
 
 [editable path="Player"]

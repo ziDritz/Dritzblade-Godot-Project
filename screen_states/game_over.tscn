@@ -48,3 +48,5 @@ size_flags_vertical = 3
 theme = ExtResource("2_ill65")
 theme_override_font_sizes/font_size = 50
 text = "Retry"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_restart_pressed"]

@@ -32,6 +32,7 @@ func _on_decision_timer_timeout() -> void:
 
 
 func _on_health_died(character_body_2D: CharacterBody2D) -> void:
+	SoundManager.play("SFXs", "enemy_explosion")
 	shooter.queue_free()
 	decision_timer.queue_free()
 	collision_shape_2d.queue_free()

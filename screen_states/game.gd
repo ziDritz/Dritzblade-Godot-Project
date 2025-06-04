@@ -81,3 +81,11 @@ func _set_pause(_bool: bool):
 		space_shooter_level.process_mode = Node.PROCESS_MODE_INHERIT
 		game_ui.set_pause(false)	
 		is_game_paused = false
+
+
+func _set_game_over():
+	game_ui.set_game_over()
+
+
+func _on_space_shooter_level_game_over() -> void:
+	_set_game_over()

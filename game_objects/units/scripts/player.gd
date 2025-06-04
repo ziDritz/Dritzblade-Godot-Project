@@ -1,7 +1,8 @@
 class_name Player extends CharacterBody2D
 
-@export var is_controlable: bool = true
+signal died
 
+@export var is_controlable: bool = true
 @export var speed: float
 @export var direction: Vector2
 @export var destination: Vector2 = Vector2.ZERO
@@ -28,14 +29,12 @@ func _physics_process(_delta):
 
 
 func _on_health_died(_character_body_2D) -> void:
+	SoundManager.play("SFXs", "player_explosion")
 	collision_polygon_2d.queue_free()
 	shooter.queue_free()
 	animated_sprite_2d.play("die") 
 
-func _on_level_transition_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "level_transition_in": is_controlable = true
-	
-
 
 func _on_animated_sprite_2d_animation_finished() -> void:
+	died.emit()
 	queue_free()

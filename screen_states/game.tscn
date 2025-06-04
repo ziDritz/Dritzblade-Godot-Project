@@ -34,8 +34,7 @@ libraries = {
 [node name="ColorRect" parent="SceneTransitionPlayer" index="1"]
 color = Color(0, 0, 0, 1)
 
+[connection signal="game_over" from="SpaceShooterLevel" to="." method="_on_space_shooter_level_game_over"]
+
 [editable path="GameUI"]
-[editable path="SpaceShooterLevel"]
-[editable path="SpaceShooterLevel/Player"]
-[editable path="SpaceShooterLevel/Player/Shooter"]
 [editable path="SceneTransitionPlayer"]
