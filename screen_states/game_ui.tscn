@@ -27,7 +27,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 custom_effects = [SubResource("RichTextEffect_qwjrg")]
 
-[node name="OptionsMenu" parent="." instance=ExtResource("4_nmmt3")]
+[node name="PauseMenu" parent="." instance=ExtResource("4_nmmt3")]
 visible = false
 
 [node name="GameOver" parent="." instance=ExtResource("5_ai785")]

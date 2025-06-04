@@ -17,6 +17,7 @@ enum GameLevel { ONE, TWO, THREE, BOSS }
 @export var await_time: float
 
 var current_waves
+var is_game_paused: bool = false
 
 @onready var game_ui: GameUI = $GameUI
 @onready var space_shooter_level: SpaceShooterLevel = $SpaceShooterLevel
@@ -25,6 +26,17 @@ var current_waves
 
 func _ready():
 	_go_to_level(GameLevel.ONE)
+
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("pause"):
+		if is_game_paused == false:
+			_set_pause(true)
+			return
+		elif is_game_paused == true:
+			_set_pause(false)
+			return
+
 
 	
 func _go_to_level(game_level: GameLevel):
@@ -59,4 +71,13 @@ func _go_to_level(game_level: GameLevel):
 	MusicManager.play("musics", music_string, 3.0, true)
 	scene_transition_player.play_transition("level_transition/level_transition_in")
 	
+func _set_pause(_bool: bool):
+	if _bool == true:
+		space_shooter_level.process_mode = Node.PROCESS_MODE_DISABLED
+		game_ui.set_pause(true)	
+		is_game_paused = true
 	
+	if _bool == false:
+		space_shooter_level.process_mode = Node.PROCESS_MODE_INHERIT
+		game_ui.set_pause(false)	
+		is_game_paused = false

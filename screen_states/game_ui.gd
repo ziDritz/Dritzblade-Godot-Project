@@ -6,6 +6,8 @@ extends CanvasLayer
 @export var await_time: float
 
 @onready var rich_text_label = $RichTextLabel
+@onready var pause_menu: OptionsMenu = $PauseMenu
+@onready var game_over: GameOver = $GameOver
 
 
 func transient_rich_text_label(text: String):
@@ -23,13 +25,6 @@ func transient_rich_text_label(text: String):
 	rich_text_label.visible = false
 
 
-func fade_out(_fade_time: float):
-	var tween: Tween = create_tween()
-	tween.tween_property(rich_text_label, "modulate:a", 0.0, _fade_time)
-	tween.kill()
-
-
-func fade_in(_fade_time: float):
-	var tween: Tween = create_tween()
-	tween.tween_property(rich_text_label, "modulate:a", 1.0, _fade_time)
-	tween.kill()
+func set_pause(_bool: bool):
+	pause_menu.visible = _bool
+	

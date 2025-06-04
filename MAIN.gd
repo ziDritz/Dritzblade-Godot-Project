@@ -34,27 +34,7 @@ func set_state(new_state):
 
 
 
-#func _process(_delta: float) -> void:
-	#if Input.is_action_just_pressed("pause") && current_level != null:
-		#if is_level_paused == false:
-			#current_level.process_mode = Node.PROCESS_MODE_DISABLED
-			#current_level.get_node("UI_level").visible = false
-	#
-			#menu_scene = MENU_SCENE.instantiate()
-			#add_child(menu_scene)
-#
-			#is_level_paused = true
-			#return
-#
-#
-		#if is_level_paused == true:
-			#menu_scene.queue_free()
-			#
-			#current_level.get_node("UI_level").visible = true
-			#current_level.process_mode = Node.PROCESS_MODE_INHERIT	
-			#
-			#is_level_paused = false
-			#return
+
 
 
 func _go_to_main_menu():
