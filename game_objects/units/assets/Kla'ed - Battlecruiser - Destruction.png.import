@@ -3,17 +3,22 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d31ea75la8pg4"
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream:units/assets/Kla'ed - Battlecruiser - Destruction.png.import
 path="res://.godot/imported/Kla'ed - Battlecruiser - Destruction.png-fcafca239a9f4f9cd5c7c04e35ffa257.ctex"
 =======
 path="res://.godot/imported/Kla'ed - Battlecruiser - Destruction.png-64430e30c0395163619cc730102696c5.ctex"
 >>>>>>> Stashed changes:game_objects/units/assets/Kla'ed - Battlecruiser - Destruction.png.import
+=======
+path="res://.godot/imported/Kla'ed - Battlecruiser - Destruction.png-64430e30c0395163619cc730102696c5.ctex"
+>>>>>>> Stashed changes
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream:units/assets/Kla'ed - Battlecruiser - Destruction.png.import
 source_file="res://units/Assets/Kla'ed - Battlecruiser - Destruction.png"
 dest_files=["res://.godot/imported/Kla'ed - Battlecruiser - Destruction.png-fcafca239a9f4f9cd5c7c04e35ffa257.ctex"]
@@ -21,6 +26,10 @@ dest_files=["res://.godot/imported/Kla'ed - Battlecruiser - Destruction.png-fcaf
 source_file="res://game_objects/units/assets/Kla'ed - Battlecruiser - Destruction.png"
 dest_files=["res://.godot/imported/Kla'ed - Battlecruiser - Destruction.png-64430e30c0395163619cc730102696c5.ctex"]
 >>>>>>> Stashed changes:game_objects/units/assets/Kla'ed - Battlecruiser - Destruction.png.import
+=======
+source_file="res://game_objects/units/assets/Kla'ed - Battlecruiser - Destruction.png"
+dest_files=["res://.godot/imported/Kla'ed - Battlecruiser - Destruction.png-64430e30c0395163619cc730102696c5.ctex"]
+>>>>>>> Stashed changes
 
 [params]
 

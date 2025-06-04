@@ -3,17 +3,22 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d3r7jcpmr7ghh"
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream:units/assets/Kla'ed - Battlecruiser - Base.png.import
 path="res://.godot/imported/Kla'ed - Battlecruiser - Base.png-c392811fcee6db9733a1aa6d87c9584c.ctex"
 =======
 path="res://.godot/imported/Kla'ed - Battlecruiser - Base.png-2f80d96770bba8f3616bff5dfd5fb298.ctex"
 >>>>>>> Stashed changes:game_objects/units/assets/Kla'ed - Battlecruiser - Base.png.import
+=======
+path="res://.godot/imported/Kla'ed - Battlecruiser - Base.png-2f80d96770bba8f3616bff5dfd5fb298.ctex"
+>>>>>>> Stashed changes
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream:units/assets/Kla'ed - Battlecruiser - Base.png.import
 source_file="res://units/Assets/Kla'ed - Battlecruiser - Base.png"
 dest_files=["res://.godot/imported/Kla'ed - Battlecruiser - Base.png-c392811fcee6db9733a1aa6d87c9584c.ctex"]
@@ -21,6 +26,10 @@ dest_files=["res://.godot/imported/Kla'ed - Battlecruiser - Base.png-c392811fcee
 source_file="res://game_objects/units/assets/Kla'ed - Battlecruiser - Base.png"
 dest_files=["res://.godot/imported/Kla'ed - Battlecruiser - Base.png-2f80d96770bba8f3616bff5dfd5fb298.ctex"]
 >>>>>>> Stashed changes:game_objects/units/assets/Kla'ed - Battlecruiser - Base.png.import
+=======
+source_file="res://game_objects/units/assets/Kla'ed - Battlecruiser - Base.png"
+dest_files=["res://.godot/imported/Kla'ed - Battlecruiser - Base.png-2f80d96770bba8f3616bff5dfd5fb298.ctex"]
+>>>>>>> Stashed changes
 
 [params]
 

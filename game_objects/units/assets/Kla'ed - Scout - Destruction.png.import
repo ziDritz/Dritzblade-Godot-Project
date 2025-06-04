@@ -3,17 +3,22 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dvcud4lqhsg33"
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream:units/assets/Kla'ed - Scout - Destruction.png.import
 path="res://.godot/imported/Kla'ed - Scout - Destruction.png-245d0f10d172072961fc7d2e4bcf4db2.ctex"
 =======
 path="res://.godot/imported/Kla'ed - Scout - Destruction.png-7b2e205da42d722ac52444ff306518f2.ctex"
 >>>>>>> Stashed changes:game_objects/units/assets/Kla'ed - Scout - Destruction.png.import
+=======
+path="res://.godot/imported/Kla'ed - Scout - Destruction.png-7b2e205da42d722ac52444ff306518f2.ctex"
+>>>>>>> Stashed changes
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream:units/assets/Kla'ed - Scout - Destruction.png.import
 source_file="res://units/Assets/Kla'ed - Scout - Destruction.png"
 dest_files=["res://.godot/imported/Kla'ed - Scout - Destruction.png-245d0f10d172072961fc7d2e4bcf4db2.ctex"]
@@ -21,6 +26,10 @@ dest_files=["res://.godot/imported/Kla'ed - Scout - Destruction.png-245d0f10d172
 source_file="res://game_objects/units/assets/Kla'ed - Scout - Destruction.png"
 dest_files=["res://.godot/imported/Kla'ed - Scout - Destruction.png-7b2e205da42d722ac52444ff306518f2.ctex"]
 >>>>>>> Stashed changes:game_objects/units/assets/Kla'ed - Scout - Destruction.png.import
+=======
+source_file="res://game_objects/units/assets/Kla'ed - Scout - Destruction.png"
+dest_files=["res://.godot/imported/Kla'ed - Scout - Destruction.png-7b2e205da42d722ac52444ff306518f2.ctex"]
+>>>>>>> Stashed changes
 
 [params]
 

@@ -2,18 +2,29 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< Updated upstream
 uid="uid://cskguwnc1orie"
 <<<<<<< Updated upstream:units/assets/Kla'ed - Scout - Base.png.import
 path="res://.godot/imported/Kla'ed - Scout - Base.png-e96beda199d5f9a9c126f74b35c31557.ctex"
 =======
 path="res://.godot/imported/Kla'ed - Scout - Base.png-6de657f95143397e59defcb7a35fffdc.ctex"
 >>>>>>> Stashed changes:game_objects/units/assets/Kla'ed - Scout - Base.png.import
+=======
+<<<<<<<< Updated upstream:game_world/background_seamless_image.jpg.import
+uid="uid://dbup7row71lqi"
+path="res://.godot/imported/background_seamless_image.jpg-554b439518466033dc81b00cf00ec2b6.ctex"
+========
+uid="uid://cskguwnc1orie"
+path="res://.godot/imported/Kla'ed - Scout - Base.png-6de657f95143397e59defcb7a35fffdc.ctex"
+>>>>>>>> Stashed changes:game_objects/units/assets/Kla'ed - Scout - Base.png.import
+>>>>>>> Stashed changes
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream:units/assets/Kla'ed - Scout - Base.png.import
 source_file="res://units/Assets/Kla'ed - Scout - Base.png"
 dest_files=["res://.godot/imported/Kla'ed - Scout - Base.png-e96beda199d5f9a9c126f74b35c31557.ctex"]
@@ -21,6 +32,15 @@ dest_files=["res://.godot/imported/Kla'ed - Scout - Base.png-e96beda199d5f9a9c12
 source_file="res://game_objects/units/assets/Kla'ed - Scout - Base.png"
 dest_files=["res://.godot/imported/Kla'ed - Scout - Base.png-6de657f95143397e59defcb7a35fffdc.ctex"]
 >>>>>>> Stashed changes:game_objects/units/assets/Kla'ed - Scout - Base.png.import
+=======
+<<<<<<<< Updated upstream:game_world/background_seamless_image.jpg.import
+source_file="res://game_world/background_seamless_image.jpg"
+dest_files=["res://.godot/imported/background_seamless_image.jpg-554b439518466033dc81b00cf00ec2b6.ctex"]
+========
+source_file="res://game_objects/units/assets/Kla'ed - Scout - Base.png"
+dest_files=["res://.godot/imported/Kla'ed - Scout - Base.png-6de657f95143397e59defcb7a35fffdc.ctex"]
+>>>>>>>> Stashed changes:game_objects/units/assets/Kla'ed - Scout - Base.png.import
+>>>>>>> Stashed changes
 
 [params]
 

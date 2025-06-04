@@ -3,17 +3,22 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b84167i4evvyr"
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream:units/assets/Main Ship - Destruction.png.import
 path="res://.godot/imported/Main Ship - Destruction.png-0920c1ed188e8a1beb1d7f0173926f53.ctex"
 =======
 path="res://.godot/imported/Main Ship - Destruction.png-596bb22b24ac8f39539d9cf8300f04e2.ctex"
 >>>>>>> Stashed changes:game_objects/units/assets/Main Ship - Destruction.png.import
+=======
+path="res://.godot/imported/Main Ship - Destruction.png-596bb22b24ac8f39539d9cf8300f04e2.ctex"
+>>>>>>> Stashed changes
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream:units/assets/Main Ship - Destruction.png.import
 source_file="res://units/Assets/Main Ship - Destruction.png"
 dest_files=["res://.godot/imported/Main Ship - Destruction.png-0920c1ed188e8a1beb1d7f0173926f53.ctex"]
@@ -21,6 +26,10 @@ dest_files=["res://.godot/imported/Main Ship - Destruction.png-0920c1ed188e8a1be
 source_file="res://game_objects/units/assets/Main Ship - Destruction.png"
 dest_files=["res://.godot/imported/Main Ship - Destruction.png-596bb22b24ac8f39539d9cf8300f04e2.ctex"]
 >>>>>>> Stashed changes:game_objects/units/assets/Main Ship - Destruction.png.import
+=======
+source_file="res://game_objects/units/assets/Main Ship - Destruction.png"
+dest_files=["res://.godot/imported/Main Ship - Destruction.png-596bb22b24ac8f39539d9cf8300f04e2.ctex"]
+>>>>>>> Stashed changes
 
 [params]
 

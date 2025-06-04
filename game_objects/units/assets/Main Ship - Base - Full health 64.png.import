@@ -3,17 +3,22 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cm1uq1vpr0htv"
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream:units/assets/Main Ship - Base - Full health 64.png.import
 path="res://.godot/imported/Main Ship - Base - Full health 64.png-c026999d2bc3ed878a8f0e4b0118571e.ctex"
 =======
 path="res://.godot/imported/Main Ship - Base - Full health 64.png-733ea6d25b4c4a3cb9996e1fb1abeb4b.ctex"
 >>>>>>> Stashed changes:game_objects/units/assets/Main Ship - Base - Full health 64.png.import
+=======
+path="res://.godot/imported/Main Ship - Base - Full health 64.png-733ea6d25b4c4a3cb9996e1fb1abeb4b.ctex"
+>>>>>>> Stashed changes
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream:units/assets/Main Ship - Base - Full health 64.png.import
 source_file="res://units/Assets/Main Ship - Base - Full health 64.png"
 dest_files=["res://.godot/imported/Main Ship - Base - Full health 64.png-c026999d2bc3ed878a8f0e4b0118571e.ctex"]
@@ -21,6 +26,10 @@ dest_files=["res://.godot/imported/Main Ship - Base - Full health 64.png-c026999
 source_file="res://game_objects/units/assets/Main Ship - Base - Full health 64.png"
 dest_files=["res://.godot/imported/Main Ship - Base - Full health 64.png-733ea6d25b4c4a3cb9996e1fb1abeb4b.ctex"]
 >>>>>>> Stashed changes:game_objects/units/assets/Main Ship - Base - Full health 64.png.import
+=======
+source_file="res://game_objects/units/assets/Main Ship - Base - Full health 64.png"
+dest_files=["res://.godot/imported/Main Ship - Base - Full health 64.png-733ea6d25b4c4a3cb9996e1fb1abeb4b.ctex"]
+>>>>>>> Stashed changes
 
 [params]
 
