@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://oeacrom4p5b0"]
+
+[ext_resource type="Script" uid="uid://cgprgatxwdo7b" path="res://_test/test.gd" id="1_8a8pi"]
+[ext_resource type="PackedScene" uid="uid://f4lqkm1uwvda" path="res://game_objects/units/scenes/Enemy.tscn" id="2_65205"]
+[ext_resource type="PackedScene" uid="uid://c6hcg7jwuon3w" path="res://game_objects/wave/Wave.tscn" id="2_hrq6i"]
+
+[sub_resource type="Curve2D" id="Curve2D_s3n3v"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 956, 527, 0, 0, 0, 0, 594, 503)
+}
+point_count = 2
+
+[node name="Test" type="Node2D"]
+script = ExtResource("1_8a8pi")
+
+[node name="Wave" parent="." instance=ExtResource("2_hrq6i")]
+script = null
+
+[node name="Path2D" parent="Wave" index="0"]
+curve = SubResource("Curve2D_s3n3v")
+script = null
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Wave/Path2D" index="0"]
+position = Vector2(870.827, 521.353)
+rotation = -3.07539
+progress = 85.3656
+
+[node name="Enemy" parent="Wave/Path2D/PathFollow2D" instance=ExtResource("2_65205")]
+
+[node name="LineFormation" parent="Wave" index="1"]
+script = null
+
+[connection signal="projectile_shot" from="Wave/Path2D/PathFollow2D/Enemy/Shooter" to="." method="_on_shooter_projectile_shot"]
+
+[editable path="Wave"]
+[editable path="Wave/Path2D/PathFollow2D/Enemy"]
+[editable path="Wave/Path2D/PathFollow2D/Enemy/Shooter"]

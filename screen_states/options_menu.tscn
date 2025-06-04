@@ -1,0 +1,109 @@
+[gd_scene load_steps=5 format=3 uid="uid://cq8wr4w6t03vn"]
+
+[ext_resource type="Script" uid="uid://cl4o5itkvhowo" path="res://screen_states/options_menu.gd" id="1_jyqj4"]
+[ext_resource type="Theme" uid="uid://cr64eprmpxfuy" path="res://global/theme/theme.tres" id="2_wpuaw"]
+[ext_resource type="Script" uid="uid://dkjqj1xwapa5u" path="res://screen_states/music_volume.gd" id="3_pi12q"]
+[ext_resource type="Script" uid="uid://bjjxbb6wv86os" path="res://screen_states/sound_volume.gd" id="4_xk7p6"]
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jyqj4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.337255)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -419.0
+offset_top = -232.0
+offset_right = 419.0
+offset_bottom = 232.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_wpuaw")
+theme_override_font_sizes/font_size = 60
+text = "Options"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_wpuaw")
+theme_override_font_sizes/font_size = 40
+text = "Music Volume"
+horizontal_alignment = 1
+
+[node name="Music Volume" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+min_value = -80.0
+max_value = 0.0
+script = ExtResource("3_pi12q")
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_wpuaw")
+theme_override_font_sizes/font_size = 40
+text = "SFX Volume"
+horizontal_alignment = 1
+
+[node name="Sound Volume" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+min_value = -80.0
+max_value = 0.0
+script = ExtResource("4_xk7p6")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -120.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 80
+alignment = 1
+
+[node name="Label4" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_wpuaw")
+theme_override_font_sizes/font_size = 25
+text = "Spacebar : Fire "
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_wpuaw")
+theme_override_font_sizes/font_size = 25
+text = "arrow keys : move left & right "
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_wpuaw")
+theme_override_font_sizes/font_size = 25
+text = "P : Pause"
+horizontal_alignment = 1
+
+[connection signal="value_changed" from="VBoxContainer/Music Volume" to="VBoxContainer/Music Volume" method="_on_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/Sound Volume" to="VBoxContainer/Sound Volume" method="_on_value_changed"]

@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjg4xm1s7ehcp"]
+
+[ext_resource type="Script" uid="uid://3j0oth0qhmj2" path="res://screen_states/game_over.gd" id="1_rvoh3"]
+[ext_resource type="Theme" uid="uid://cr64eprmpxfuy" path="res://global/theme/theme.tres" id="2_ill65"]
+[ext_resource type="Script" uid="uid://co6g1v3ikj31g" path="res://global/theme/highlight_text_effect.gd" id="3_xmgjn"]
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_qwjrg"]
+script = ExtResource("3_xmgjn")
+metadata/_custom_type_script = "uid://co6g1v3ikj31g"
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rvoh3")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_ill65")
+bbcode_enabled = true
+text = "[font size=54][highlight]GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+custom_effects = [SubResource("RichTextEffect_qwjrg")]
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -287.0
+offset_top = 100.0
+offset_right = 287.0
+offset_bottom = 166.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme = ExtResource("2_ill65")
+theme_override_font_sizes/font_size = 50
+text = "Retry"

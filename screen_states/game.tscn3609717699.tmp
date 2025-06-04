@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://6nt2subaon3n"]
+
+[ext_resource type="Script" uid="uid://bq2jhkyb2er2e" path="res://main_states/game.gd" id="1_2fdfw"]
+[ext_resource type="PackedScene" uid="uid://b5rmlfimlmky5" path="res://main_states/game_ui.tscn" id="2_mhc0l"]
+[ext_resource type="Script" uid="uid://co6g1v3ikj31g" path="res://global/theme/highlight_text_effect.gd" id="3_phq4f"]
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_qwjrg"]
+script = ExtResource("3_phq4f")
+metadata/_custom_type_script = "uid://co6g1v3ikj31g"
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_2fdfw")
+
+[node name="GameUI" parent="." instance=ExtResource("2_mhc0l")]
+
+[node name="RichTextLabel" parent="GameUI" index="0"]
+custom_effects = [SubResource("RichTextEffect_qwjrg")]
+
+[editable path="GameUI"]

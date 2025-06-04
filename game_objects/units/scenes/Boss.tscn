@@ -1,0 +1,147 @@
+[gd_scene load_steps=21 format=3 uid="uid://hitj2554n672"]
+
+[ext_resource type="Script" uid="uid://c061jxg6f05yk" path="res://game_objects/units/scripts/boss.gd" id="1_588mx"]
+[ext_resource type="Script" uid="uid://b2cnacw0lfp3t" path="res://game_objects/units/scripts/health.gd" id="2_7xn38"]
+[ext_resource type="Script" uid="uid://dd31iw8aaeh3o" path="res://game_objects/units/scripts/audio_stream_player_2d_extension.gd" id="3_xqycq"]
+[ext_resource type="Texture2D" uid="uid://d3r7jcpmr7ghh" path="res://game_objects/units/assets/Kla'ed - Battlecruiser - Base.png" id="5_nuots"]
+[ext_resource type="Texture2D" uid="uid://d31ea75la8pg4" path="res://game_objects/units/assets/Kla'ed - Battlecruiser - Destruction.png" id="6_wuhao"]
+[ext_resource type="PackedScene" uid="uid://drk6o3f0afku0" path="res://game_objects/projectiles/Scene/BossShooter.tscn" id="7_588mx"]
+[ext_resource type="Script" uid="uid://78hrs141avsx" path="res://game_objects/units/assets/unit_animated_sprite_2d.gd" id="7_mptpj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qrb1j"]
+atlas = ExtResource("6_wuhao")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_412ts"]
+atlas = ExtResource("6_wuhao")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwf2e"]
+atlas = ExtResource("6_wuhao")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gak5w"]
+atlas = ExtResource("6_wuhao")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m73uv"]
+atlas = ExtResource("6_wuhao")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0dv0"]
+atlas = ExtResource("6_wuhao")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h453e"]
+atlas = ExtResource("6_wuhao")
+region = Rect2(1024, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hs7l7"]
+atlas = ExtResource("6_wuhao")
+region = Rect2(1152, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfo42"]
+atlas = ExtResource("6_wuhao")
+region = Rect2(1280, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqmk4"]
+atlas = ExtResource("6_wuhao")
+region = Rect2(1408, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxuxp"]
+atlas = ExtResource("6_wuhao")
+region = Rect2(1536, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llo65"]
+atlas = ExtResource("6_wuhao")
+region = Rect2(1664, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4qk7x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_nuots")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qrb1j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_412ts")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwf2e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gak5w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m73uv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0dv0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h453e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hs7l7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gfo42")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lqmk4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxuxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llo65")
+}],
+"loop": false,
+"name": &"die",
+"speed": 5.0
+}]
+
+[node name="Boss" type="CharacterBody2D"]
+script = ExtResource("1_588mx")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2_7xn38")
+max_health = 50
+
+[node name="DecisionTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+rotation = 3.14159
+scale = Vector2(1.5, 1.5)
+polygon = PackedVector2Array(44.0002, -74.9999, 32.0002, -79.9999, 32.0002, -65.9999, 20.0002, -67.9999, 16.0003, -100, -15.9997, -100, -19.9998, -68.0001, -31.9998, -66.0001, -31.9998, -80.0001, -43.9998, -76.0001, -43.9999, -44.0001, -31.9999, -40.0001, -30, 7.99992, -50, 9.99987, -49.9999, -22.0001, -68, -14.0002, -72.0002, 58.9998, 72.9998, 59.0002, 68, -13.9998, 50.0001, -21.9999, 50, 10.0001, 30, 8.00008, 32.0001, -40.9999, 44.0001, -44.9999)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("3_xqycq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 3.14159
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_4qk7x")
+animation = &"die"
+script = ExtResource("7_mptpj")
+
+[node name="BossShooter" parent="." instance=ExtResource("7_588mx")]
+projectile_count = 12
+
+[node name="Muzzle" parent="BossShooter" index="0"]
+position = Vector2(0, 105.39)
+
+[connection signal="died" from="Health" to="." method="_on_health_died"]
+[connection signal="died" from="Health" to="AudioStreamPlayer2D" method="_on_health_died"]
+[connection signal="died" from="Health" to="AnimatedSprite2D" method="_on_health_died"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+
+[editable path="BossShooter"]

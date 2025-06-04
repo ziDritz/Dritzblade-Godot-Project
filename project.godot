@@ -29,6 +29,7 @@ config/features=PackedStringArray("4.4", "Forward Plus")
 
 [audio]
 
+buses/default_bus_layout="res://global/default_bus_layout.tres"
 manager/sound/bus="Sound"
 manager/sound/pool_1D_size=16
 manager/sound/pool_2D_size=16

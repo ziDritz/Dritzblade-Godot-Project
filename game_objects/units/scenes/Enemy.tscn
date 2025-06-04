@@ -1,0 +1,132 @@
+[gd_scene load_steps=20 format=3 uid="uid://f4lqkm1uwvda"]
+
+[ext_resource type="Script" uid="uid://b07iun3256eve" path="res://game_objects/units/scripts/enemy.gd" id="1_ewkea"]
+[ext_resource type="Script" uid="uid://b2cnacw0lfp3t" path="res://game_objects/units/scripts/health.gd" id="2_26sfu"]
+[ext_resource type="Script" uid="uid://dd31iw8aaeh3o" path="res://game_objects/units/scripts/audio_stream_player_2d_extension.gd" id="3_f4jl6"]
+[ext_resource type="Texture2D" uid="uid://cskguwnc1orie" path="res://game_objects/units/assets/Kla'ed - Scout - Base.png" id="4_fmt4i"]
+[ext_resource type="Texture2D" uid="uid://dvcud4lqhsg33" path="res://game_objects/units/assets/Kla'ed - Scout - Destruction.png" id="5_17bqm"]
+[ext_resource type="Script" uid="uid://78hrs141avsx" path="res://game_objects/units/assets/unit_animated_sprite_2d.gd" id="6_s3271"]
+[ext_resource type="PackedScene" uid="uid://3qci2mm701cn" path="res://game_objects/projectiles/Scene/Shooter.tscn" id="7_1f2bw"]
+[ext_resource type="Resource" uid="uid://xvd5xbhhbx6l" path="res://game_objects/projectiles/Resources/auto_cannon_resource.tres" id="8_yppb8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pgctm"]
+radius = 22.1117
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ff4rs"]
+atlas = ExtResource("5_17bqm")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8y3f"]
+atlas = ExtResource("5_17bqm")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udbfq"]
+atlas = ExtResource("5_17bqm")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibod1"]
+atlas = ExtResource("5_17bqm")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5i5g8"]
+atlas = ExtResource("5_17bqm")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dl0j"]
+atlas = ExtResource("5_17bqm")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yv6ll"]
+atlas = ExtResource("5_17bqm")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cg23"]
+atlas = ExtResource("5_17bqm")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ud8ip"]
+atlas = ExtResource("5_17bqm")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lnio7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_fmt4i")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ff4rs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b8y3f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udbfq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibod1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5i5g8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6dl0j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yv6ll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cg23")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ud8ip")
+}],
+"loop": false,
+"name": &"die",
+"speed": 15.0
+}]
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_ewkea")
+chance_to_shoot = 0.1
+speed = 10.0
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2_26sfu")
+max_health = 1
+
+[node name="DecisionTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4.51262e-06, -1.78)
+rotation = 3.14159
+shape = SubResource("CircleShape2D_pgctm")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("3_f4jl6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 3.14159
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_lnio7")
+script = ExtResource("6_s3271")
+
+[node name="Shooter" parent="." instance=ExtResource("7_1f2bw")]
+rotation = 3.14159
+projectile_resource = ExtResource("8_yppb8")
+
+[node name="Muzzle" type="Marker2D" parent="Shooter"]
+position = Vector2(0, -15.985)
+
+[connection signal="died" from="Health" to="." method="_on_health_died"]
+[connection signal="died" from="Health" to="AnimatedSprite2D" method="_on_health_died"]
+[connection signal="timeout" from="DecisionTimer" to="." method="_on_decision_timer_timeout"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+
+[editable path="Shooter"]

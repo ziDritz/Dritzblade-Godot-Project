@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://2p8t5pmie1mf"]
+
+[ext_resource type="Texture2D" uid="uid://dbup7row71lqi" path="res://game_world/background_seamless_image.jpg" id="1_u5kg4"]
+
+[node name="Camera2D" type="Camera2D"]
+anchor_mode = 0
+metadata/_edit_lock_ = true
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+repeat_size = Vector2(0, 1080)
+autoscroll = Vector2(0, 20)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+texture_filter = 2
+texture = ExtResource("1_u5kg4")
+centered = false
+metadata/_edit_lock_ = true

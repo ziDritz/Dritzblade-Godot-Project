@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhfial3swgy08"]
+
+[ext_resource type="Script" uid="uid://btrv24l6ptjc4" path="res://screen_states/main_menu.gd" id="1_5ms5j"]
+[ext_resource type="Theme" uid="uid://cr64eprmpxfuy" path="res://global/theme/theme.tres" id="1_ku1ks"]
+[ext_resource type="PackedScene" uid="uid://2p8t5pmie1mf" path="res://game_world/camera.tscn" id="3_wlfof"]
+[ext_resource type="PackedScene" uid="uid://cra5svle4din1" path="res://game_objects/units/scenes/Player.tscn" id="4_bgqmh"]
+[ext_resource type="PackedScene" uid="uid://cq8wr4w6t03vn" path="res://screen_states/options_menu.tscn" id="5_6spx1"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5ms5j")
+
+[node name="Camera2D" parent="." instance=ExtResource("3_wlfof")]
+
+[node name="Player" parent="." instance=ExtResource("4_bgqmh")]
+position = Vector2(960, 1000)
+speed = 0.0
+direction = Vector2(0, -1)
+
+[node name="ButtonVBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -419.0
+offset_top = -232.0
+offset_right = 419.0
+offset_bottom = 232.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="StartGameButton" type="Button" parent="ButtonVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_ku1ks")
+theme_override_font_sizes/font_size = 50
+text = "Start Game"
+
+[node name="OptionsButton" type="Button" parent="ButtonVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_ku1ks")
+theme_override_font_sizes/font_size = 50
+text = "Options"
+
+[node name="ExitButton" type="Button" parent="ButtonVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_ku1ks")
+theme_override_font_sizes/font_size = 50
+text = "Exit"
+
+[node name="OptionsMenu" parent="." instance=ExtResource("5_6spx1")]
+visible = false
+layout_mode = 1
+
+[connection signal="projectile_shot" from="Player/Shooter" to="." method="_on_shooter_projectile_shot"]
+[connection signal="pressed" from="ButtonVBoxContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="ButtonVBoxContainer/OptionsButton" to="." method="_on_button_options_pressed"]
+[connection signal="pressed" from="ButtonVBoxContainer/ExitButton" to="." method="_on_button_exit_pressed"]
+
+[editable path="Player"]
+[editable path="Player/Shooter"]

@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://6nt2subaon3n"]
+
+[ext_resource type="Script" uid="uid://bq2jhkyb2er2e" path="res://screen_states/game.gd" id="1_2fdfw"]
+[ext_resource type="PackedScene" uid="uid://b5rmlfimlmky5" path="res://screen_states/game_ui.tscn" id="2_mhc0l"]
+[ext_resource type="Script" uid="uid://co6g1v3ikj31g" path="res://global/theme/highlight_text_effect.gd" id="3_phq4f"]
+[ext_resource type="PackedScene" uid="uid://cq8wr4w6t03vn" path="res://screen_states/options_menu.tscn" id="5_nlyhc"]
+[ext_resource type="PackedScene" uid="uid://bjg4xm1s7ehcp" path="res://screen_states/game_over.tscn" id="5_yigvy"]
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_qwjrg"]
+script = ExtResource("3_phq4f")
+metadata/_custom_type_script = "uid://co6g1v3ikj31g"
+
+[node name="Game" type="Node"]
+script = ExtResource("1_2fdfw")
+fade_time = 2.0
+await_time = 1.0
+
+[node name="GameUI" parent="." instance=ExtResource("2_mhc0l")]
+
+[node name="RichTextLabel" parent="GameUI" index="0"]
+visible = true
+custom_effects = [SubResource("RichTextEffect_qwjrg")]
+
+[node name="OptionsMenu" parent="." instance=ExtResource("5_nlyhc")]
+visible = false
+
+[node name="GameOver" parent="." instance=ExtResource("5_yigvy")]
+visible = false
+
+[editable path="GameUI"]

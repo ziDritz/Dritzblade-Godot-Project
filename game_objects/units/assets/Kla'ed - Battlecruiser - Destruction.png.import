@@ -1,0 +1,43 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://d31ea75la8pg4"
+<<<<<<< Updated upstream:units/assets/Kla'ed - Battlecruiser - Destruction.png.import
+path="res://.godot/imported/Kla'ed - Battlecruiser - Destruction.png-fcafca239a9f4f9cd5c7c04e35ffa257.ctex"
+=======
+path="res://.godot/imported/Kla'ed - Battlecruiser - Destruction.png-64430e30c0395163619cc730102696c5.ctex"
+>>>>>>> Stashed changes:game_objects/units/assets/Kla'ed - Battlecruiser - Destruction.png.import
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+<<<<<<< Updated upstream:units/assets/Kla'ed - Battlecruiser - Destruction.png.import
+source_file="res://units/Assets/Kla'ed - Battlecruiser - Destruction.png"
+dest_files=["res://.godot/imported/Kla'ed - Battlecruiser - Destruction.png-fcafca239a9f4f9cd5c7c04e35ffa257.ctex"]
+=======
+source_file="res://game_objects/units/assets/Kla'ed - Battlecruiser - Destruction.png"
+dest_files=["res://.godot/imported/Kla'ed - Battlecruiser - Destruction.png-64430e30c0395163619cc730102696c5.ctex"]
+>>>>>>> Stashed changes:game_objects/units/assets/Kla'ed - Battlecruiser - Destruction.png.import
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1
