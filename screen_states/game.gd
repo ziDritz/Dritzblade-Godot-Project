@@ -2,8 +2,6 @@ class_name Game
 extends Node
 
 
-signal game_over
-
 const SPACE_SHOOTER_LEVEL_SCENE = preload("res://game_world/space_shooter_level.tscn")
 const WAVES_LEVEL_1_SCENE = preload("res://game_objects/wave/waves_level_1.tscn")
 const WAVES_LEVEL_2_SCENE = preload("res://game_objects/wave/waves_level_2.tscn")
@@ -28,8 +26,8 @@ func _ready():
 	_go_to_level(GameLevel.ONE)
 
 
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("pause"):
+func _input(event):
+	if event.is_action_pressed("pause"):
 		if is_game_paused == false:
 			_set_pause(true)
 			return
@@ -83,9 +81,9 @@ func _set_pause(_bool: bool):
 		is_game_paused = false
 
 
-func _set_game_over():
+func _on_space_shooter_level_game_over() -> void:
 	game_ui.set_game_over()
 
 
-func _on_space_shooter_level_game_over() -> void:
-	_set_game_over()
+func _on_space_shooter_level_level_cleared() -> void:
+	pass # Replace with function body.

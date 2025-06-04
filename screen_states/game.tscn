@@ -35,6 +35,7 @@ libraries = {
 color = Color(0, 0, 0, 1)
 
 [connection signal="game_over" from="SpaceShooterLevel" to="." method="_on_space_shooter_level_game_over"]
+[connection signal="level_cleared" from="SpaceShooterLevel" to="." method="_on_space_shooter_level_level_cleared"]
 
 [editable path="GameUI"]
 [editable path="SceneTransitionPlayer"]
