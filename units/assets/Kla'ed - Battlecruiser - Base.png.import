@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d3r7jcpmr7ghh"
-path="res://.godot/imported/Kla'ed - Battlecruiser - Base.png-b105dab7d49c803405866a15221ea81d.ctex"
+path="res://.godot/imported/Kla'ed - Battlecruiser - Base.png-c392811fcee6db9733a1aa6d87c9584c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://units/assets/Kla'ed - Battlecruiser - Base.png"
-dest_files=["res://.godot/imported/Kla'ed - Battlecruiser - Base.png-b105dab7d49c803405866a15221ea81d.ctex"]
+source_file="res://units/Assets/Kla'ed - Battlecruiser - Base.png"
+dest_files=["res://.godot/imported/Kla'ed - Battlecruiser - Base.png-c392811fcee6db9733a1aa6d87c9584c.ctex"]
 
 [params]
 

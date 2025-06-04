@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cskguwnc1orie"
-path="res://.godot/imported/Kla'ed - Scout - Base.png-7d229dacca9feff887ba7e4287ed1922.ctex"
+path="res://.godot/imported/Kla'ed - Scout - Base.png-e96beda199d5f9a9c126f74b35c31557.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://units/assets/Kla'ed - Scout - Base.png"
-dest_files=["res://.godot/imported/Kla'ed - Scout - Base.png-7d229dacca9feff887ba7e4287ed1922.ctex"]
+source_file="res://units/Assets/Kla'ed - Scout - Base.png"
+dest_files=["res://.godot/imported/Kla'ed - Scout - Base.png-e96beda199d5f9a9c126f74b35c31557.ctex"]
 
 [params]
 
