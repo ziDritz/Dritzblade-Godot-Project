@@ -16,8 +16,10 @@ points = PackedVector2Array(320, 320, 1600, 320)
 default_color = Color(1, 1, 1, 0)
 script = ExtResource("4_5ihap")
 
-[node name="Node" type="Node" parent="LineFormation"]
+[node name="IdleMovement" type="Node" parent="LineFormation"]
 script = ExtResource("4_m51ay")
+amplitude = 20.0
+frequency = 6.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5

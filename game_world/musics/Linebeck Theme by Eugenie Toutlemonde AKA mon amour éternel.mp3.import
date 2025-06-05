@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d08eglmacaxvo"
+path="res://.godot/imported/Linebeck Theme by Eugenie Toutlemonde AKA mon amour éternel.mp3-aeb63cece41e68d33f295fb3ae356645.mp3str"
+
+[deps]
+
+source_file="res://game_world/musics/Linebeck Theme by Eugenie Toutlemonde AKA mon amour éternel.mp3"
+dest_files=["res://.godot/imported/Linebeck Theme by Eugenie Toutlemonde AKA mon amour éternel.mp3-aeb63cece41e68d33f295fb3ae356645.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

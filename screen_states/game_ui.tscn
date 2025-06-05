@@ -1,14 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5rmlfimlmky5"]
+[gd_scene load_steps=10 format=3 uid="uid://b5rmlfimlmky5"]
 
 [ext_resource type="Script" uid="uid://buyfh6jeyc3c7" path="res://screen_states/game_ui.gd" id="1_eq608"]
 [ext_resource type="Theme" uid="uid://cr64eprmpxfuy" path="res://global/theme/theme.tres" id="2_y5ur5"]
 [ext_resource type="Script" uid="uid://co6g1v3ikj31g" path="res://global/theme/highlight_text_effect.gd" id="3_6d26k"]
 [ext_resource type="PackedScene" uid="uid://cq8wr4w6t03vn" path="res://screen_states/options_menu.tscn" id="4_nmmt3"]
 [ext_resource type="PackedScene" uid="uid://bjg4xm1s7ehcp" path="res://screen_states/game_over.tscn" id="5_ai785"]
+[ext_resource type="Script" uid="uid://bmcyo8bpri5au" path="res://game_objects/boss/boss_life_bar.gd" id="6_ai785"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_qwjrg"]
 script = ExtResource("3_6d26k")
 metadata/_custom_type_script = "uid://co6g1v3ikj31g"
+
+[sub_resource type="Gradient" id="Gradient_nmmt3"]
+offsets = PackedFloat32Array(0, 0.279621, 1)
+colors = PackedColorArray(1, 0, 0, 1, 0.481043, 0.518957, 0, 1, 0, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ai785"]
+gradient = SubResource("Gradient_nmmt3")
+width = 472
+height = 32
 
 [node name="GameUI" type="CanvasLayer"]
 script = ExtResource("1_eq608")
@@ -32,3 +42,17 @@ visible = false
 
 [node name="GameOver" parent="." instance=ExtResource("5_ai785")]
 visible = false
+
+[node name="BossLifeBar" type="TextureProgressBar" parent="."]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -236.0
+offset_top = 35.0
+offset_right = 236.0
+offset_bottom = 67.0
+grow_horizontal = 2
+value = 100.0
+texture_progress = SubResource("GradientTexture2D_ai785")
+script = ExtResource("6_ai785")

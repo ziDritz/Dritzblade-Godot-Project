@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://uulp4tejmdjg"]
+
+[ext_resource type="Curve2D" uid="uid://iv45dovav8m8" path="res://game_objects/boss/boss_curves/entrance_curve.tres" id="1_qshkc"]
+[ext_resource type="Script" uid="uid://54ksyhgfbxto" path="res://game_objects/boss/path_follow_2D_boss.gd" id="3_farey"]
+[ext_resource type="PackedScene" uid="uid://c37xhnquv3t4n" path="res://game_objects/units/scenes/Boss.tscn" id="4_0gyq5"]
+
+[node name="Path2D" type="Path2D"]
+curve = ExtResource("1_qshkc")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(-448, 128)
+rotates = false
+loop = false
+script = ExtResource("3_farey")
+
+[node name="Boss" parent="PathFollow2D" node_paths=PackedStringArray("path_2D", "path_follow_2D") instance=ExtResource("4_0gyq5")]
+path_2D = NodePath("../..")
+path_follow_2D = NodePath("..")
+speed_move_entrance = 600
+speed_move_1 = 500
+speed_move_2 = 750
+
+[node name="BossShooter" parent="PathFollow2D/Boss" index="4"]
+first_angle_side = -45.0
+second_angle_side = 45.0
+
+[connection signal="progess_ratio_ended" from="PathFollow2D" to="PathFollow2D/Boss" method="_on_path_follow_2d_progess_ratio_ended"]
+
+[editable path="PathFollow2D/Boss"]
+[editable path="PathFollow2D/Boss/BossShooter"]

@@ -1,8 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://bbfhkg3bf3od7"]
+[gd_scene load_steps=3 format=3 uid="uid://bbfhkg3bf3od7"]
 
 [ext_resource type="Script" uid="uid://c2o6tdh4hooep" path="res://screen_states/ending.gd" id="1_js07y"]
+[ext_resource type="Texture2D" uid="uid://c5qg2fhjsndqo" path="res://screen_states/ending_image.png" id="2_okhv7"]
 
 [node name="Ending" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_js07y")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_okhv7")

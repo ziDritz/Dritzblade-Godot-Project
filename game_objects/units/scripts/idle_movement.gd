@@ -1,11 +1,14 @@
 extends Node
 
-@onready var parent: Node2D = $".."
 
 # Pendulum movement variables
-var amplitude: float = 20.0  # The maximum distance the enemy moves from the center
-var frequency: float = 6.0    # The speed of the pendulum movement
+@export var amplitude: float # The maximum distance the enemy moves from the center
+@export var frequency: float # The speed of the pendulum movement
+
 var pendulum_velocity: Vector2 = Vector2.ZERO
+
+@onready var parent: Node2D = $".."
+
 
 func _physics_process(delta):
 

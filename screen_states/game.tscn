@@ -14,6 +14,7 @@ metadata/_custom_type_script = "uid://co6g1v3ikj31g"
 script = ExtResource("1_2fdfw")
 
 [node name="SceneTransitionPlayer" parent="." instance=ExtResource("5_yigvy")]
+layer = 2
 
 [node name="GameUI" parent="." instance=ExtResource("2_mhc0l")]
 fade_time = 1.0

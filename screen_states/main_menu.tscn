@@ -5,10 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://2p8t5pmie1mf" path="res://game_world/camera.tscn" id="3_wlfof"]
 [ext_resource type="PackedScene" uid="uid://dqks83s787sgm" path="res://game_objects/units/scenes/Player.tscn" id="4_bgqmh"]
 [ext_resource type="PackedScene" uid="uid://cq8wr4w6t03vn" path="res://screen_states/options_menu.tscn" id="5_6spx1"]
-[ext_resource type="AnimationLibrary" uid="uid://bcofpxtkjq2db" path="res://game_objects/units/player_transitions.res" id="6_ixvb1"]
+[ext_resource type="AnimationLibrary" uid="uid://sbfk3hoq3fm3" path="res://game_objects/units/player_transitions.res" id="6_ixvb1"]
 
 [sub_resource type="Animation" id="Animation_ixvb1"]
 resource_name = "RESET"
+length = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -16,10 +17,10 @@ tracks/0/path = NodePath("Player:is_controlable")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": []
+"values": [true]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -44,6 +45,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Player:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(960, 980)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g75j0"]

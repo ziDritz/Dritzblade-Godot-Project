@@ -7,6 +7,7 @@ signal game_over
 
 var wave_count: int
 var current_game_level: Game.GameLevel
+var boss: CharacterBody2D
 
 @onready var timer_level: Timer = $TimerLevel
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
@@ -14,12 +15,12 @@ var current_game_level: Game.GameLevel
 @onready var player_animation_player: AnimationPlayer = $PlayerAnimationPlayer
 
 
-func init(_waves_scene: PackedScene, _current_game_level: Game.GameLevel):
+func init(_packed_scene: PackedScene, _level_type: String, _current_game_level: Game.GameLevel):
 	wave_count = 0
 	current_game_level = _current_game_level
 	
-	if _waves_scene != null:
-		var waves = _waves_scene.instantiate()
+	if _level_type == "Waves":
+		var waves = _packed_scene.instantiate()
 		add_child(waves)
 		
 		for wave: Wave in waves.get_children():
@@ -31,9 +32,15 @@ func init(_waves_scene: PackedScene, _current_game_level: Game.GameLevel):
 			wave.reparent(self)
 			
 		waves.queue_free()
-		
+	
+	if _level_type == "Boss":
+		var boss_path_2D = _packed_scene.instantiate()
+		boss = boss_path_2D.get_child(0).get_child(0)
+		boss.died.connect(_on_boss_died)
+		boss.shot.connect(_on_shooter_projectile_shot)
+		add_child(boss_path_2D)
+	
 	player.init()
-
 	timer_level.start()
 
 
@@ -43,6 +50,10 @@ func animate_player_in():
 
 func animate_player_out():
 	player_animation_player.play("player_transitions/player_transition_out")
+
+
+func _on_boss_died():
+	level_cleared.emit(current_game_level)
 
 
 func _on_wave_destroyed(_wave) -> void:
@@ -65,6 +76,9 @@ func _on_shooter_projectile_shot(projectile: Projectile):
 		projectile.direction = Vector2.DOWN
 		projectile.rotation = 180.0
 
+
+func _on_boss_shot(projectile: Projectile):
+	add_child(projectile)
 
 func _on_player_died() -> void:
 	game_over.emit()

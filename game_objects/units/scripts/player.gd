@@ -27,6 +27,12 @@ func _process(_delta):
 		if Input.is_action_pressed("shoot"):
 			if shooter != null: shooter.shoot()
 
+		if Input.is_action_just_pressed("slow_down"):
+			speed = 150
+		
+		if Input.is_action_just_released("slow_down"):
+			speed = 500
+
 	
 func _physics_process(_delta):
 	velocity = direction * speed

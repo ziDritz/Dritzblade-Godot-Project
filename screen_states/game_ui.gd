@@ -8,6 +8,7 @@ extends CanvasLayer
 @onready var rich_text_label = $RichTextLabel
 @onready var pause_menu: OptionsMenu = $PauseMenu
 @onready var game_over: GameOver = $GameOver
+@onready var boss_life_bar: TextureProgressBar = $BossLifeBar
 
 
 #func transient_rich_text_label(text: String):
@@ -47,7 +48,11 @@ func transient_rich_text_label(text: String) -> void:
 	rich_text_label.visible = false
 
 
-
+func set_boss_ui(boss: CharacterBody2D):
+	boss_life_bar.init(boss)
+	boss_life_bar.visible = true
+	
+	
 func set_pause(_bool: bool):
 	pause_menu.visible = _bool
 	

@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://c37xhnquv3t4n"]
+[gd_scene load_steps=21 format=3 uid="uid://c37xhnquv3t4n"]
 
 [ext_resource type="Script" uid="uid://c061jxg6f05yk" path="res://game_objects/units/scripts/boss.gd" id="1_588mx"]
 [ext_resource type="Script" uid="uid://b2cnacw0lfp3t" path="res://game_objects/units/scripts/health.gd" id="2_7xn38"]
 [ext_resource type="Texture2D" uid="uid://sf2huycoe0si" path="res://game_objects/units/assets/Kla'ed - Battlecruiser - Base.png" id="5_nuots"]
 [ext_resource type="Texture2D" uid="uid://h3b2kys8f0tq" path="res://game_objects/units/assets/Kla'ed - Battlecruiser - Destruction.png" id="6_wuhao"]
+[ext_resource type="Script" uid="uid://cuanqxj60nbp2" path="res://game_objects/units/scripts/idle_movement.gd" id="7_0n5q6"]
 [ext_resource type="PackedScene" uid="uid://drk6o3f0afku0" path="res://game_objects/projectiles/Scene/BossShooter.tscn" id="7_588mx"]
 [ext_resource type="Script" uid="uid://78hrs141avsx" path="res://game_objects/units/assets/unit_animated_sprite_2d.gd" id="7_mptpj"]
 
@@ -116,6 +117,7 @@ max_health = 50
 
 [node name="DecisionTimer" type="Timer" parent="."]
 wait_time = 0.5
+one_shot = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 rotation = 3.14159
@@ -135,8 +137,15 @@ projectile_count = 12
 [node name="Muzzle" parent="BossShooter" index="0"]
 position = Vector2(0, 105.39)
 
+[node name="IdleMovement" type="Node" parent="."]
+script = ExtResource("7_0n5q6")
+amplitude = 20.0
+frequency = 1.0
+
 [connection signal="died" from="Health" to="." method="_on_health_died"]
 [connection signal="died" from="Health" to="AnimatedSprite2D" method="_on_health_died"]
+[connection signal="timeout" from="DecisionTimer" to="." method="_on_decision_timer_timeout"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="projectile_shot" from="BossShooter" to="." method="_on_boss_shooter_projectile_shot"]
 
 [editable path="BossShooter"]

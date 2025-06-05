@@ -16,8 +16,7 @@ var current_state: MainState
 
 
 func _ready() -> void:
-	MusicManager.loaded.connect(on_music_manager_loaded)
-	set_state(MainState.MAIN_MENU)
+	set_state(MainState.PLAYING)
 
 
 func set_state(new_state):
@@ -38,10 +37,12 @@ func _go_to_main_menu():
 	main_menu = MAIN_MENU_SCENE.instantiate()
 	main_menu.button_start_pressed.connect(_on_main_menu_button_start_pressed)
 	add_child(main_menu)
+	MusicManager.play("musics", "menu_music", 1.0, true)
 	
 	
 func _go_to_game():
-	main_menu.animate_player_out()
+	if main_menu != null:
+		main_menu.animate_player_out()
 	await get_tree().create_timer(2.0).timeout
 	
 	scene_transition_player.play_transition("animation_ressources/fade_out")
@@ -54,8 +55,9 @@ func _go_to_game():
 	# J'ai mis le $SceneTransitionPlayer de main sur le layer 2
 	# J'ai mis le $SceneTransitionPlayer de game sur le layer 1
 	game = GAME_SCENE.instantiate()
+	game.game_ended.connect(_go_to_ending)
 	add_child(game)		
-	game._go_to_level(game.GameLevel.THREE)		
+	game._go_to_level(game.GameLevel.BOSS)		
 	
 	if main_menu != null: main_menu.queue_free()
 	if ending != null: ending.queue_free()
@@ -63,15 +65,23 @@ func _go_to_game():
 
 	
 func _go_to_ending():
-	pass
+	
+	
+	ending = ENDING_SCENE.instantiate()
+	add_child(ending)
+	MusicManager.play("musics", "ending", 3.0, true)
+	
 
-func on_music_manager_loaded() -> void:
-	MusicManager.play("musics", "menu_music")
+	
+	scene_transition_player.play_transition("animation_ressources/fade_in")
+	if main_menu != null: main_menu.queue_free()
+	if game != null: game.queue_free()
 
-
-#func _on_final_screen_cleared():
-	#current_level = MAIN_MENU_SCENE.instantiate()
-	#add_child(current_level)
+	await get_tree().create_timer(10.0).timeout
+	scene_transition_player.play_transition("animation_ressources/fade_out")
+	await scene_transition_player.animation_finished
+	
+	_go_to_main_menu()
 
 
 func _on_main_menu_button_start_pressed() -> void:
