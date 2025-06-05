@@ -24,7 +24,7 @@ resources_spreadsheet_view/freeze_first_column=true
 [application]
 
 config/name="Dritzblade"
-run/main_scene="uid://cwkw4ps14kknl"
+run/main_scene="uid://bh5v0vcroayry"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
 [audio]
@@ -39,9 +39,9 @@ manager/music/bus="Music"
 
 [autoload]
 
+Signal_Debugger="res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
 SoundManager="*res://addons/resonate/sound_manager/sound_manager.gd"
 MusicManager="*res://addons/resonate/music_manager/music_manager.gd"
-Signal_Debugger="res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
 
 [display]
 

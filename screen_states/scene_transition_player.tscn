@@ -1,11 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cmt6nkflprs7q"]
+[gd_scene load_steps=3 format=3 uid="uid://cmt6nkflprs7q"]
 
 [ext_resource type="Script" uid="uid://cy7syifm1pitk" path="res://screen_states/scene_transition_player.gd" id="1_xcuee"]
+[ext_resource type="AnimationLibrary" uid="uid://cutyrbtpddlwp" path="res://scene_transition_player/animation_ressources.res" id="2_mo1ah"]
 
 [node name="SceneTransitionPlayer" type="CanvasLayer"]
 script = ExtResource("1_xcuee")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -14,6 +13,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0, 0, 0, 0)
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"animation_ressources": ExtResource("2_mo1ah")
+}
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

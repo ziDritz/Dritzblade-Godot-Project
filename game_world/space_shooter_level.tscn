@@ -1,11 +1,56 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnrc2yro6533p"]
+[gd_scene load_steps=9 format=3 uid="uid://cnrc2yro6533p"]
 
 [ext_resource type="Script" uid="uid://bkfsr1r06jaq1" path="res://game_world/space_shooter_level.gd" id="1_hggu6"]
 [ext_resource type="PackedScene" uid="uid://2p8t5pmie1mf" path="res://game_world/camera.tscn" id="2_44yt4"]
 [ext_resource type="Script" uid="uid://btp7tr7j06bg2" path="res://game_world/audio_stream_player_level.gd" id="3_uwvgb"]
-[ext_resource type="PackedScene" uid="uid://nx3nkq8x40ws" path="res://game_objects/units/scenes/player.tscn" id="6_4wdgg"]
+[ext_resource type="AnimationLibrary" uid="uid://bcofpxtkjq2db" path="res://game_objects/units/player_transitions.res" id="5_j7mj5"]
+[ext_resource type="PackedScene" uid="uid://dqks83s787sgm" path="res://game_objects/units/scenes/Player.tscn" id="6_4wdgg"]
 
 [sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_cnv2j"]
+
+[sub_resource type="Animation" id="Animation_mwrb6"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:is_controlable")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [500.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player:direction")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hggu6"]
+_data = {
+&"RESET": SubResource("Animation_mwrb6")
+}
 
 [node name="SpaceShooterLevel" type="Node2D"]
 script = ExtResource("1_hggu6")
@@ -15,16 +60,21 @@ script = ExtResource("1_hggu6")
 [node name="TimerLevel" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
-autostart = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 4
 stream = SubResource("AudioStreamPolyphonic_cnv2j")
 volume_db = -9.0
 script = ExtResource("3_uwvgb")
 
 [node name="Player" parent="." instance=ExtResource("6_4wdgg")]
 position = Vector2(960, 1180)
-is_controlable = false
+
+[node name="PlayerAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_hggu6"),
+&"player_transitions": ExtResource("5_j7mj5")
+}
 
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="projectile_shot" from="Player/Shooter" to="." method="_on_shooter_projectile_shot"]

@@ -8,7 +8,6 @@ class_name Enemy extends CharacterBody2D
 
 @onready var decision_timer: Timer = $DecisionTimer
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
-@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var shooter: Shooter = $Shooter
 @onready var health: Health = $Health
@@ -31,7 +30,7 @@ func _on_decision_timer_timeout() -> void:
 		shooter.shoot()
 
 
-func _on_health_died(character_body_2D: CharacterBody2D) -> void:
+func _on_health_died(_character_body_2D: CharacterBody2D) -> void:
 	SoundManager.play("SFXs", "enemy_explosion")
 	shooter.queue_free()
 	decision_timer.queue_free()

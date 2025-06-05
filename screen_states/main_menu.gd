@@ -6,6 +6,7 @@ signal button_start_pressed
 @onready var button_v_box_container: VBoxContainer = $ButtonVBoxContainer
 @onready var options_menu: Control = $OptionsMenu
 @onready var player: Player = $Player
+@onready var player_animation_player: AnimationPlayer = $PlayerAnimationPlayer
 
 enum MainMenuState { MAIN_MENU, OPTIONS }
 
@@ -41,13 +42,18 @@ func _on_start_game_button_pressed() -> void:
 	button_start_pressed.emit()
 	player.is_controlable = false
 
+
 func _on_button_options_pressed() -> void:
 	set_state(MainMenuState.OPTIONS)
 
 
 func _on_button_exit_pressed() -> void:
 	get_tree().quit()
-	
 
-func _on_shooter_projectile_shot(projectile: Projectile) -> void:
+
+func animate_player_out():
+	player_animation_player.play("player_transitions/player_transition_out")
+
+
+func _on_player_shot(projectile: Projectile) -> void:
 	add_child(projectile)

@@ -2,6 +2,8 @@ class_name Game
 extends Node
 
 
+signal game_ended
+
 const SPACE_SHOOTER_LEVEL_SCENE = preload("res://game_world/space_shooter_level.tscn")
 const WAVES_LEVEL_1_SCENE = preload("res://game_objects/wave/waves_level_1.tscn")
 const WAVES_LEVEL_2_SCENE = preload("res://game_objects/wave/waves_level_2.tscn")
@@ -10,20 +12,13 @@ const SPACE_SHOOTER_LEVEL_BOSS_SCENE = preload("res://game_world/space_shooter_l
 
 enum GameLevel { ONE, TWO, THREE, BOSS }
 
-# Trasition variables
-@export var fade_time: float
-@export var await_time: float
-
 var current_waves
 var is_game_paused: bool = false
 
 @onready var game_ui: GameUI = $GameUI
 @onready var space_shooter_level: SpaceShooterLevel = $SpaceShooterLevel
+@onready var space_shooter_boss_level: SpaceShooterBossLevel
 @onready var scene_transition_player: SceneTransitionPlayer = $SceneTransitionPlayer
-
-
-func _ready():
-	_go_to_level(GameLevel.ONE)
 
 
 func _input(event):
@@ -36,7 +31,6 @@ func _input(event):
 			return
 
 
-	
 func _go_to_level(game_level: GameLevel):
 	
 	var waves: PackedScene
@@ -64,10 +58,23 @@ func _go_to_level(game_level: GameLevel):
 			ui_text = "BOSS LEVEL"
 			music_string = "boss_music"
 	
-	space_shooter_level.init(waves)
-	game_ui.transient_rich_text_label(ui_text)
-	MusicManager.play("musics", music_string, 3.0, true)
-	scene_transition_player.play_transition("level_transition/level_transition_in")
+			if space_shooter_level != null: space_shooter_level.queue_free()
+			space_shooter_boss_level = SPACE_SHOOTER_LEVEL_BOSS_SCENE.instantiate()
+			game_ui.transient_rich_text_label(ui_text)
+			MusicManager.play("musics", music_string, 3.0, true)
+			add_child(space_shooter_boss_level)
+			scene_transition_player.play_transition("animation_ressources/fade_in")
+			space_shooter_boss_level.animate_player_in()
+			
+	
+	if game_level != GameLevel.BOSS:
+		space_shooter_level.init(waves, game_level)
+		game_ui.transient_rich_text_label(ui_text)
+		MusicManager.play("musics", music_string, 3.0, true)
+		scene_transition_player.play_transition("animation_ressources/fade_in")
+		space_shooter_level.animate_player_in()
+	
+
 	
 func _set_pause(_bool: bool):
 	if _bool == true:
@@ -85,5 +92,26 @@ func _on_space_shooter_level_game_over() -> void:
 	game_ui.set_game_over()
 
 
-func _on_space_shooter_level_level_cleared() -> void:
-	pass # Replace with function body.
+func _on_space_shooter_level_level_cleared(_current_game_level) -> void:
+	
+	# Transition out
+	game_ui.transient_rich_text_label("LEVEL CLEARED")
+	await get_tree().create_timer(2.0).timeout
+	space_shooter_level.animate_player_out()
+	await get_tree().create_timer(2.0).timeout
+	scene_transition_player.play_transition("animation_ressources/fade_out")
+	await scene_transition_player.animation_finished
+
+	
+	match _current_game_level:
+		GameLevel.ONE:
+			_go_to_level(GameLevel.TWO)
+			
+		GameLevel.TWO:
+			_go_to_level(GameLevel.THREE)
+			
+		GameLevel.THREE:
+			_go_to_level(GameLevel.BOSS)
+			
+		GameLevel.BOSS:
+			game_ended.emit()

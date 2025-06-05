@@ -31,12 +31,6 @@ func set_state(new_state):
 			_go_to_ending()
 
 
-
-
-
-
-
-
 func _go_to_main_menu():
 	if game != null: game.queue_free()
 	if ending != null: ending.queue_free()
@@ -44,20 +38,29 @@ func _go_to_main_menu():
 	main_menu = MAIN_MENU_SCENE.instantiate()
 	main_menu.button_start_pressed.connect(_on_main_menu_button_start_pressed)
 	add_child(main_menu)
-
+	
 	
 func _go_to_game():
-	scene_transition_player.play_transition('main_animations/fade_out')
+	main_menu.animate_player_out()
+	await get_tree().create_timer(2.0).timeout
+	
+	scene_transition_player.play_transition("animation_ressources/fade_out")
 	await scene_transition_player.animation_finished
+	
+	
+	# En théorie (mais vraiment je suis pas sûr)
+	# On instancie le game avec le main menu pour éviter
+	# qu'une frame saute entre les deux
+	# J'ai mis le $SceneTransitionPlayer de main sur le layer 2
+	# J'ai mis le $SceneTransitionPlayer de game sur le layer 1
+	game = GAME_SCENE.instantiate()
+	add_child(game)		
+	game._go_to_level(game.GameLevel.THREE)		
 	
 	if main_menu != null: main_menu.queue_free()
 	if ending != null: ending.queue_free()
 	
-	game = GAME_SCENE.instantiate()
-	add_child(game)
-	
-	scene_transition_player.play_transition('main_animations/fade_in')
-	
+
 	
 func _go_to_ending():
 	pass

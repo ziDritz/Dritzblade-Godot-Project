@@ -1,19 +1,18 @@
+class_name SpaceShooterBossLevel
 extends Node2D
 
 signal level_transition_animation_out_finished
 signal level_cleared
-signal level_paused(level)
 
 @export var boss: CharacterBody2D
 
 @onready var player: Player = $Player
-@onready var level_transition: AnimationPlayer = $LevelTransition
+@onready var player_animation_player: AnimationPlayer = $PlayerAnimationPlayer
 
-func _ready() -> void:
-	$LevelTransition.play("level_transition_in")
 
 		# on boss killed
-
+func init():
+	player.init()
 
 
 func _on_path_follow_2d_progess_ratio_ended(end_position: Vector2, character_body_2D: CharacterBody2D) -> void:
@@ -39,11 +38,17 @@ func _on_shooter_projectile_shot(projectile: Projectile) -> void:
 
 func _on_boss_tree_exited() -> void:
 	level_cleared.emit()
-	await get_tree().create_timer(3.0).timeout
-	player.is_controlable = false
-	level_transition.play("level_transition_out")
+
 
 func _on_level_transition_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "level_transition_out":
 		level_transition_animation_out_finished.emit()
 		queue_free()
+
+
+func animate_player_in():
+	player_animation_player.play("player_transitions/player_transition_in")
+
+
+func animate_player_out():
+	player_animation_player.play("player_transitions/player_transition_out")

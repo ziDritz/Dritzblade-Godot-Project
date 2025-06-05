@@ -3,7 +3,6 @@ extends Node
 
 signal max_health_changed(diff: int)
 signal health_changed(diff: int)
-signal health_depleted
 signal died(character_body_2D: CharacterBody2D)
 
 @export var max_health: int = 3 : set = set_max_health, get = get_max_health

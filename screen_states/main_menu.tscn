@@ -1,10 +1,55 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhfial3swgy08"]
+[gd_scene load_steps=9 format=3 uid="uid://dhfial3swgy08"]
 
 [ext_resource type="Script" uid="uid://btrv24l6ptjc4" path="res://screen_states/main_menu.gd" id="1_5ms5j"]
 [ext_resource type="Theme" uid="uid://cr64eprmpxfuy" path="res://global/theme/theme.tres" id="1_ku1ks"]
 [ext_resource type="PackedScene" uid="uid://2p8t5pmie1mf" path="res://game_world/camera.tscn" id="3_wlfof"]
-[ext_resource type="PackedScene" uid="uid://nx3nkq8x40ws" path="res://game_objects/units/scenes/player.tscn" id="4_bgqmh"]
+[ext_resource type="PackedScene" uid="uid://dqks83s787sgm" path="res://game_objects/units/scenes/Player.tscn" id="4_bgqmh"]
 [ext_resource type="PackedScene" uid="uid://cq8wr4w6t03vn" path="res://screen_states/options_menu.tscn" id="5_6spx1"]
+[ext_resource type="AnimationLibrary" uid="uid://bcofpxtkjq2db" path="res://game_objects/units/player_transitions.res" id="6_ixvb1"]
+
+[sub_resource type="Animation" id="Animation_ixvb1"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:is_controlable")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [500.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player:direction")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g75j0"]
+_data = {
+&"RESET": SubResource("Animation_ixvb1")
+}
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -18,7 +63,7 @@ script = ExtResource("1_5ms5j")
 [node name="Camera2D" parent="." instance=ExtResource("3_wlfof")]
 
 [node name="Player" parent="." instance=ExtResource("4_bgqmh")]
-position = Vector2(960, 1000)
+position = Vector2(960, 980)
 
 [node name="OptionsMenu" parent="." instance=ExtResource("5_6spx1")]
 visible = false
@@ -61,10 +106,13 @@ theme = ExtResource("1_ku1ks")
 theme_override_font_sizes/font_size = 50
 text = "Exit"
 
-[connection signal="projectile_shot" from="Player/Shooter" to="." method="_on_shooter_projectile_shot"]
+[node name="PlayerAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_g75j0"),
+&"player_transitions": ExtResource("6_ixvb1")
+}
+
+[connection signal="shot" from="Player" to="." method="_on_player_shot"]
 [connection signal="pressed" from="ButtonVBoxContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="ButtonVBoxContainer/OptionsButton" to="." method="_on_button_options_pressed"]
 [connection signal="pressed" from="ButtonVBoxContainer/ExitButton" to="." method="_on_button_exit_pressed"]
-
-[editable path="Player"]
-[editable path="Player/Shooter"]

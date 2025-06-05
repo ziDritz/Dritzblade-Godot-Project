@@ -7,7 +7,7 @@ const SOUND_BANK_BUS_SETTING_ACTUAL = "Sound"
 
 const POOL_1D_SIZE_SETTING_NAME = "audio/manager/sound/pool_1D_size"
 const POOL_1D_SIZE_SETTING_DEFAULT = 1
-const POOL_1D_SIZE_SETTING_ACTUAL = 16
+const POOL_1D_SIZE_SETTING_ACTUAL = 64
 
 const POOL_2D_SIZE_SETTING_NAME = "audio/manager/sound/pool_2D_size"
 const POOL_2D_SIZE_SETTING_DEFAULT = 1

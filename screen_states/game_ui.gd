@@ -10,19 +10,42 @@ extends CanvasLayer
 @onready var game_over: GameOver = $GameOver
 
 
-func transient_rich_text_label(text: String):
+#func transient_rich_text_label(text: String):
+	#rich_text_label.text = "[font size=54][highlight]" + text
+	#rich_text_label.visible = true
+#
+	## Fade in
+	#var tween: Tween = create_tween()
+	#tween.tween_property(rich_text_label, "modulate:a", 0.0, fade_time)
+	#await get_tree().create_timer(await_time).timeout
+	#
+	##Fade out
+	#tween.tween_property(rich_text_label, "modulate:a", 1.0, fade_time)
+	#tween.kill()
+	#
+	#rich_text_label.visible = false
+
+
+func transient_rich_text_label(text: String) -> void:
 	rich_text_label.text = "[font size=54][highlight]" + text
 	rich_text_label.visible = true
+	rich_text_label.modulate.a = 0.0  # Start fully transparent
+
+	# Fade in
+	var tween := create_tween()
+	tween.tween_property(rich_text_label, "modulate:a", 1.0, fade_time)
+	await tween.finished
+
+	# Wait visible time
+	await get_tree().create_timer(await_time).timeout
 
 	# Fade out
-	var tween: Tween = create_tween()
-	tween.tween_property(rich_text_label, "modulate:a", 0.0, fade_time)
-	await get_tree().create_timer(await_time).timeout
-	#Fade in
-	tween.tween_property(rich_text_label, "modulate:a", 1.0, fade_time)
-	tween.kill()
-	
+	var tween_out := create_tween()
+	tween_out.tween_property(rich_text_label, "modulate:a", 0.0, fade_time)
+	await tween_out.finished
+
 	rich_text_label.visible = false
+
 
 
 func set_pause(_bool: bool):
