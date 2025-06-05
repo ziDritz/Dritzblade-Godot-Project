@@ -1,6 +1,6 @@
 [gd_scene load_steps=33 format=3 uid="uid://dhivpavt7rerw"]
 
-[ext_resource type="Script" uid="uid://cs006aqj4vrpb" path="res://main.gd" id="1_yaehf"]
+[ext_resource type="Script" uid="uid://cs006aqj4vrpb" path="res://MAIN.gd" id="1_yaehf"]
 [ext_resource type="Script" uid="uid://dobneoni3xsj" path="res://addons/resonate/music_manager/music_bank.gd" id="7_d13ii"]
 [ext_resource type="Script" uid="uid://ck4686aywk1sc" path="res://addons/resonate/music_manager/music_track_resource.gd" id="8_1u8w0"]
 [ext_resource type="Script" uid="uid://dsjd63rlyink7" path="res://addons/resonate/music_manager/music_stem_resource.gd" id="9_0odxb"]
