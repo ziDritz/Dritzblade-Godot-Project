@@ -16,7 +16,9 @@ var current_state: MainState
 
 
 func _ready() -> void:
-	set_state(MainState.PLAYING)
+	await MusicManager.loaded
+	set_state(MainState.MAIN_MENU)
+	
 
 
 func set_state(new_state):
@@ -55,9 +57,10 @@ func _go_to_game():
 	# J'ai mis le $SceneTransitionPlayer de main sur le layer 2
 	# J'ai mis le $SceneTransitionPlayer de game sur le layer 1
 	game = GAME_SCENE.instantiate()
+	game.main_menu_requested.connect(_go_to_main_menu)
 	game.game_ended.connect(_go_to_ending)
 	add_child(game)		
-	game._go_to_level(game.GameLevel.BOSS)		
+	game.start_game()		
 	
 	if main_menu != null: main_menu.queue_free()
 	if ending != null: ending.queue_free()

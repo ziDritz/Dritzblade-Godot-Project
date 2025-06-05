@@ -5,6 +5,8 @@ extends Node2D
 signal level_cleared(current_game_level: Game.GameLevel)
 signal game_over
 
+const PLAYER_SCENE = preload("res://game_objects/units/scenes/Player.tscn")
+
 var wave_count: int
 var current_game_level: Game.GameLevel
 var boss: CharacterBody2D
@@ -16,9 +18,26 @@ var boss: CharacterBody2D
 
 
 func init(_packed_scene: PackedScene, _level_type: String, _current_game_level: Game.GameLevel):
+	
+	# Reset
+	if player == null:
+		player = PLAYER_SCENE.instantiate()
+		player.init()
+		player.died.connect(_on_player_died)
+		player.shot.connect(_on_shooter_projectile_shot)
+		add_child(player)
+		
+	if boss != null:
+		boss.queue_free()
+		
 	wave_count = 0
 	current_game_level = _current_game_level
 	
+	for child in get_children():
+		if child is Wave : child.queue_free()
+		if child is Projectile : child.queue_free()
+	
+	# Instanciation
 	if _level_type == "Waves":
 		var waves = _packed_scene.instantiate()
 		add_child(waves)
@@ -40,7 +59,7 @@ func init(_packed_scene: PackedScene, _level_type: String, _current_game_level: 
 		boss.shot.connect(_on_shooter_projectile_shot)
 		add_child(boss_path_2D)
 	
-	player.init()
+
 	timer_level.start()
 
 
@@ -60,7 +79,7 @@ func _on_wave_destroyed(_wave) -> void:
 	wave_count -= 1
 	if wave_count == 0:
 		level_cleared.emit(current_game_level)
-
+		
 
 func _on_wave_enemy_spawned(_character_body_2D: CharacterBody2D):
 	_character_body_2D.shooter.projectile_shot.connect(_on_shooter_projectile_shot)

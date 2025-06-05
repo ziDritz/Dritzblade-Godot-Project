@@ -98,6 +98,14 @@ grow_vertical = 2
 theme_override_constants/separation = 20
 alignment = 1
 
+[node name="Label" type="Label" parent="ButtonVBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_ku1ks")
+theme_override_font_sizes/font_size = 70
+text = "DRITZBLADE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="StartGameButton" type="Button" parent="ButtonVBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3

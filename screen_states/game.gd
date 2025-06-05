@@ -2,6 +2,7 @@ class_name Game
 extends Node
 
 
+signal main_menu_requested
 signal game_ended
 
 const SPACE_SHOOTER_LEVEL_SCENE = preload("res://game_world/space_shooter_level.tscn")
@@ -12,6 +13,7 @@ const BOSS_PATH_2D_SCENE = preload("res://game_objects/boss/boss_path_2d.tscn")
 
 enum GameLevel { ONE, TWO, THREE, BOSS }
 
+var current_game_level: GameLevel
 var current_packed_scene
 var is_game_paused: bool = false
 
@@ -28,6 +30,10 @@ func _input(event):
 		elif is_game_paused == true:
 			_set_pause(false)
 			return
+
+
+func start_game():
+	_go_to_level(GameLevel.BOSS)
 
 
 func _go_to_level(game_level: GameLevel):
@@ -73,7 +79,8 @@ func _go_to_level(game_level: GameLevel):
 	scene_transition_player.play_transition("animation_ressources/fade_in")
 	space_shooter_level.animate_player_in()
 
-
+	current_game_level = game_level
+	
 	
 func _set_pause(_bool: bool):
 	if _bool == true:
@@ -101,7 +108,8 @@ func _on_space_shooter_level_level_cleared(_current_game_level) -> void:
 	scene_transition_player.play_transition("animation_ressources/fade_out")
 	await scene_transition_player.animation_finished
 
-	
+	if space_shooter_level.player == null: return
+		
 	match _current_game_level:
 		GameLevel.ONE:
 			_go_to_level(GameLevel.TWO)
@@ -114,3 +122,11 @@ func _on_space_shooter_level_level_cleared(_current_game_level) -> void:
 			
 		GameLevel.BOSS:
 			game_ended.emit()
+
+
+func _on_game_ui_retry_requested() -> void:
+	_go_to_level(current_game_level)
+
+
+func _on_game_ui_main_menu_requested() -> void:
+	main_menu_requested.emit()

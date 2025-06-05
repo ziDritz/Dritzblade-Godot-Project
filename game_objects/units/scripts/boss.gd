@@ -25,13 +25,15 @@ const MOVE_2_CURVE = preload("res://game_objects/boss/boss_curves/move 2.tres")
 func _ready() -> void:
 	path_follow_2D.progess_path(speed_move_entrance)
 
-
+func _process(_delta):
+	if Input.is_action_just_pressed("kill"):
+		health.die()
 
 
 func _move_1():
 	var timer = Timer.new()
 	add_child(timer)
-	timer.wait_time = 1.0
+	timer.wait_time = 2.0
 	timer.one_shot = false
 	timer.timeout.connect(boss_shooter.shoot)
 	timer.start()
@@ -51,7 +53,7 @@ func _move_1():
 func _move_2():
 	var timer = Timer.new()
 	add_child(timer)
-	timer.wait_time = 1.0
+	timer.wait_time = 2.0
 	timer.one_shot = false
 	timer.timeout.connect(boss_shooter.shoot)
 	timer.start()
@@ -88,10 +90,11 @@ func _on_decision_timer_timeout() -> void:
 
 func _on_path_follow_2d_progess_ratio_ended() -> void:
 	var decision_time = randf_range(1.0, 5.0)
-	if decision_time == null:
+	if decision_timer == null:
 		return
 	decision_timer.wait_time = decision_time
 	decision_timer.start()
+
 
 
 func _on_boss_shooter_projectile_shot(projectile: Projectile) -> void:

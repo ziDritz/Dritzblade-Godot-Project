@@ -1,4 +1,8 @@
 extends Node
 
+var x = 5
+
 func _ready() -> void:
-	$AnimationPlayer.play("test_anim/new_animation")
+	if x < 10:
+		return
+	print("10")

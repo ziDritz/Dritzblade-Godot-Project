@@ -113,7 +113,7 @@ script = ExtResource("1_588mx")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("2_7xn38")
-max_health = 50
+max_health = 100
 
 [node name="DecisionTimer" type="Timer" parent="."]
 wait_time = 0.5

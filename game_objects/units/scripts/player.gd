@@ -18,6 +18,8 @@ func init():
 	# Permet de reset avec une transition out
 	speed = 500
 	direction = Vector2.ZERO
+	
+	position = Vector2(960, 1180)
 
 func _process(_delta):
 

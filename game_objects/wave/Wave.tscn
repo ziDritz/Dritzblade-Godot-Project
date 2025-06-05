@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6hcg7jwuon3w"]
+[gd_scene load_steps=5 format=3 uid="uid://c16a4d24rhgbb"]
 
 [ext_resource type="Script" uid="uid://papevfjp2ln5" path="res://game_objects/wave/wave.gd" id="1_2k6mg"]
 [ext_resource type="Script" uid="uid://uy10i6srb75d" path="res://game_objects/wave/path_2d_extension.gd" id="3_y8pwq"]

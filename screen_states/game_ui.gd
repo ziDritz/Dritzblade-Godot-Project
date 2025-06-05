@@ -1,6 +1,8 @@
 class_name GameUI
 extends CanvasLayer
 
+signal retry_requested
+signal main_menu_requested
 
 @export var fade_time: float
 @export var await_time: float
@@ -9,22 +11,6 @@ extends CanvasLayer
 @onready var pause_menu: OptionsMenu = $PauseMenu
 @onready var game_over: GameOver = $GameOver
 @onready var boss_life_bar: TextureProgressBar = $BossLifeBar
-
-
-#func transient_rich_text_label(text: String):
-	#rich_text_label.text = "[font size=54][highlight]" + text
-	#rich_text_label.visible = true
-#
-	## Fade in
-	#var tween: Tween = create_tween()
-	#tween.tween_property(rich_text_label, "modulate:a", 0.0, fade_time)
-	#await get_tree().create_timer(await_time).timeout
-	#
-	##Fade out
-	#tween.tween_property(rich_text_label, "modulate:a", 1.0, fade_time)
-	#tween.kill()
-	#
-	#rich_text_label.visible = false
 
 
 func transient_rich_text_label(text: String) -> void:
@@ -58,4 +44,18 @@ func set_pause(_bool: bool):
 	
 	
 func set_game_over():
+	rich_text_label.visible = false
 	game_over.visible = true
+
+
+
+func _on_game_over_retry_button_pressed() -> void:
+	retry_requested.emit()
+	game_over.visible = false
+
+func _on_game_over_main_menu_button_pressed() -> void:
+	main_menu_requested.emit()
+	game_over.visible = false
+
+
+	

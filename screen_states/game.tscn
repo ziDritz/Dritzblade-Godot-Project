@@ -26,6 +26,8 @@ custom_effects = [SubResource("RichTextEffect_qwjrg")]
 
 [node name="SpaceShooterLevel" parent="." instance=ExtResource("4_qh561")]
 
+[connection signal="main_menu_requested" from="GameUI" to="." method="_on_game_ui_main_menu_requested"]
+[connection signal="retry_requested" from="GameUI" to="." method="_on_game_ui_retry_requested"]
 [connection signal="game_over" from="SpaceShooterLevel" to="." method="_on_space_shooter_level_game_over"]
 [connection signal="level_cleared" from="SpaceShooterLevel" to="." method="_on_space_shooter_level_level_cleared"]
 

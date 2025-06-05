@@ -56,3 +56,6 @@ grow_horizontal = 2
 value = 100.0
 texture_progress = SubResource("GradientTexture2D_ai785")
 script = ExtResource("6_ai785")
+
+[connection signal="main_menu_button_pressed" from="GameOver" to="." method="_on_game_over_main_menu_button_pressed"]
+[connection signal="retry_button_pressed" from="GameOver" to="." method="_on_game_over_retry_button_pressed"]

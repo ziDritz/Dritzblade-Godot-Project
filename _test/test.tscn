@@ -1,10 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://oeacrom4p5b0"]
 
 [ext_resource type="Script" uid="uid://cgprgatxwdo7b" path="res://_test/test.gd" id="1_8a8pi"]
-[ext_resource type="PackedScene" uid="uid://dqks83s787sgm" path="res://game_objects/units/scenes/Player.tscn" id="2_gomqg"]
+[ext_resource type="PackedScene" uid="uid://c2ptowbupq5em" path="res://game_objects/projectiles/Scene/Projectile.tscn" id="2_8oj3c"]
 
 [node name="Test" type="Node"]
 script = ExtResource("1_8a8pi")
 
-[node name="Player" parent="." instance=ExtResource("2_gomqg")]
-position = Vector2(822, 369)
+[node name="Projectile" parent="." instance=ExtResource("2_8oj3c")]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
