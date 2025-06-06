@@ -1,7 +1,9 @@
 class_name Enemy extends CharacterBody2D
 
-@export var chance_to_shoot: float
+signal shot(projectile: Projectile)
+signal died
 
+@export var chance_to_shoot: float
 @export var speed: float
 @export var direction: Vector2
 @export var destination: Vector2 = Vector2.ZERO
@@ -9,7 +11,7 @@ class_name Enemy extends CharacterBody2D
 @onready var decision_timer: Timer = $DecisionTimer
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var shooter: Shooter = $Shooter
+@onready var shooter: EnemyShooter = $EnemyShooter
 @onready var health: Health = $Health
 
 
@@ -39,4 +41,9 @@ func _on_health_died(_character_body_2D: CharacterBody2D) -> void:
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:
+	died.emit()
 	queue_free()
+
+
+func _on_shooter_projectile_shot(projectile: Projectile) -> void:
+	shot.emit(projectile)

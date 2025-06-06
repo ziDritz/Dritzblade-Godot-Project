@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://b2cnacw0lfp3t" path="res://game_objects/units/scripts/health.gd" id="2_26sfu"]
 [ext_resource type="Texture2D" uid="uid://cnbrs2rgc6r7q" path="res://game_objects/units/assets/Kla'ed - Scout - Base.png" id="4_fmt4i"]
 [ext_resource type="Texture2D" uid="uid://07rfy0n7yyfj" path="res://game_objects/units/assets/Kla'ed - Scout - Destruction.png" id="5_17bqm"]
+[ext_resource type="Script" uid="uid://d3tbfk1xit6un" path="res://game_objects/projectiles/Scripts/enemy_shooter.gd" id="6_40arj"]
 [ext_resource type="Script" uid="uid://78hrs141avsx" path="res://game_objects/units/assets/unit_animated_sprite_2d.gd" id="6_s3271"]
-[ext_resource type="PackedScene" uid="uid://3qci2mm701cn" path="res://game_objects/projectiles/Scene/Shooter.tscn" id="7_1f2bw"]
 [ext_resource type="Resource" uid="uid://xvd5xbhhbx6l" path="res://game_objects/projectiles/Resources/auto_cannon_resource.tres" id="8_yppb8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pgctm"]
@@ -113,16 +113,12 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_lnio7")
 script = ExtResource("6_s3271")
 
-[node name="Shooter" parent="." instance=ExtResource("7_1f2bw")]
-rotation = 3.14159
+[node name="EnemyShooter" type="Node2D" parent="."]
+script = ExtResource("6_40arj")
 projectile_resource = ExtResource("8_yppb8")
-
-[node name="Muzzle" type="Marker2D" parent="Shooter"]
-position = Vector2(0, -15.985)
 
 [connection signal="died" from="Health" to="." method="_on_health_died"]
 [connection signal="died" from="Health" to="AnimatedSprite2D" method="_on_health_died"]
 [connection signal="timeout" from="DecisionTimer" to="." method="_on_decision_timer_timeout"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
-
-[editable path="Shooter"]
+[connection signal="projectile_shot" from="EnemyShooter" to="." method="_on_shooter_projectile_shot"]

@@ -77,7 +77,6 @@ libraries = {
 }
 
 [connection signal="died" from="Player" to="." method="_on_player_died"]
-[connection signal="projectile_shot" from="Player/Shooter" to="." method="_on_shooter_projectile_shot"]
+[connection signal="shot" from="Player" to="." method="_on_shot"]
 
 [editable path="Player"]
-[editable path="Player/Shooter"]

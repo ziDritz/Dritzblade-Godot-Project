@@ -24,7 +24,7 @@ func init(_packed_scene: PackedScene, _level_type: String, _current_game_level: 
 		player = PLAYER_SCENE.instantiate()
 		player.init()
 		player.died.connect(_on_player_died)
-		player.shot.connect(_on_shooter_projectile_shot)
+		player.shot.connect(_on_shot)
 		add_child(player)
 		
 	if boss != null:
@@ -56,7 +56,7 @@ func init(_packed_scene: PackedScene, _level_type: String, _current_game_level: 
 		var boss_path_2D = _packed_scene.instantiate()
 		boss = boss_path_2D.get_child(0).get_child(0)
 		boss.died.connect(_on_boss_died)
-		boss.shot.connect(_on_shooter_projectile_shot)
+		boss.shot.connect(_on_shot)
 		add_child(boss_path_2D)
 	
 
@@ -82,22 +82,12 @@ func _on_wave_destroyed(_wave) -> void:
 		
 
 func _on_wave_enemy_spawned(_character_body_2D: CharacterBody2D):
-	_character_body_2D.shooter.projectile_shot.connect(_on_shooter_projectile_shot)
+	_character_body_2D.shooter.projectile_shot.connect(_on_shot)
 
 
-func _on_shooter_projectile_shot(projectile: Projectile):
+func _on_shot(projectile: Projectile):
 	add_child(projectile)
-	
-	if projectile.shooter_owner is Player: 
-		projectile.direction = Vector2.UP
-		
-	if projectile.shooter_owner is Enemy: 
-		projectile.direction = Vector2.DOWN
-		projectile.rotation = 180.0
 
-
-func _on_boss_shot(projectile: Projectile):
-	add_child(projectile)
 
 func _on_player_died() -> void:
 	game_over.emit()

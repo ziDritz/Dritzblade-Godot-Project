@@ -8,7 +8,7 @@ signal shot(projectile: Projectile)
 @export var direction: Vector2
 @export var destination: Vector2 = Vector2.ZERO
 
-@onready var shooter: Shooter = $Shooter
+@onready var shooter: PlayerShooter = $PlayerShooter
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_polygon_2d: CollisionPolygon2D = $CollisionPolygon2D
 @onready var health: Health = $Health

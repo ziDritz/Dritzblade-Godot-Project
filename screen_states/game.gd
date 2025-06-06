@@ -33,7 +33,7 @@ func _input(event):
 
 
 func start_game():
-	_go_to_level(GameLevel.BOSS)
+	_go_to_level(GameLevel.ONE)
 
 
 func _go_to_level(game_level: GameLevel):

@@ -1,12 +1,13 @@
-[gd_scene load_steps=19 format=3 uid="uid://dqks83s787sgm"]
+[gd_scene load_steps=20 format=3 uid="uid://dqks83s787sgm"]
 
 [ext_resource type="Script" uid="uid://c1fqy7fpgejn5" path="res://game_objects/units/scripts/player.gd" id="1_6cl77"]
 [ext_resource type="Script" uid="uid://b2cnacw0lfp3t" path="res://game_objects/units/scripts/health.gd" id="2_5g656"]
-[ext_resource type="PackedScene" uid="uid://3qci2mm701cn" path="res://game_objects/projectiles/Scene/Shooter.tscn" id="3_htbh2"]
 [ext_resource type="Resource" uid="uid://xvd5xbhhbx6l" path="res://game_objects/projectiles/Resources/auto_cannon_resource.tres" id="4_chqt7"]
 [ext_resource type="Texture2D" uid="uid://cn0wccfyk6g81" path="res://game_objects/units/assets/Main Ship - Base - Full health 64.png" id="4_dxhcm"]
 [ext_resource type="Texture2D" uid="uid://bntbma8eso7x8" path="res://game_objects/units/assets/Main Ship - Destruction.png" id="5_6x5ac"]
+[ext_resource type="Script" uid="uid://iufwrgfw5nx3" path="res://game_objects/projectiles/Scripts/player_shooter.gd" id="6_b083e"]
 [ext_resource type="Script" uid="uid://78hrs141avsx" path="res://game_objects/units/assets/unit_animated_sprite_2d.gd" id="6_h8fsg"]
+[ext_resource type="Script" uid="uid://cskhe05pl6fvh" path="res://game_objects/projectiles/Assets/charger_display.gd" id="8_ln6o5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8gd2v"]
 atlas = ExtResource("5_6x5ac")
@@ -102,13 +103,6 @@ speed = 500.0
 script = ExtResource("2_5g656")
 max_health = 1
 
-[node name="Shooter" parent="." instance=ExtResource("3_htbh2")]
-projectile_resource = ExtResource("4_chqt7")
-fire_rate = 0.2
-
-[node name="Muzzle" type="Marker2D" parent="Shooter"]
-position = Vector2(0, -26)
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.43, 1.43)
 sprite_frames = SubResource("SpriteFrames_ur1d7")
@@ -118,9 +112,37 @@ script = ExtResource("6_h8fsg")
 scale = Vector2(2, 2)
 polygon = PackedVector2Array(-3, 13, 3, 13, 3, 11, 14, 11, 14, 6, 5, -3, 0, -13, -5, -3, -14, 5, -14, 11, -3, 11, -3, 13)
 
+[node name="PlayerShooter" type="Node2D" parent="."]
+script = ExtResource("6_b083e")
+projectile_resource = ExtResource("4_chqt7")
+fire_rate = 0.05
+charger_capacity = 6
+reload_time = 0.4
+
+[node name="Container" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -30.67
+offset_top = 22.095
+offset_right = -30.67
+offset_bottom = 22.095
+
+[node name="ChargerDisplay" type="VBoxContainer" parent="Container" node_paths=PackedStringArray("player_shooter")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 0
+alignment = 2
+script = ExtResource("8_ln6o5")
+player_shooter = NodePath("../../PlayerShooter")
+
 [connection signal="died" from="Health" to="." method="_on_health_died"]
 [connection signal="died" from="Health" to="AnimatedSprite2D" method="_on_health_died"]
-[connection signal="projectile_shot" from="Shooter" to="." method="_on_shooter_projectile_shot"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
-
-[editable path="Shooter"]
+[connection signal="projectile_in_charger_changed" from="PlayerShooter" to="Container/ChargerDisplay" method="_on_player_shooter_projectile_in_charger_changed"]
+[connection signal="projectile_shot" from="PlayerShooter" to="." method="_on_shooter_projectile_shot"]

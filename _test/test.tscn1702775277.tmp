@@ -6,13 +6,13 @@
 [node name="Test" type="Node"]
 script = ExtResource("1_8a8pi")
 
+[node name="Player" parent="." instance=ExtResource("2_gomqg")]
+position = Vector2(707, 352)
+
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
 theme_override_font_sizes/font_size = 20
-
-[node name="Player" parent="." instance=ExtResource("2_gomqg")]
-position = Vector2(401, 476)
 
 [connection signal="shot" from="Player" to="." method="_on_player_shot"]
 
