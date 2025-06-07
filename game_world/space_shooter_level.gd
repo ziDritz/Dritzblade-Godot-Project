@@ -90,4 +90,5 @@ func _on_shot(projectile: Projectile):
 
 
 func _on_player_died() -> void:
+	SoundManager.play("SFXs", "player_explosion")
 	game_over.emit()

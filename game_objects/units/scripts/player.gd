@@ -42,7 +42,6 @@ func _physics_process(_delta):
 
 
 func _on_health_died(_character_body_2D) -> void:
-	#SoundManager.play("SFXs", "player_explosion")
 	collision_polygon_2d.queue_free()
 	shooter.queue_free()
 	animated_sprite_2d.play("die") 
