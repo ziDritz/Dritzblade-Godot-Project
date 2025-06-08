@@ -17,6 +17,7 @@ var current_state: MainState
 
 func _ready() -> void:
 	await MusicManager.loaded
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	set_state(MainState.MAIN_MENU)
 	
 
@@ -68,19 +69,19 @@ func _go_to_game():
 
 	
 func _go_to_ending():
-	
-	
+		
 	ending = ENDING_SCENE.instantiate()
 	add_child(ending)
 	MusicManager.play("musics", "ending", 3.0, true)
+	SoundManager.play("SFXs", "ending")
 	
-
-	
-	scene_transition_player.play_transition("animation_ressources/fade_in")
 	if main_menu != null: main_menu.queue_free()
 	if game != null: game.queue_free()
+	$SceneTransitionPlayer/ColorRect.color = Color.BLACK
+	scene_transition_player.play_transition("animation_ressources/fade_in")
 
-	await get_tree().create_timer(10.0).timeout
+
+	await get_tree().create_timer(35.0).timeout
 	scene_transition_player.play_transition("animation_ressources/fade_out")
 	await scene_transition_player.animation_finished
 	

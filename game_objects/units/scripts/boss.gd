@@ -75,6 +75,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 
 
 func _on_health_died(_character_body_2D: CharacterBody2D) -> void:
+	SoundManager.play("SFXs", "boss_die")
 	collision_polygon_2d.queue_free()
 	decision_timer.queue_free()
 	boss_shooter.queue_free()

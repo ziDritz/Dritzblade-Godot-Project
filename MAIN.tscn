@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dhivpavt7rerw"]
+[gd_scene load_steps=44 format=3 uid="uid://dhivpavt7rerw"]
 
 [ext_resource type="Script" uid="uid://cs006aqj4vrpb" path="res://MAIN.gd" id="1_yaehf"]
 [ext_resource type="Script" uid="uid://dobneoni3xsj" path="res://addons/resonate/music_manager/music_bank.gd" id="7_d13ii"]
@@ -12,10 +12,18 @@
 [ext_resource type="AudioStream" uid="uid://8whyxbqdiqth" path="res://game_world/musics/short-8-bit-background-music-for-video-mobile-game-old-school-by-white_records.mp3" id="13_qsp4k"]
 [ext_resource type="AudioStream" uid="uid://bknlmp66qy70r" path="res://game_world/musics/DavidKBD - Eternity Pack - 06 - God of darkness - loop.mp3" id="14_kq58d"]
 [ext_resource type="AudioStream" uid="uid://wli20upqtgtl" path="res://game_objects/units/assets/Explosion1.mp3" id="14_yaehf"]
+[ext_resource type="AudioStream" uid="uid://dafohltoy65hi" path="res://game_objects/units/assets/boss_hit/metal-hit-10-193281.mp3" id="15_obmmj"]
+[ext_resource type="AudioStream" uid="uid://dijfa3xwqfgkj" path="res://game_objects/units/assets/boss_hit/metal-hit-50-193312.mp3" id="16_ao5vc"]
 [ext_resource type="Script" uid="uid://13ot4s2r8210" path="res://addons/resonate/sound_manager/sound_bank.gd" id="16_htxhm"]
 [ext_resource type="AnimationLibrary" uid="uid://cutyrbtpddlwp" path="res://scene_transition_player/animation_ressources.res" id="16_u0cts"]
+[ext_resource type="AudioStream" uid="uid://cn5slnn7yjebw" path="res://game_objects/units/assets/boss_hit/metal-hit-63-193339.mp3" id="17_gix1a"]
 [ext_resource type="Script" uid="uid://bk6wfdf1bn68d" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="17_jq2sk"]
 [ext_resource type="PackedScene" uid="uid://cmt6nkflprs7q" path="res://screen_states/scene_transition_player.tscn" id="18_074og"]
+[ext_resource type="AudioStream" uid="uid://bc58wrrxj6gsy" path="res://game_objects/units/assets/boss_hit/metal-hit-92-200420.mp3" id="18_p6x64"]
+[ext_resource type="AudioStream" uid="uid://cmvk7rffueigs" path="res://game_objects/units/assets/boss_hit/metal-hit-95-200424.mp3" id="19_s0s18"]
+[ext_resource type="AudioStream" uid="uid://dsh1sa8m7pabw" path="res://game_objects/units/assets/boss_hit/metal-hit-97-200427.mp3" id="20_4sgve"]
+[ext_resource type="AudioStream" uid="uid://ck2v1vvywthsr" path="res://game_world/musics/birds-nightingale-city-308259.mp3" id="21_ao5vc"]
+[ext_resource type="AudioStream" uid="uid://irnwqqvl7ce2" path="res://game_objects/units/assets/explosion-fx-343683.mp3" id="22_p6x64"]
 
 [sub_resource type="Resource" id="Resource_ao5vc"]
 script = ExtResource("9_0odxb")
@@ -111,7 +119,7 @@ metadata/_custom_type_script = "uid://ck4686aywk1sc"
 script = ExtResource("17_jq2sk")
 name = "enemy_explosion"
 bus = ""
-volume = -6.0
+volume = -8.0
 pitch = 1.0
 streams = Array[AudioStream]([ExtResource("13_2cqfq")])
 metadata/_custom_type_script = "uid://bk6wfdf1bn68d"
@@ -123,6 +131,33 @@ bus = ""
 volume = 0.0
 pitch = 1.0
 streams = Array[AudioStream]([ExtResource("14_yaehf")])
+metadata/_custom_type_script = "uid://bk6wfdf1bn68d"
+
+[sub_resource type="Resource" id="Resource_v375m"]
+script = ExtResource("17_jq2sk")
+name = "boss_hit"
+bus = ""
+volume = -5.0
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("15_obmmj"), ExtResource("16_ao5vc"), ExtResource("17_gix1a"), ExtResource("18_p6x64"), ExtResource("19_s0s18"), ExtResource("20_4sgve")])
+metadata/_custom_type_script = "uid://bk6wfdf1bn68d"
+
+[sub_resource type="Resource" id="Resource_4sgve"]
+script = ExtResource("17_jq2sk")
+name = "ending"
+bus = ""
+volume = 0.0
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("21_ao5vc")])
+metadata/_custom_type_script = "uid://bk6wfdf1bn68d"
+
+[sub_resource type="Resource" id="Resource_hhat6"]
+script = ExtResource("17_jq2sk")
+name = "boss_die"
+bus = ""
+volume = 6.0
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("22_p6x64")])
 metadata/_custom_type_script = "uid://bk6wfdf1bn68d"
 
 [sub_resource type="Animation" id="Animation_jn4fx"]
@@ -160,7 +195,7 @@ metadata/_custom_type_script = "uid://dobneoni3xsj"
 script = ExtResource("16_htxhm")
 label = "SFXs"
 bus = "SFX"
-events = Array[ExtResource("17_jq2sk")]([SubResource("Resource_p6x64"), SubResource("Resource_074og")])
+events = Array[ExtResource("17_jq2sk")]([SubResource("Resource_p6x64"), SubResource("Resource_074og"), SubResource("Resource_v375m"), SubResource("Resource_4sgve"), SubResource("Resource_hhat6")])
 metadata/_custom_type_script = "uid://13ot4s2r8210"
 
 [node name="SceneTransitionPlayer" parent="." instance=ExtResource("18_074og")]

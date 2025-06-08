@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c37xhnquv3t4n"]
+[gd_scene load_steps=23 format=3 uid="uid://c37xhnquv3t4n"]
 
 [ext_resource type="Script" uid="uid://c061jxg6f05yk" path="res://game_objects/units/scripts/boss.gd" id="1_588mx"]
 [ext_resource type="Script" uid="uid://b2cnacw0lfp3t" path="res://game_objects/units/scripts/health.gd" id="2_7xn38"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://lkm33s0hy1wo" path="res://game_objects/projectiles/Scripts/boss_shooter.gd" id="7_j5snh"]
 [ext_resource type="Script" uid="uid://78hrs141avsx" path="res://game_objects/units/assets/unit_animated_sprite_2d.gd" id="7_mptpj"]
 [ext_resource type="Resource" uid="uid://dl2t6bi50nakq" path="res://game_objects/projectiles/Resources/big_space_gun_resource.tres" id="8_j5snh"]
+[ext_resource type="Script" uid="uid://cj3bca6np540p" path="res://game_objects/units/boss_audio.gd" id="9_vq4ep"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qrb1j"]
 atlas = ExtResource("6_wuhao")
@@ -110,6 +111,7 @@ animations = [{
 }]
 
 [node name="Boss" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_588mx")
 
 [node name="Health" type="Node" parent="."]
@@ -144,8 +146,13 @@ projectile_count = 12
 first_angle_side = -45.0
 second_angle_side = 45.0
 
+[node name="BossAudio" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+script = ExtResource("9_vq4ep")
+
 [connection signal="died" from="Health" to="." method="_on_health_died"]
 [connection signal="died" from="Health" to="AnimatedSprite2D" method="_on_health_died"]
+[connection signal="health_changed" from="Health" to="BossAudio" method="_on_health_health_changed"]
 [connection signal="timeout" from="DecisionTimer" to="." method="_on_decision_timer_timeout"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="projectile_shot" from="BossShooter" to="." method="_on_boss_shooter_projectile_shot"]

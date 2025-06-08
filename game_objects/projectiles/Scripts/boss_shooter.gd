@@ -10,7 +10,7 @@ const PROJECTILE_SCENE = preload("res://game_objects/projectiles/Scene/Projectil
 @export var second_angle_side: float
 
 var owner_type: String = "Boss"
-var muzzle: Vector2 = Vector2(0, 106)
+var muzzle: Vector2 = Vector2(0, 48)
 
 func shoot():
 	var angle_offset = (second_angle_side - first_angle_side) / (projectile_count - 1)

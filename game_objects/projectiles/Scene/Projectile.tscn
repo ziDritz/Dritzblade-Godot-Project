@@ -53,7 +53,8 @@ autoplay = "default"
 frame_progress = 0.692349
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-volume_db = -10.0
+volume_db = -6.0
+bus = &"SFX"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)

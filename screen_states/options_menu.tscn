@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cq8wr4w6t03vn"]
+[gd_scene load_steps=7 format=3 uid="uid://cq8wr4w6t03vn"]
 
 [ext_resource type="Script" uid="uid://cl4o5itkvhowo" path="res://screen_states/options_menu.gd" id="1_jyqj4"]
 [ext_resource type="Theme" uid="uid://cr64eprmpxfuy" path="res://global/theme/theme.tres" id="2_wpuaw"]
+[ext_resource type="Script" uid="uid://jyd8aef0t1ft" path="res://screen_states/master_volume.gd" id="3_ktv2u"]
 [ext_resource type="Script" uid="uid://dkjqj1xwapa5u" path="res://screen_states/music_volume.gd" id="3_pi12q"]
 [ext_resource type="Script" uid="uid://bjjxbb6wv86os" path="res://screen_states/sound_volume.gd" id="4_xk7p6"]
+[ext_resource type="AudioStream" uid="uid://cf4mn7b6hfj2v" path="res://game_objects/projectiles/Assets/mixkit-short-laser-gun-shot-1670.mp3" id="5_jg17q"]
 
 [node name="OptionsMenu" type="Control"]
 layout_mode = 3
@@ -50,12 +52,25 @@ horizontal_alignment = 1
 layout_mode = 2
 theme = ExtResource("2_wpuaw")
 theme_override_font_sizes/font_size = 40
+text = "Master Volume"
+horizontal_alignment = 1
+
+[node name="MasterVolume" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+min_value = -40.0
+max_value = 0.0
+script = ExtResource("3_ktv2u")
+
+[node name="Label4" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_wpuaw")
+theme_override_font_sizes/font_size = 40
 text = "Music Volume"
 horizontal_alignment = 1
 
-[node name="Music Volume" type="HSlider" parent="VBoxContainer"]
+[node name="Music Volume2" type="HSlider" parent="VBoxContainer"]
 layout_mode = 2
-min_value = -80.0
+min_value = -40.0
 max_value = 0.0
 script = ExtResource("3_pi12q")
 
@@ -68,7 +83,7 @@ horizontal_alignment = 1
 
 [node name="Sound Volume" type="HSlider" parent="VBoxContainer"]
 layout_mode = 2
-min_value = -80.0
+min_value = -40.0
 max_value = 0.0
 script = ExtResource("4_xk7p6")
 
@@ -84,26 +99,49 @@ grow_vertical = 0
 theme_override_constants/separation = 80
 alignment = 1
 
-[node name="Label4" type="Label" parent="HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Label4" type="Label" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_wpuaw")
 theme_override_font_sizes/font_size = 25
 text = "Spacebar : Fire "
-horizontal_alignment = 1
 
-[node name="Label5" type="Label" parent="HBoxContainer"]
+[node name="Label5" type="Label" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_wpuaw")
 theme_override_font_sizes/font_size = 25
-text = "arrow keys : move left & right "
-horizontal_alignment = 1
+text = "left maj : slow down"
 
-[node name="Label6" type="Label" parent="HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Label5" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("2_wpuaw")
+theme_override_font_sizes/font_size = 25
+text = "arrow keys: move left & right"
+horizontal_alignment = 2
+
+[node name="Label6" type="Label" parent="HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 theme = ExtResource("2_wpuaw")
 theme_override_font_sizes/font_size = 25
 text = "P : Pause"
-horizontal_alignment = 1
+horizontal_alignment = 2
 
-[connection signal="value_changed" from="VBoxContainer/Music Volume" to="VBoxContainer/Music Volume" method="_on_value_changed"]
-[connection signal="value_changed" from="VBoxContainer/Sound Volume" to="VBoxContainer/Sound Volume" method="_on_value_changed"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_jg17q")
+volume_db = -6.0
+bus = &"SFX"
+
+[connection signal="value_changed" from="VBoxContainer/MasterVolume" to="VBoxContainer/MasterVolume" method="_on_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/Music Volume2" to="VBoxContainer/Music Volume2" method="_on_value_changed"]

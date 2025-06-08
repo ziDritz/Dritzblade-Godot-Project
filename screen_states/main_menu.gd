@@ -22,10 +22,20 @@ func set_state(new_state):
 			_show_options()
 
 
-func _process(_delta: float) -> void:
-	if current_state == MainMenuState.OPTIONS:
-		if Input.is_action_just_pressed("back"):
+#func _process(_delta: float) -> void:
+	#if current_state == MainMenuState.OPTIONS:
+		#if Input.is_action_just_pressed("back"):
+			#set_state(MainMenuState.MAIN_MENU)
+
+
+func _input(event):
+	if event.is_action_pressed("pause"):
+		if current_state == MainMenuState.OPTIONS:
 			set_state(MainMenuState.MAIN_MENU)
+			return
+		elif current_state == MainMenuState.MAIN_MENU:
+			set_state(MainMenuState.OPTIONS)
+			return
 
 
 func _show_main_menu():

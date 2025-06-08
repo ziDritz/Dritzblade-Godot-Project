@@ -1,19 +1,169 @@
-[gd_scene load_steps=3 format=3 uid="uid://oeacrom4p5b0"]
+[gd_scene load_steps=31 format=3 uid="uid://oeacrom4p5b0"]
 
 [ext_resource type="Script" uid="uid://cgprgatxwdo7b" path="res://_test/test.gd" id="1_8a8pi"]
 [ext_resource type="PackedScene" uid="uid://dqks83s787sgm" path="res://game_objects/units/scenes/Player.tscn" id="2_gomqg"]
+[ext_resource type="PackedScene" uid="uid://cq8wr4w6t03vn" path="res://screen_states/options_menu.tscn" id="2_jb5rp"]
+[ext_resource type="Script" uid="uid://dobneoni3xsj" path="res://addons/resonate/music_manager/music_bank.gd" id="3_ep30m"]
+[ext_resource type="Script" uid="uid://ck4686aywk1sc" path="res://addons/resonate/music_manager/music_track_resource.gd" id="4_cbq28"]
+[ext_resource type="Script" uid="uid://dsjd63rlyink7" path="res://addons/resonate/music_manager/music_stem_resource.gd" id="5_prfec"]
+[ext_resource type="AudioStream" uid="uid://c2dehnwhqqw6l" path="res://game_world/musics/Before_the_halvening.mp3" id="6_kx4ni"]
+[ext_resource type="AudioStream" uid="uid://dyjjt8n57fuol" path="res://game_world/musics/game-music-by-deepmusiceveryday.mp3" id="7_6s0er"]
+[ext_resource type="AudioStream" uid="uid://cpm13r6wdqjfe" path="res://game_world/musics/spaceship-arcade-shooter-game-background-soundtrack-by-serhii_kliets.mp3" id="8_3bqdv"]
+[ext_resource type="AudioStream" uid="uid://8whyxbqdiqth" path="res://game_world/musics/short-8-bit-background-music-for-video-mobile-game-old-school-by-white_records.mp3" id="9_xjnj1"]
+[ext_resource type="AudioStream" uid="uid://bknlmp66qy70r" path="res://game_world/musics/DavidKBD - Eternity Pack - 06 - God of darkness - loop.mp3" id="10_knpbo"]
+[ext_resource type="AudioStream" uid="uid://bvurxj4pma4ky" path="res://game_world/musics/linebeck_theme_by_eugenie_toutlemonde_aka_mon_amour_ternel_edit.mp3" id="11_65u5l"]
+[ext_resource type="Script" uid="uid://13ot4s2r8210" path="res://addons/resonate/sound_manager/sound_bank.gd" id="12_6ucno"]
+[ext_resource type="Script" uid="uid://bk6wfdf1bn68d" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="13_52ku5"]
+[ext_resource type="AudioStream" uid="uid://olfe4ssbkuke" path="res://game_objects/units/assets/Explosion2.mp3" id="14_tmsbv"]
+[ext_resource type="AudioStream" uid="uid://wli20upqtgtl" path="res://game_objects/units/assets/Explosion1.mp3" id="15_ykfrt"]
+
+[sub_resource type="Resource" id="Resource_ao5vc"]
+script = ExtResource("5_prfec")
+name = ""
+enabled = true
+volume = -3.0
+stream = ExtResource("6_kx4ni")
+metadata/_custom_type_script = "uid://dsjd63rlyink7"
+
+[sub_resource type="Resource" id="Resource_gix1a"]
+script = ExtResource("4_cbq28")
+name = "menu_music"
+bus = ""
+stems = Array[ExtResource("5_prfec")]([SubResource("Resource_ao5vc")])
+metadata/_custom_type_script = "uid://ck4686aywk1sc"
+
+[sub_resource type="Resource" id="Resource_u0cts"]
+script = ExtResource("5_prfec")
+name = ""
+enabled = true
+volume = 0.0
+stream = ExtResource("7_6s0er")
+metadata/_custom_type_script = "uid://dsjd63rlyink7"
+
+[sub_resource type="Resource" id="Resource_jn4fx"]
+script = ExtResource("4_cbq28")
+name = "music_level_1"
+bus = ""
+stems = Array[ExtResource("5_prfec")]([SubResource("Resource_u0cts")])
+metadata/_custom_type_script = "uid://ck4686aywk1sc"
+
+[sub_resource type="Resource" id="Resource_rhye5"]
+script = ExtResource("5_prfec")
+name = ""
+enabled = true
+volume = 0.0
+stream = ExtResource("8_3bqdv")
+metadata/_custom_type_script = "uid://dsjd63rlyink7"
+
+[sub_resource type="Resource" id="Resource_a8dnc"]
+script = ExtResource("4_cbq28")
+name = "music_level_2"
+bus = ""
+stems = Array[ExtResource("5_prfec")]([SubResource("Resource_rhye5")])
+metadata/_custom_type_script = "uid://ck4686aywk1sc"
+
+[sub_resource type="Resource" id="Resource_g514o"]
+script = ExtResource("5_prfec")
+name = ""
+enabled = true
+volume = -2.0
+stream = ExtResource("9_xjnj1")
+metadata/_custom_type_script = "uid://dsjd63rlyink7"
+
+[sub_resource type="Resource" id="Resource_uocqw"]
+script = ExtResource("4_cbq28")
+name = "music_level_3"
+bus = ""
+stems = Array[ExtResource("5_prfec")]([SubResource("Resource_g514o")])
+metadata/_custom_type_script = "uid://ck4686aywk1sc"
+
+[sub_resource type="Resource" id="Resource_6t3px"]
+script = ExtResource("5_prfec")
+name = ""
+enabled = true
+volume = 0.0
+stream = ExtResource("10_knpbo")
+metadata/_custom_type_script = "uid://dsjd63rlyink7"
+
+[sub_resource type="Resource" id="Resource_obmmj"]
+script = ExtResource("4_cbq28")
+name = "boss_music"
+bus = ""
+stems = Array[ExtResource("5_prfec")]([SubResource("Resource_6t3px")])
+metadata/_custom_type_script = "uid://ck4686aywk1sc"
+
+[sub_resource type="Resource" id="Resource_6y3qq"]
+script = ExtResource("5_prfec")
+name = ""
+enabled = true
+volume = 0.0
+stream = ExtResource("11_65u5l")
+metadata/_custom_type_script = "uid://dsjd63rlyink7"
+
+[sub_resource type="Resource" id="Resource_s0s18"]
+script = ExtResource("4_cbq28")
+name = "ending"
+bus = ""
+stems = Array[ExtResource("5_prfec")]([SubResource("Resource_6y3qq")])
+metadata/_custom_type_script = "uid://ck4686aywk1sc"
+
+[sub_resource type="Resource" id="Resource_p6x64"]
+script = ExtResource("13_52ku5")
+name = "enemy_explosion"
+bus = ""
+volume = -6.0
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("14_tmsbv")])
+metadata/_custom_type_script = "uid://bk6wfdf1bn68d"
+
+[sub_resource type="Resource" id="Resource_074og"]
+script = ExtResource("13_52ku5")
+name = "player_explosion"
+bus = ""
+volume = 0.0
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("15_ykfrt")])
+metadata/_custom_type_script = "uid://bk6wfdf1bn68d"
 
 [node name="Test" type="Node"]
 script = ExtResource("1_8a8pi")
 
-[node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_font_sizes/font_size = 20
+[node name="OptionsMenu" parent="." instance=ExtResource("2_jb5rp")]
+
+[node name="MusicBank" type="Node" parent="."]
+script = ExtResource("3_ep30m")
+label = "musics"
+bus = "Music"
+tracks = Array[ExtResource("4_cbq28")]([SubResource("Resource_gix1a"), SubResource("Resource_jn4fx"), SubResource("Resource_a8dnc"), SubResource("Resource_uocqw"), SubResource("Resource_obmmj"), SubResource("Resource_s0s18")])
+metadata/_custom_type_script = "uid://dobneoni3xsj"
+
+[node name="SoundBank" type="Node" parent="."]
+script = ExtResource("12_6ucno")
+label = "SFXs"
+bus = "SFX"
+events = Array[ExtResource("13_52ku5")]([SubResource("Resource_p6x64"), SubResource("Resource_074og")])
+metadata/_custom_type_script = "uid://13ot4s2r8210"
 
 [node name="Player" parent="." instance=ExtResource("2_gomqg")]
-position = Vector2(401, 476)
+position = Vector2(452, 577)
 
-[connection signal="shot" from="Player" to="." method="_on_player_shot"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
 
-[editable path="Player"]
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[connection signal="value_changed" from="OptionsMenu/VBoxContainer/Music Volume" to="." method="_on_music_volume_value_changed"]
+[connection signal="value_changed" from="OptionsMenu/VBoxContainer/Sound Volume" to="." method="_on_sound_volume_value_changed"]
+
+[editable path="OptionsMenu"]
