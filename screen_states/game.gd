@@ -16,6 +16,7 @@ enum GameLevel { ONE, TWO, THREE, BOSS }
 var current_game_level: GameLevel
 var current_packed_scene
 var is_game_paused: bool = false
+var game_mode: bool
 
 @onready var game_ui: GameUI = $GameUI
 @onready var space_shooter_level: SpaceShooterLevel = $SpaceShooterLevel
@@ -42,6 +43,11 @@ func _go_to_level(game_level: GameLevel):
 	var level_type: String
 	var ui_text: String
 	var music_string: String
+	var voice_string: String
+	var game_mode_string: String
+	if game_mode == false: game_mode_string = " Epic"
+	if game_mode == true: game_mode_string = " Sparkles"
+	
 	
 	match game_level:
 		GameLevel.ONE:
@@ -49,24 +55,28 @@ func _go_to_level(game_level: GameLevel):
 			level_type = "Waves"
 			ui_text = "LEVEL 1"
 			music_string = "music_level_1"
+			voice_string = "Level 1" + game_mode_string
 			
 		GameLevel.TWO:
 			packed_scene = WAVES_LEVEL_2_SCENE
 			level_type = "Waves"
 			ui_text = "LEVEL 2"
 			music_string = "music_level_2"
+			voice_string = "Level 2" + game_mode_string
 			
 		GameLevel.THREE:
 			packed_scene = WAVES_LEVEL_3_SCENE
 			level_type = "Waves"
 			ui_text = "LEVEL 3"
 			music_string = "music_level_3"
+			voice_string = "Level 3" + game_mode_string
 			
 		GameLevel.BOSS:
 			packed_scene = BOSS_PATH_2D_SCENE
 			level_type = "Boss"
 			ui_text = "BOSS LEVEL"
 			music_string = "boss_music"
+			voice_string = "Level Boss" + game_mode_string
 	
 	if level_type == "Waves":
 		space_shooter_level.init(packed_scene, "Waves", game_level)
@@ -76,6 +86,7 @@ func _go_to_level(game_level: GameLevel):
 		
 	game_ui.transient_rich_text_label(ui_text)
 	MusicManager.play("musics", music_string, 3.0, true)
+	SoundManager.play("Voices", voice_string)
 	scene_transition_player.play_transition("animation_ressources/fade_in")
 	space_shooter_level.animate_player_in()
 
@@ -95,12 +106,16 @@ func _set_pause(_bool: bool):
 
 
 func _on_space_shooter_level_game_over() -> void:
+	if game_mode == false: SoundManager.play("Voices", "Game Over Epic")
+	if game_mode == true: SoundManager.play("Voices", "Game Over Sparkles")
 	game_ui.set_game_over()
 
 
 func _on_space_shooter_level_level_cleared(_current_game_level) -> void:
 	
 	# Transition out
+	if game_mode == false: SoundManager.play("Voices", "Level Cleared Epic")
+	if game_mode == true: SoundManager.play("Voices", "Level Cleared Sparkles")
 	game_ui.transient_rich_text_label("LEVEL CLEARED")
 	await get_tree().create_timer(2.0).timeout
 	space_shooter_level.animate_player_out()

@@ -2,8 +2,12 @@ class_name MainMenu
 extends Control
 
 signal button_start_pressed
+signal set_mode_requested(bool)
 
 @onready var button_v_box_container: VBoxContainer = $ButtonVBoxContainer
+@onready var start_game_button: Button = $ButtonVBoxContainer/StartGameButton
+@onready var options_button: Button = $ButtonVBoxContainer/OptionsButton
+@onready var exit_button: Button = $ButtonVBoxContainer/ExitButton
 @onready var options_menu: Control = $OptionsMenu
 @onready var player: Player = $Player
 @onready var player_animation_player: AnimationPlayer = $PlayerAnimationPlayer
@@ -49,6 +53,10 @@ func _show_options():
 
 
 func _on_start_game_button_pressed() -> void:
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	start_game_button.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	options_button.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	exit_button.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	button_start_pressed.emit()
 	player.is_controlable = false
 
@@ -67,3 +75,8 @@ func animate_player_out():
 
 func _on_player_shot(projectile: Projectile) -> void:
 	add_child(projectile)
+
+
+func _on_check_button_toggled(toggled_on: bool) -> void:
+	if toggled_on == true: set_mode_requested.emit(true)
+	if toggled_on == false: set_mode_requested.emit(false)

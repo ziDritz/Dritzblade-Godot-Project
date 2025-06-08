@@ -73,6 +73,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 1
 script = ExtResource("1_5ms5j")
 
 [node name="Camera2D" parent="." instance=ExtResource("3_wlfof")]
@@ -124,6 +125,14 @@ size_flags_vertical = 3
 theme = ExtResource("1_ku1ks")
 theme_override_font_sizes/font_size = 50
 text = "Exit"
+
+[node name="CheckButton" type="CheckButton" parent="ButtonVBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_ku1ks")
+theme_override_constants/h_separation = 15
+action_mode = 0
+text = "Epic - Sparkles"
 
 [node name="CreditVBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -258,6 +267,7 @@ libraries = {
 [connection signal="pressed" from="ButtonVBoxContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="ButtonVBoxContainer/OptionsButton" to="." method="_on_button_options_pressed"]
 [connection signal="pressed" from="ButtonVBoxContainer/ExitButton" to="." method="_on_button_exit_pressed"]
+[connection signal="toggled" from="ButtonVBoxContainer/CheckButton" to="." method="_on_check_button_toggled"]
 [connection signal="meta_clicked" from="CreditVBoxContainer/RichTextLabel" to="CreditVBoxContainer/RichTextLabel" method="_on_meta_clicked"]
 [connection signal="meta_clicked" from="CreditVBoxContainer/RichTextLabel2" to="CreditVBoxContainer/RichTextLabel2" method="_on_meta_clicked"]
 [connection signal="meta_clicked" from="CreditVBoxContainer/RichTextLabel3" to="CreditVBoxContainer/RichTextLabel3" method="_on_meta_clicked"]

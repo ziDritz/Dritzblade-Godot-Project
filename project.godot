@@ -26,6 +26,7 @@ resources_spreadsheet_view/freeze_first_column=true
 config/name="Dritzblade"
 run/main_scene="uid://dhivpavt7rerw"
 config/features=PackedStringArray("4.4", "Forward Plus")
+config/icon="uid://bb8pegnvga61n"
 
 [audio]
 
@@ -47,6 +48,8 @@ MusicManager="*res://addons/resonate/music_manager/music_manager.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=2
+window/stretch/mode="viewport"
 
 [editor_plugins]
 

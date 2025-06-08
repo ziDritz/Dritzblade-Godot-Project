@@ -9,6 +9,7 @@ const MAIN_MENU_SCENE = preload("res://screen_states/main_menu.tscn")
 var main_menu: MainMenu
 var game: Game
 var ending: Ending
+var game_mode: bool = false
 
 var current_state: MainState
 
@@ -17,7 +18,6 @@ var current_state: MainState
 
 func _ready() -> void:
 	await MusicManager.loaded
-	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	set_state(MainState.MAIN_MENU)
 	
 
@@ -39,6 +39,7 @@ func _go_to_main_menu():
 	
 	main_menu = MAIN_MENU_SCENE.instantiate()
 	main_menu.button_start_pressed.connect(_on_main_menu_button_start_pressed)
+	main_menu.set_mode_requested.connect(_on_set_mode_requested)
 	add_child(main_menu)
 	MusicManager.play("musics", "menu_music", 1.0, true)
 	
@@ -60,6 +61,7 @@ func _go_to_game():
 	game = GAME_SCENE.instantiate()
 	game.main_menu_requested.connect(_go_to_main_menu)
 	game.game_ended.connect(_go_to_ending)
+	game.game_mode = game_mode
 	add_child(game)		
 	game.start_game()		
 	
@@ -91,4 +93,6 @@ func _go_to_ending():
 func _on_main_menu_button_start_pressed() -> void:
 	_go_to_game()
 	
+func _on_set_mode_requested(_bool: bool):
+	game_mode = _bool
 	
